@@ -1,0 +1,12 @@
+.login-container {
+
+    border: none;
+
+    }
+
+
+.bg-pattern{
+    background-image: url('/assets/svg/bgTT.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
