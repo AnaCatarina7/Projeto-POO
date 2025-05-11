@@ -1,0 +1,302 @@
+body {
+    margin-top: 4rem !important;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: #395d7f ;
+    padding: 1rem;
+}
+
+/* NAVBAR LINKS */
+.nav-link.active {
+    color: #fcc71b !important;
+    font-weight: 600;
+}
+
+.navbar-nav .nav-item {
+    margin-right: 1.5rem;
+    font-size: 1.2rem;
+}
+
+.navbar-nav .nav-link {
+    color: white ;
+    font-size: 1.2rem;
+}
+
+/* SEARCH BAR */
+.search-bar {
+    border: 0.15rem solid white;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem; 
+}
+
+.search-bar .form-control::placeholder {
+    font-weight: lighter;
+    color: white;
+    opacity: 0.7;
+}
+
+.search-bar .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-search {
+    background-color: #ffc107 !important;
+    border-radius: 0.5rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.9rem
+}
+
+.btn-search:hover {
+    color: #2e2406;
+}
+
+.search-icon{
+    color: #395d7f;
+}
+  
+/* PROFILE PIC */
+.dropdown-line{
+    border: 0;
+    height: 1px;
+    background-color: #395d7f; 
+    margin: 0.4rem 0.8rem;
+}
+
+/* MAIN PAGE INTRODUCTION HEADER */
+.custom-hero {
+    background-color: #395d7f ;
+    min-height: 34rem;
+    padding-top: 2rem;
+ }
+
+.custom-hero h1 {
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
+    align-items: flex-start;
+    display: flex;
+}
+
+.custom-hero p {
+    font-size: 1.1rem;
+    font-weight: lighter;
+    margin-bottom: 14rem;
+}
+
+.custom-hero .hero-picture{
+    width: 35rem;
+    margin-right: 5rem;
+    margin-top: -2rem;
+}
+
+/* TOP TUTORS CARDS */
+.card {
+    border-radius: 1.25rem; 
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+  
+.card-img-top {
+    border-top-left-radius: 1.25rem;
+    border-top-right-radius: 1.25rem;
+}
+  
+.card-body {
+    background-color: #ffffff;
+    border-bottom-left-radius: 1.25rem;
+    border-bottom-right-radius: 1.25rem;
+}
+  
+.btn-light {
+    background-color: #fff;
+    border: none;
+    transition: background-color 0.2s ease;
+}
+  
+.btn-light:hover {
+    background-color: #f8f9fa;
+}
+  
+  /* Name */
+.card-body h6 {
+    font-size: 1rem;
+    color: #395d7f;
+} 
+
+.category-text{
+    color: #7f3939;
+    font-size: 1rem;
+}
+  
+  /* Localidade e modalidade */
+.card-body p {
+    font-size: 0.85rem;
+    margin-bottom: 0.25rem;
+}
+  
+  /* Price */
+.card-body .text-dark {
+    font-size: 0.95rem;
+}
+  
+  /* 1st Class Free */
+.card-body .text-warning {
+    font-size: 0.85rem;
+}
+
+.rating{
+    color: #395d7f;
+}
+  
+  /* Estrela (dentro de span) */
+  .card-body .text-primary iconify-icon {
+    vertical-align: text-bottom;
+}
+  
+
+  .tutor-card {
+    max-width: 320px;
+    width: 100%;
+}
+
+
+/* HOW THE SITE WORKS SECTION */
+.container-works .works-right h2{
+    margin-bottom: 2.5rem;
+
+}
+
+.number-box {
+    padding: 0.2rem 1rem;
+    border-radius: 0.5rem;
+    color: white; 
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;  
+    justify-content: center;
+    align-items: center; 
+  }
+
+.works-subtitle{
+    margin-top: 0.5rem;
+}
+
+.works-text{
+    margin-top:-0.5rem;
+}
+
+/* TESTIMONIALS */
+.testimonial-container{
+    margin-bottom: 3rem;
+}
+.testimonial-card {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    width: 30rem; 
+    text-align: center;
+    transition: all 0.3s ease;
+    margin: 0 0.75rem;
+  }
+  
+.featured {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+}
+  
+.faded {
+    opacity: 0.4;
+}
+  
+.testimonial-header {
+    display: flex;
+    justify-content: flex-start; /* Mantém a citação à esquerda */
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quote-icon {
+    font-size: 3rem;
+    color: #ffc727;
+}
+
+.stars {
+    color: #ffc727;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: center; /* Estrelas centradas */
+    align-items: center;
+    margin-left: 6.5rem;
+}
+  
+  .testimonial-text {
+    color: #2d4872;
+    font-size: 1rem;
+  }
+  
+  .testimonial-author {
+    color: #395d7f;
+    margin-top: 1rem;
+  }
+
+  .carousel-indicators [data-bs-target] {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin-top: 1rem;
+  }
+  
+  .carousel-indicators .active {
+    background-color: #ffc727;
+  }
+  
+
+/* FOOTER */
+.bg-footer {
+    background-color: #3a5f81; /* mesmo tom da imagem */
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+}
+
+
+.footer-logo{
+    margin-bottom: 2.8rem;
+    margin-top: 1.2rem;
+}
+
+.footer-divider {
+    width: 110rem;
+    margin: 3rem auto;
+    border-top: 0.1rem solid white;
+    opacity: 1;
+  }
+
+.footer-find{
+    max-width: 80rem;
+}
+
+.footer-useful-links{
+    font-weight: 250;
+    font-size: 1.1rem;
+    padding-bottom: 1.5rem;
+}
+
+.footer-links-wrap {
+    max-width: 35rem;
+    text-align: center;
+    flex-wrap: wrap;
+    font-weight: 250;
+    font-size: 1.1rem;
+    padding-bottom: 2.8rem;
+
+}

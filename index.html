@@ -1,11 +1,475 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HELLO</title>
+  <meta charset="UTF-8">
+  <title>Landing Page</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="./js/views/becomeTutorView.js"></script>
 </head>
 <body>
-    
+
+  <header>
+    <!-- Navbar  -->
+    <nav class="navbar navbar-expand-lg fixed-top px-5">
+      <a class="navbar-brand" href="#">
+        <img src="./assets/svg/logo.svg" alt="Logo" height="40">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto ms-4">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./html/becomeTT.html">Torna-te Tutor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Sobre nós</a>
+          </li>
+        </ul>
+
+        <form class="search-bar d-flex align-items-center me-3">
+            <input class="form-control bg-transparent text-white border-0" type="search" placeholder="Pesquisar..." aria-label="Pesquisar">
+            <button class="btn-search "  type="submit">
+                <iconify-icon icon="healthicons:magnifying-glass" width="30" height="30" class="search-icon"></iconify-icon>
+            </button>
+          </form>
+
+      <div class="dropdown">
+        <div class="profile-pic-wrapper d-flex justify-content-center align-items-center rounded-circle bg-white icon-wrapper" data-bs-toggle="dropdown" aria-expanded="false">
+          <iconify-icon icon="mdi:account-circle" class="icon" width="45" height="45"></iconify-icon>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="#">
+                <iconify-icon icon="iconamoon:profile" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+                Meu Perfil
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <iconify-icon icon="tabler:edit" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+                Editar Perfil
+              </a>
+            </li>
+            <hr class="dropdown-line">
+            <li>
+              <a class="dropdown-item" href="#">
+                <iconify-icon icon="ic:round-logout" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+                Terminar Sessão
+              </a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero section -->
+  <section class="container-fluid py-5 px-5 d-flex flex-column flex-lg-row align-items-center justify-content-between custom-hero">
+    <div class="mb-4 mb-lg-0 ">
+      <h1 class=" display-4 fw-bold text-white">Encontre o explicador<br>perfeito para si!</h1>
+      <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. sapien nec tincidunt fringilla,</p>
+    </div>
+    <div>
+      <img src="./assets/svg/landingHeaderPic.svg" alt="Tutor and Student Image" class="img-fluid hero-picture" style="margin-bottom: 4rem;">
+    </div>
+  </section>
+
+<!-- Tutores Section -->
+<h2 class="fw-bold py-5 px-5">Top Explicadores</h2>
+<section class="container ">
+    <div class="row px-4 align-items-center justify-content-center display-flex">
+      
+      <!-- Card 1 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+          <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador">
+          <div class="position-absolute top-0 end-0 p-2">
+            <button class="heart" style="background: transparent; border: none;">
+              <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+            </button>
+          </div>
+          <div class="card-body px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+              </span>
+              <span class="text-muted small category-text">Categoria</span>
+            </div>
+            <h6 class="fw-bold mb-1">Nome do explicador</h6>
+            <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">0€/h</span>
+              <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+          <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador">
+          <div class="position-absolute top-0 end-0 p-2">
+            <button class="heart" style="background: transparent; border: none;">
+              <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+            </button>
+          </div>
+          <div class="card-body px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+              </span>
+              <span class="text-muted small category-text">Categoria</span>
+            </div>
+            <h6 class="fw-bold mb-1">Nome do explicador</h6>
+            <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">0€/h</span>
+              <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Card 2 -->
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+          <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador" >
+          <div class="position-absolute top-0 end-0 p-2">
+            <button class="heart" style="background: transparent; border: none;">
+              <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+            </button>
+          </div>
+          <div class="card-body px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+              </span>
+              <span class="text-muted category-text">Categoria</span>
+            </div>
+            <h6 class="fw-bold mb-1">Nome do explicador</h6>
+            <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">0€/h</span>
+              <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+          <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador" >
+          <div class="position-absolute top-0 end-0 p-2">
+            <button class="heart" style="background: transparent; border: none;">
+              <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+            </button>
+          </div>
+          <div class="card-body px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+              </span>
+              <span class="text-muted category-text">Categoria</span>
+            </div>
+            <h6 class="fw-bold mb-1">Nome do explicador</h6>
+            <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">0€/h</span>
+              <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row px-4 align-items-center justify-content-center display-flex">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+          <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador" >
+          <div class="position-absolute top-0 end-0 p-2">
+            <button class="heart" style="background: transparent; border: none;">
+              <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+            </button>
+          </div>
+          <div class="card-body px-4 pt-3">
+            <div class="d-flex justify-content-between align-items-center mb-1">
+              <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+              </span>
+              <span class="text-muted category-text">Categoria</span>
+            </div>
+            <h6 class="fw-bold mb-1">Nome do explicador</h6>
+            <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">0€/h</span>
+              <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+          <!-- Card 2 -->
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+              <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador" >
+              <div class="position-absolute top-0 end-0 p-2">
+                <button class="heart" style="background: transparent; border: none;">
+                  <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+                </button>
+              </div>
+              <div class="card-body px-4 pt-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                    <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+                  </span>
+                  <span class="text-muted category-text">Categoria</span>
+                </div>
+                <h6 class="fw-bold mb-1">Nome do explicador</h6>
+                <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-dark">0€/h</span>
+                  <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+              <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador">
+              <div class="position-absolute top-0 end-0 p-2">
+                <button class="heart" style="background: transparent; border: none;">
+                  <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+                </button>
+              </div>
+              <div class="card-body px-4 pt-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                    <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+                  </span>
+                  <span class="text-muted small category-text">Categoria</span>
+                </div>
+                <h6 class="fw-bold mb-1">Nome do explicador</h6>
+                <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-dark">0€/h</span>
+                  <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-12 col-sm-6 col-md-5 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+              <img src="./assets/svg/tutor1.svg" class="card-img-top" alt="Foto do explicador" >
+              <div class="position-absolute top-0 end-0 p-2">
+                <button class="heart" style="background: transparent; border: none;">
+                  <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+                </button>
+              </div>
+              <div class="card-body px-4 pt-3">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                  <span class="rating fw-semibold" style="font-size: 0.9rem;">5 
+                    <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+                  </span>
+                  <span class="text-muted category-text">Categoria</span>
+                </div>
+                <h6 class="fw-bold mb-1">Nome do explicador</h6>
+                <p class="text-muted mb-2" style="font-size: 0.85rem;">Localidade (modalidades)</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span class="fw-bold text-dark">0€/h</span>
+                  <span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+  
+
+  <section class="container-fluid py-5 px-5 container-works">
+    <div class="row align-items-center">
+      <!-- Coluna com as imagens à esquerda -->
+      <div class="col-lg-7 mb-4 mb-lg-0 works-left">
+        <!-- Imagem sozinha em cima -->
+        <div class="d-flex justify-content-center mb-4">
+          <img src="./assets/svg/siteWorks1.svg" alt="image 1" class="img-fluid ">
+        </div>
+        <!-- Duas imagens embaixo -->
+        <div class="row">
+          <div class="col-6 mb-4">
+            <img src="./assets/svg/siteWorks2.svg" alt="image 2" class="img-fluid ">
+          </div>
+          <div class="col-6">
+            <img src="./assets/svg/siteWorks3.svg" alt="image 3" class="img-fluid">
+          </div>
+        </div>
+      </div>
+  
+      <!-- Coluna com o texto à direita -->
+      <div class="col-lg-5 works-right">
+        <h2 class="fw-bold">Como funciona o site</h2>
+  
+        <!-- Subtítulo 1 -->
+        <div class="d-flex align-items-center mb-3">
+          <div class="number-box d-flex justify-content-center align-items-center me-3" style="background-color: #395d7f;">01</div>
+          <h4 class="works-subtitle">Pesquisar</h4>
+        </div>
+        <p class="works-text">Filtra os tutores com base nas suas necessidades e encontre o explicador ideal para si</p>
+  
+        <!-- Subtítulo 2 -->
+        <div class="d-flex align-items-center mb-3">
+          <div class="number-box d-flex justify-content-center align-items-center me-3" style="background-color: #ffc2c8;">02</div>
+          <h4 class="works-subtitle">Contactar</h4>
+        </div>
+        <p class="works-text">Entra em contacto diretamente com o explicador e esclarece as tuas dúvidas.</p>
+  
+        <!-- Subtítulo 3 -->
+        <div class="d-flex align-items-center mb-3">
+          <div class="number-box d-flex justify-content-center align-items-center me-3" style="background-color: #ffc727;">03</div>
+          <h4 class="works-subtitle">Agendar</h4>
+        </div>
+        <p class="works-text">Combina com o tutor o melhor horário para si e melhora os teus resultados!</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="container-fluid testimonial-container py-5 px-5">
+    <h2 class="fw-bold  mb-5">Avaliações</h2>
+    <div id="carouselAvaliacoes" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+  
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center gap-4 flex-wrap">
+          <!-- Card 1 - lateral -->
+          <div class="testimonial-card faded">
+            <div class="testimonial-header d-flex align-items-center gap-2 mb-2">
+                <iconify-icon icon="gridicons:quote" class="quote-icon"></iconify-icon>
+                <div class="stars">★★★★★</div>
+            </div>
+            <p class="testimonial-text">O acompanhamento foi excelente desde o início! A explicadora foi muito atenciosa, sempre disponível para esclarecer dúvidas e me ajudar a entender melhor os conceitos.</p>
+            <p class="testimonial-author fw-bold ">- João Ramos</p>
+          </div>
+  
+            <!-- Card 2 - centro -->
+            <div class="testimonial-card featured">
+              <div class="testimonial-header d-flex align-items-center gap-2 mb-2">
+                  <iconify-icon icon="gridicons:quote" class="quote-icon"></iconify-icon>
+                  <div class="stars">★★★★★</div>
+              </div>
+              <p class="testimonial-text">O acompanhamento foi excelente desde o início! A explicadora foi muito atenciosa, sempre disponível para esclarecer dúvidas e me ajudar a entender melhor os conceitos.</p>
+              <p class="testimonial-author fw-bold ">- João Ramos</p>
+            </div>
+  
+            <!-- Card 3 - lateral -->
+            <div class="testimonial-card faded">
+              <div class="testimonial-header d-flex align-items-center gap-2 mb-2">
+                  <iconify-icon icon="gridicons:quote" class="quote-icon"></iconify-icon>
+                  <div class="stars">★★★★★</div>
+              </div>
+              <p class="testimonial-text">O acompanhamento foi excelente desde o início! A explicadora foi muito atenciosa, sempre disponível para esclarecer dúvidas e me ajudar a entender melhor os conceitos.</p>
+              <p class="testimonial-author fw-bold ">- João Ramos</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Slide 2 (mais 3 avaliações) -->
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center gap-4 flex-wrap">
+            <div class="testimonial-card faded">
+              <div class="testimonial-header d-flex align-items-center gap-2 mb-2">
+                  <iconify-icon icon="gridicons:quote" class="quote-icon"></iconify-icon>
+                  <div class="stars">★★★★★</div>
+              </div>
+              <p class="testimonial-text">O acompanhamento foi excelente desde o início! A explicadora foi muito atenciosa, sempre disponível para esclarecer dúvidas e me ajudar a entender melhor os conceitos.</p>
+              <p class="testimonial-author fw-bold ">- João Ramos</p>
+            </div>
+  
+            <div class="testimonial-card featured">
+              <div class="testimonial-header d-flex align-items-center gap-2 mb-2">
+                  <iconify-icon icon="gridicons:quote" class="quote-icon"></iconify-icon>
+                  <div class="stars">★★★★★</div>
+              </div>
+              <p class="testimonial-text">O acompanhamento foi excelente desde o início! A explicadora foi muito atenciosa, sempre disponível para esclarecer dúvidas e me ajudar a entender melhor os conceitos.</p>
+              <p class="testimonial-author fw-bold ">- João Ramos</p>
+            </div>
+  
+            <div class="testimonial-card faded">
+              <div class="testimonial-header d-flex align-items-center gap-2 mb-2">
+                  <iconify-icon icon="gridicons:quote" class="quote-icon"></iconify-icon>
+                  <div class="stars">★★★★★</div>
+              </div>
+              <p class="testimonial-text">O acompanhamento foi excelente desde o início! A explicadora foi muito atenciosa, sempre disponível para esclarecer dúvidas e me ajudar a entender melhor os conceitos.</p>
+              <p class="testimonial-author fw-bold ">- João Ramos</p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <!-- Indicadores -->
+      <div class="carousel-indicators mt-4 mb">
+        <button type="button" data-bs-target="#carouselAvaliacoes" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselAvaliacoes" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      </div>
+    </div>
+  </section>
+  
+
+  <footer class="bg-footer text-white text-center pt-5 pb-4">
+    <div class="footer-container">
+        <img class="footer-logo" src="./assets/svg/logo.svg" alt="Logo" height="55">
+  
+      <!-- Links úteis -->
+      <p class="fw-semibold mb-1">Links úteis</p>
+      <div class="mb-3 small  footer-useful-links">
+        <a href="#" class="text-white text-decoration-none mx-2">Início</a>•
+        <a href="#" class="text-white text-decoration-none mx-2">Torne-se um tutor</a>•
+        <a href="#" class="text-white text-decoration-none mx-2">Como funciona o Site</a>
+      </div>
+  
+      <!-- O que procura -->
+      <p class="fw-semibold mb-1">O que procura?</p>
+      <div class="footer-links-wrap mx-auto mb-3 small">
+        <a href="#" class="text-white text-decoration-none mx-1">Preparação para exames</a>•
+        <a href="#" class="text-white text-decoration-none mx-1">Apoio escolar</a>•
+        <a href="#" class="text-white text-decoration-none mx-1">Apoio à necessidades especiais</a>•
+        <a href="#" class="text-white text-decoration-none mx-1">Explicações online</a>•
+        <a href="#" class="text-white text-decoration-none mx-1">Ensino básico</a>•
+        <a href="#" class="text-white text-decoration-none mx-1">Ensino secundário</a>
+      </div>
+      
+  
+      <!-- Linha -->
+      <hr class="my-4 border-light d-flex footer-divider">
+  
+      <!-- Redes sociais -->
+      <div class="d-flex justify-content-center gap-4">
+        <a href="#" class="fs-4 bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px color=#3a5f81; ">
+            <iconify-icon icon="gg:facebook" width="24" height="24" style="color: #3a5f81;" ></iconify-icon>
+        </a>
+        <a href="#" class="fs-4 bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+            <iconify-icon icon="gg:instagram" width="24" height="24" style="color: #3a5f81;"></iconify-icon>
+        </a>
+        <a href="#" class="fs-4 bg-light rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+            <iconify-icon icon="typcn:social-linkedin" width="24" height="24" style="color: #3a5f81;"></iconify-icon>
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

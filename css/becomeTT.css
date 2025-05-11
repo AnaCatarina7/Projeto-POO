@@ -1,0 +1,109 @@
+.former-container{
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+}
+
+/* Títulos */
+h3 {
+    color: #395d7f;
+    font-weight: 600;
+}
+
+/* Labels */
+.form-container .form-label{
+    font-weight: 600;
+    color: #395d7f;
+    font-size: 1.2rem;
+}
+
+.form-check-label{
+    font-weight: 500;
+    color: #395d7f;
+}
+
+/* Inputs e selects com bordas azuis transparentes */
+input.form-control,
+select.form-select,
+textarea.form-control {
+    background-color: rgba(255, 255, 255, 0); /* transparente */
+    border: 1px solid rgba(31, 78, 121, 0.46); /* azul com 46% opacidade */
+    border-radius: 0.8rem; 
+    color: #1f4e79;
+    font-weight: 500;
+    opacity: 0.95;
+    /* padding: 1.1rem; */
+}
+
+/* Placeholder com azul claro e menos opacidade */
+::placeholder {
+  color: #395d7f;
+  opacity: 1;
+  font-weight: 400;
+}
+
+/* Focus dos inputs */
+input.form-control:focus,
+select.form-select:focus,
+textarea.form-control:focus {
+    border-color: #1f4e79;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 2px rgba(31, 78, 121, 0.2);
+    outline: none;
+}
+
+/* Dropdown personalizado */
+.dropdown-menu {
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
+}
+
+/* Tabela de disponibilidade */
+table.table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+table.table input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
+/* Botão concluir */
+.btn-warning {
+    background-color: #fede89;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-warning:hover {
+    background-color: #ffce55;
+    color: #000;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+/* Checkbox inline (modalidade e necessidades especiais) */
+.form-check-input {
+    margin-top: 0.3rem;
+    cursor: pointer;
+}
+
+.form-check-label {
+    cursor: pointer;
+}
+
+/* Espacamento inferior entre blocos */
+.mb-4 {
+    margin-bottom: 2rem !important;
+}
+
+/* Hero section */
+.custom-hero {
+    background: linear-gradient(120deg, #395d7f, #0c3153);
+    padding-top: 120px;
+    color: #fff;
+}
