@@ -9,22 +9,24 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <main class="d-flex align-items-center justify-content-center min-vh-100 bg-pattern">
-      <section class="card  shadow  px-3 bg-body-tertiary rounded text-center login-container "  >
-
-        <h2 class="fs-2">Login</h2>
-        <p>Preenche com os teus dados para
-            entrares na tua conta</p>
-
-        <form>
-
-           <div ></div>
-           <div></div>
-           <div></div>
-           <button></button>
-
+    <main class=" d-flex align-items-center justify-content-center ">
+      <section class="login_container shadow "  >
+        <div class="mb-4 login_text" >
+          <h2 class="mb-3">Iniciar sessão</h2>
+          <p>Preencha com os seus dados para aceder à sua conta</p>
+        </div>
+        <form id=" login-form" >
+          <div class="mb-3 form-group">
+            <label for="login_email" class="form-label">E-mail </label>
+            <input type="email" class="form-control input_form" id="login_email" placeholder="name@example.com" required>
+          </div>
+          <div class="mb-5 form-group">
+             <label for="password" class="form-label">Palavra-passe</label>
+          <input type="password" id="login_password" class="form-control input_form" placeholder="Palavra-passe" required>
+          <span>Ainda não tem uma conta? <a href="/html/signUp.html">Crie uma</a></span>
+          </div>
+            <button type="submit" class="btn w-100 py-2 formBtn" id="submitBtn" disabled>Concluir</button>
         </form>
-
       </section>
     </main>
 </body>
