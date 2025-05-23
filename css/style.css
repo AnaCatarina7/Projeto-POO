@@ -32,6 +32,7 @@
     --color-blue: #395D7F;
     --color-yellow: #FCC71B;
     --color-yellow-disable: rgba(252, 199, 27, 0.4);
+    --color-yellow-hover:#F2BE02;
 
 }
 
@@ -55,6 +56,8 @@ body {
 
 h1 {
     font-size:36px ; /* 3.6rem*/
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
 }
 
 h2 {
@@ -75,10 +78,9 @@ h6 {
     font-size:16px ; /* 1.6rem */
 }
 
-
-
 p {
     font-size: 1.2rem; /* 1.4rem */
+    font-weight: light;
 }
 
 .small-text {

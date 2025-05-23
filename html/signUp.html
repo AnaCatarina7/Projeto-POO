@@ -18,17 +18,17 @@
                 <h2 class="mb-3">Criar uma conta</h2>
                 <p>Preencha com os seus dados para criar uma conta</p>
             </div>
-            <form id=" signup-form">
-                <div class="form-group" >
+            <form id="signup-form">
+                <div class="form-group">
                     <div class="mb-3 ">
                         <label for="Fname" class="form-label">Nome </label>
-                        <input type="text" class="form-control input_form" id="signUp-Fname"
-                            placeholder="Nome" required>
+                        <input type="text" class="form-control input_form" id="signup-Fname" placeholder="Nome"
+                          required  >
                     </div>
                     <div class="mb-3 ">
                         <label for="Lname" class="form-label">Apelido </label>
-                        <input type="text" class="form-control input_form" id="signup-Lname"
-                            placeholder="Apelido" required>
+                        <input type="text" class="form-control input_form" id="signup-Lname" placeholder="Apelido"
+                            required>
                     </div>
                 </div>
 
@@ -37,11 +37,25 @@
                     <input type="email" class="form-control input_form" id="signup-email" placeholder="name@example.com"
                         required>
                 </div>
-
+                <!-- 
                 <div class="mb-3 ">
-                    <label for="city" class="form-label">Localidade </label>
+                    <label for="signUp-city" class="form-label">Localidade </label>
                     <input type="text" class="form-control input_form" id="signup-city" placeholder="Cidade"
                         required>
+                </div> -->
+                <div class="form-group">
+                    <div class="mb-3 ">
+                        <label for="signUp-city" class="form-label">Localidade </label>
+                        <input type="text" class="form-control input_form" id="signup-city" placeholder="Cidade"
+                            required>
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="userType" class="form-label">Utilizador </label>
+                        <select class="form-select mb-3" id="userType" aria-label="Escolher tipo de utilizador" required>
+                            <option value="Aluno" selected>Aluno</option>
+                            <option value="Tutor">Tutor</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="mb-5 ">
                     <label for="password" class="form-label">Palavra-passe</label>
@@ -49,10 +63,12 @@
                         placeholder="Palavra-passe" required>
                     <span>Já tem uma conta? <a href="/html/login.html">Inicie sessão</a></span>
                 </div>
-                <button type="submit" class="btn w-100 py-2 formBtn" id="submitBtn" disabled>Concluir</button>
+                <button type="submit" class="btn w-100 py-2 formBtn" id="submitBtn" >Criar conta</button>
             </form>
         </section>
     </main>
+
+     <script type="module" src="../js/views/signUpView.js"></script>
 </body>
 
 </html>
