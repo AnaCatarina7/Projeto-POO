@@ -77,7 +77,7 @@ a{
    .signup-container{
     box-shadow: none !important;
    }
-   p{
+   .signup-container p{
     display: none;
    }
    

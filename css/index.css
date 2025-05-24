@@ -146,30 +146,7 @@ body {
 }
 
 
-/* HOW THE SITE WORKS SECTION */
-.container-works .works-right h2{
-    margin-bottom: 2.5rem;
 
-}
-
-.number-box {
-    padding: 0.2rem 1rem;
-    border-radius: 0.5rem;
-    color: white; 
-    font-size: 1.2rem;
-    font-weight: bold;
-    display: flex;  
-    justify-content: center;
-    align-items: center; 
-  }
-
-.works-subtitle{
-    margin-top: 0.5rem;
-}
-
-.works-text{
-    margin-top:-0.5rem;
-}
 
 /* TESTIMONIALS */
 .testimonial-container{

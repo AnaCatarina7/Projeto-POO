@@ -3,58 +3,135 @@
 }
 
 .ourCommunity-container {
+    margin-top: 8%;
     display: flex;
     flex-direction: row;
     gap: 30px
 }
 
 .about-img {
-    width: 500px;
+    width: 700px;
     height: auto;
     border-radius: 10px;
 }
 
+.callActin-container p,
+.ourCommunity-container p {
+    max-width: 90%;
+}
 
 .callActin-container {
     display: flex;
     flex-direction: row;
 
+
 }
 
-.callAction-img {
-    position: relative;
-    bottom: 40%;
-    width: 250px;
+/* .callAction-img {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    max-width: 350px;
     height: auto;
-}
+    z-index: 1;
+} */
 
-.btn {
-    background-color: var(--color-yellow-hover);
+.callActionBtn {
+    background-color: var(--color-yellow);
     color: var(--color-blue);
     border: 0;
     font-weight: 500;
 }
 
-.btn:hover {
-    background-color: var(--color-yellow);
+.callActionBtn:hover {
+    color: var(--color-blue);
+    background-color: var(--color-yellow-hover);
 }
+
+
+/* HOW THE SITE WORKS SECTION */
+.howItworks-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+}
+
+.number-box {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.works-subtitle {
+    margin-top: 0.5rem;
+}
+
+.works-text {
+    margin-top: -0.5rem;
+}
+
+/* FQ´s */
 
 .accordion {
     --bs-accordion-border-color: #fff;
     --bs-accordion-color: var(--color-blue);
     --bs-accordion-btn-color: var(--color-blue);
-
-
-    --bs-accordion-active-bg: var(--color-yellow-disable);
+    --bs-accordion-active-bg: var(--color-grey);
     --bs-accordion-active-border-radius: 20px;
-      --bs-accordion-btn-icon: url('data:image/svg+xml,%3Csvg%20width%3D%2234%22%20height%3D%2219%22%20viewBox%3D%220%200%2034%2019%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%0A%3Cpath%20d%3D%22M16.293%2018.2927C16.6835%2018.6833%2017.3167%2018.6833%2017.7072%2018.2927L33.6263%202.37361C34.2563%201.74365%2033.8101%200.666504%2032.9192%200.666504H1.08097C0.190062%200.666504%20-0.25611%201.74365%200.373855%202.37361L16.293%2018.2927Z%22%20fill%3D%22%23F2BE02%22/%3E%0A%3C/svg%3E%0A');
-  --bs-accordion-btn-active-icon: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2234%22%20height%3D%2219%22%20viewBox%3D%220%200%2034%2019%22%20fill%3D%22none%22%3E%3Cpath%20d%3D%22M16.293%2018.2927C16.6835%2018.6833%2017.3167%2018.6833%2017.7072%2018.2927L33.6263%202.37361C34.2563%201.74365%2033.8101%200.666504%2032.9192%200.666504H1.08097C0.190062%200.666504%20-0.25611%201.74365%200.373855%202.37361L16.293%2018.2927Z%22%20fill%3D%22%23F2BE02%22%20transform%3D%22rotate(180%2017%209.5)%22/%3E%3C/svg%3E');
+}
 
+.accordion-button::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAzNCAxOSIgdmlnaW5zdHJvbmc9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LjI5MyAxOC4yOTI3QzE2LjY4MzUgMTguNjgzMyAxNy4zMTY3IDE4LjY4MzMgMTcuNzA3MiAxOC4yOTI3TDMzLjYyNjMgMi4zNzM2MUMzNC4yNTYzIDEuNzQzNjUgMzMuODEwMSAwLjY2NjUwNCAzMi45MTkyIDAuNjY2NTA0SDEuMDgwOTdDMC4xOTAwNjIgMC42NjY1MDQgLTAuMjU2MTEgMS43NDM2NSAwLjM3Mzg1NSAyLjM3MzYxTDE2LjI5MyAxOC4yOTI3WiIgZmlsbD0iI0YyQkUwMiIvPjwvc3ZnPg==');
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzQiIGhlaWdodD0iMTkiIHZpZXdCb3g9IjAgMCAzNCAxOSIgdmlnaW5zdHJvbmc9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE2LjI5MyAxOC4yOTI3QzE2LjY4MzUgMTguNjgzMyAxNy4zMTY3IDE4LjY4MzMgMTcuNzA3MiAxOC4yOTI3TDMzLjYyNjMgMi4zNzM2MUMzNC4yNTYzIDEuNzQzNjUgMzMuODEwMSAwLjY2NjUwNCAzMi45MTkyIDAuNjY2NTA0SDEuMDgwOTdDMC4xOTAwNjIgMC42NjY1MDQgLTAuMjU2MTEgMS43NDM2NSAwLjM3Mzg1NSAyLjM3MzYxTDE2LjI5MyAxOC4yOTI3WiIgZmlsbD0iI0YyQkUwMiIvPjwvc3ZnPg==');
 
 }
 
 .accordion p {
-    font-weight: lighter;
-    font-size: 18px;
+
     line-height: 30px;
+}
+
+.accordion h5 {
+    font-weight: 450;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .hero-text-div p {
+    display:ruby-base-container;
+}
+    .hero-text-div{
+        padding-top: 50px;
+    }
+    .aboutHero{
+
+        min-height: 10rem;
+    }
+    .callActin-container p,
+    .ourCommunity-container p {
+        max-width: 100%;
+    }
+
+    .ourCommunity-container {
+    display: flex;
+    flex-direction: row;
+        flex-wrap: wrap;
+}
+
+.about-img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+}
+
+
 }
