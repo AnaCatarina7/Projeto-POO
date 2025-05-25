@@ -1,0 +1,23 @@
+main{
+    background-color: #f0f0f0
+}
+
+/* Edit profile */
+
+.editProfile-container{
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    padding: 50px;
+    flex-direction: column;
+    position: relative;
+    /* top: 50%; */
+    left: 35%;
+    /* transform: translate(-50%, -50%); */
+}
+
+
+@media only screen and (max-width: 600px) {
+   
+   
+}
