@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>profile student</title>
+  <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+  <!-- NavBar -->
+  <header>
+    <!-- Navbar  -->
+    <nav class="navbar navbar-expand-lg fixed-top px-5">
+      <a class="navbar-brand" href="/index.html">
+        <img src="/assets/svg/logo.svg" alt="Logo" height="40">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto ms-4">
+          <li class="nav-item">
+            <a class="nav-link active" href="/index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./becomeTT.html">Torna-te Tutor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">Sobre nós</a>
+          </li>
+        </ul>
+
+        <form class="search-bar d-flex align-items-center me-3">
+          <input class="form-control bg-transparent text-white border-0" type="search" placeholder="Pesquisar..."
+            aria-label="Pesquisar">
+          <button class="btn-search " type="submit">
+            <iconify-icon icon="healthicons:magnifying-glass" width="30" height="30" class="search-icon"></iconify-icon>
+          </button>
+        </form>
+
+        <div class="dropdown">
+          <div
+            class="profile-pic-wrapper d-flex justify-content-center align-items-center rounded-circle bg-white icon-wrapper"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            <iconify-icon icon="mdi:account-circle" class="icon" width="45" height="45"></iconify-icon>
+          </div>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="./profileStudent.html">
+                <iconify-icon icon="iconamoon:profile" width="20" height="20" class="me-2"
+                  style="color: #395d7f;"></iconify-icon>
+                Meu Perfil
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">
+                <iconify-icon icon="tabler:edit" width="20" height="20" class="me-2"
+                  style="color: #395d7f;"></iconify-icon>
+                Editar Perfil
+              </a>
+            </li>
+            <hr class="dropdown-line">
+            <li>
+              <a class="dropdown-item" href="#">
+                <iconify-icon icon="ic:round-logout" width="20" height="20" class="me-2"
+                  style="color: #395d7f;"></iconify-icon>
+                Terminar Sessão
+              </a>
+            </li>
+          </ul>
+        </div>
+    </nav>
+  </header>
+
+  <!-- Hero section -->
+  <!-- <section
+    class="container-fluid py-0 px-5 d-flex flex-column flex-lg-row align-items-center justify-content-between custom-hero aboutHero">
+    <div class="mb-4 mb-lg-0 hero-studentProfile">
+      <h6 class=" display-4 fw-bold  ">Nome do estudante</h6>
+      <p>location</p>
+    </div>
+  </section> -->
+
+    <!-- Edit profile section -->
+  <section class="editProfile-container  ">
+
+    <h2 class="mb-3">Editar dados</h2>
+    <br><br>
+    <form id="editProfile-form">
+      <div class="form-group">
+        <div class="mb-3 ">
+          <label for="Fname" class="form-label">Nome </label>
+          <input type="text" class="form-control input_form" id="editProfile-Fname" placeholder="Nome" required>
+        </div>
+        <div class="mb-3 ">
+          <label for="Lname" class="form-label">Apelido </label>
+          <input type="text" class="form-control input_form" id="editProfile-Lname" placeholder="Apelido" required>
+        </div>
+      </div>
+
+      <div class="mb-3 ">
+        <label for="editProfile-email" class="form-label">E-mail </label>
+        <input type="email" class="form-control input_form" id="editProfile-email" placeholder="name@example.com"
+          required>
+      </div>
+      <div class="form-group">
+        <div class="mb-3 ">
+          <label for="editProfile-city" class="form-label">Localidade </label>
+          <input type="text" class="form-control input_form" id="editProfile-city" placeholder="Cidade" required>
+        </div>
+        <div class="mb-3 ">
+          <label for="userType" class="form-label">Utilizador </label>
+          <select class="form-select mb-3" id="userType" aria-label="Escolher tipo de utilizador" disabled required>
+            <option value="Aluno" selected>Aluno</option>
+            <option value="Tutor">Tutor</option>
+          </select>
+        </div>
+      </div>
+      <div class="mb-5 ">
+        <label for="password" class="form-label">Palavra-passe</label>
+        <input type="password" id="editProfile-password" class="form-control input_form" placeholder="Palavra-passe"
+          required>
+        <br>
+        <label for="password" class="form-label">Confirmar palavra-passe</label>
+        <input type="password" id="editProfile-passwordConfirm" class="form-control input_form"
+          placeholder="Palavra-passe" required>
+
+      </div>
+      <button type="submit" class="btn w-100 py-2 formBtn" id="submitBtn">Guardar alterações</button>
+    </form>
+  </section>
+
+      <!-- Favourites section -->
+<section class="favourites-container">
+<h2>Explicadores favoritos</h2>
+</section>
+
+      <!-- Bugets section -->
+<section class="bugets-container">
+  <h2>Prémios</h2>
+</section>

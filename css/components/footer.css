@@ -1,31 +1,31 @@
-
 /* FOOTER */
 .bg-footer {
-    background-color: #3a5f81; /* mesmo tom da imagem */
+    background-color: #3a5f81;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
+
+    padding: 10px;
 }
 
 
-.footer-logo{
+.footer-logo {
     margin-bottom: 2.8rem;
     margin-top: 1.2rem;
 }
 
 .footer-divider {
-    width: 110rem;
+    width: 100%;
     margin: 3rem auto;
     border-top: 0.1rem solid white;
     opacity: 1;
-  }
-
-.footer-find{
-    max-width: 80rem;
 }
 
-.footer-useful-links{
+a {
     font-weight: 250;
     font-size: 1.1rem;
+}
+
+.footer-useful-links {
     padding-bottom: 1.5rem;
 }
 
@@ -33,8 +33,6 @@
     max-width: 35rem;
     text-align: center;
     flex-wrap: wrap;
-    font-weight: 250;
-    font-size: 1.1rem;
     padding-bottom: 2.8rem;
 
 }

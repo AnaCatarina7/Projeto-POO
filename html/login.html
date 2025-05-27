@@ -15,19 +15,22 @@
           <h2 class="mb-3">Iniciar sessão</h2>
           <p>Preencha com os seus dados para aceder à sua conta</p>
         </div>
-        <form id=" login-form" >
-          <div class="mb-3 form-group">
+        <form id="login-form" >
+          <div class="mb-3 ">
             <label for="login_email" class="form-label">E-mail </label>
-            <input type="email" class="form-control input_form" id="login_email" placeholder="name@example.com" required>
+            <input type="email" class="form-control input_form" id="login-email" placeholder="name@example.com" required>
           </div>
-          <div class="mb-5 form-group">
+          <div class="mb-5 ">
              <label for="password" class="form-label">Palavra-passe</label>
-          <input type="password" id="login_password" class="form-control input_form" placeholder="Palavra-passe" required>
+          <input type="password" id="login-password" class="form-control input_form" placeholder="Palavra-passe" required>
           <span>Ainda não tem uma conta? <a href="/html/signUp.html">Crie uma</a></span>
           </div>
             <button type="submit" class="btn w-100 py-2 formBtn" id="submitBtn" disabled>Concluir</button>
         </form>
       </section>
     </main>
+
+
+    <script type="module" src="../js/views/loginView.js"></script>
 </body>
 </html>

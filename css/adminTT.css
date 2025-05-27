@@ -1,0 +1,9 @@
+.admin-tabs{
+    /* margin-top: 5%; */
+    padding: 80px;
+    --bs-nav-link-color:var(--color-blue);
+    --bs-nav-link-hover-color:var(--color-blue);
+    gap: 50px;
+    font-size: 20px;
+    
+}
