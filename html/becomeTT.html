@@ -61,7 +61,7 @@
         <!-- Personal Information -->
         <h3 class="mb-4 fw-semibold">Informações pessoais</h3>
         <form>
-          <div class="row g-3 mb-3">
+          <div class="row g-3 mb-4">
             <div class="col-md-6">
               <label for="firstName" class="form-label">Nome</label>
               <input type="text" class="form-control" id="firstName" placeholder="Nome">
@@ -101,11 +101,11 @@
                 <!-- Custom Dropdown with Checkboxes for "Disciplina" -->
                 <label class="form-label fw-semibold">Disciplina</label>
                 <div class="dropdown w-100">
-                  <button class="form-control d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                  <button class="form-control input-subjects d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                     Selecionar disciplinas
                   </button>
                   <ul class="dropdown-menu w-100 p-3" aria-labelledby="subjectDropdown">
-                    <h6 class="dropdown-header text-primary">Ensino Básico</h6>
+                    <h6 class="dropdown-header">Ensino Básico</h6>
                     <li>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="EB-Português" id="ebPortugues1">
@@ -125,7 +125,7 @@
                       </div>
                     </li>
                     <hr class="dropdown-divider">
-                    <h6 class="dropdown-header text-primary">Ensino Secundário</h6>
+                    <h6 class="dropdown-header">Ensino Secundário</h6>
                     <li>
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="ES-Português" id="esPortugues1">
@@ -245,21 +245,27 @@
 
 
 <script>
-  const subjectCheckboxes = document.querySelectorAll('#subjectDropdown + .dropdown-menu input[type="checkbox"]');
-  const subjectButton = document.getElementById('subjectDropdown');
-  const subjectHidden = document.getElementById('selectedSubjects');
+const subjectCheckboxes = document.querySelectorAll('#subjectDropdown + .dropdown-menu input[type="checkbox"]');
+const subjectButton = document.getElementById('subjectDropdown');
+const subjectHidden = document.getElementById('selectedSubjects');
 
-  function updateSubjectSelection() {
-    const selected = [];
-    subjectCheckboxes.forEach(cb => {
-      if (cb.checked) {
-        selected.push(cb.value);
-      }
-    });
-    subjectButton.textContent = selected.length > 0 ? selected.join(', ') : 'Selecionar disciplinas';
-    subjectHidden.value = selected.join(',');
+function updateSubjectSelection() {
+  const selected = [];
+  subjectCheckboxes.forEach(cb => {
+    if (cb.checked) {
+      selected.push(cb.value.replace("-", " - "));
+    }
+  });
+
+  subjectHidden.value = selected.join(',');
+
+  if (selected.length > 0) {
+    subjectButton.innerHTML = selected.map(val => `<span class="badge-subject">${val}</span>`).join(' ');
+  } else {
+    subjectButton.textContent = 'Selecionar disciplinas';
   }
+}
 
-  subjectCheckboxes.forEach(cb => cb.addEventListener('change', updateSubjectSelection));
-  window.addEventListener('DOMContentLoaded', updateSubjectSelection);
+subjectCheckboxes.forEach(cb => cb.addEventListener('change', updateSubjectSelection));
+window.addEventListener('DOMContentLoaded', updateSubjectSelection);
 </script>
