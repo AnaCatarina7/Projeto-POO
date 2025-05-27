@@ -6,19 +6,19 @@ function initdata() {
   if (!localStorage.admins) {
     const admins = [
       {
-        nome: "Ken",
+        name: "Ken",
         email: "ken@123",
         password: "123",
         userType: "admin"
       },
       {
-        nome: "Catarina",
+        name: "Catarina",
         email: "cat@123",
         password: "123",
         userType: "admin"
       },
       {
-        nome: "esmadAdmin",
+        name: "esmadAdmin",
         email: "esmadAd@email.com",
         password: "123",
         userType: "admin"
@@ -142,33 +142,33 @@ function initdata() {
     const tutors = [
 
       {
-        nome: "Ana",
-        apelido: "Moura",
+        name: "Ana",
+        surname: "Moura",
         email: "ana@tutor.pt",
-        localidade: "Lisboa",
+        location: "Lisboa",
         password: "tutor123",
-        disciplinas: ["Matemática", "Físico-Química"],
-        niveis: ["Ensino Secundário - Ciências e Tecnologias"],
+        subjects: ["Matemática", "Físico-Química"],
+        levels: ["Ensino Secundário - Ciências e Tecnologias"],
         userType: "tutor"
       },
       {
-        nome: "Carlos",
-        apelido: "Lopes",
+        name: "Carlos",
+        surname: "Lopes",
         email: "carlos@tutor.pt",
-        localidade: "Coimbra",
+        location: "Coimbra",
         password: "abcd123",
-        disciplinas: ["História", "Geografia"],
-        niveis: ["Ensino Secundário - Línguas e Humanidades"],
+        subjects: ["História", "Geografia"],
+        levels: ["Ensino Secundário - Línguas e Humanidades"],
         userType: "tutor"
       },
       {
-        nome: "EsmadTT",
-        apelido: "Tutor",
+        name: "EsmadTT",
+        surname: "Tutor",
         email: "esmad@tutor.pt",
-        localidade: "Vila do Conde",
+        location: "Vila do Conde",
         password: "esmadtt",
-        disciplinas: ["Português"],
-        niveis: ["Ensino Básico (3.º Ciclo)"],
+        subjects: ["Português"],
+        levels: ["Ensino Básico (3.º Ciclo)"],
         userType: "tutor"
       }
     ]
