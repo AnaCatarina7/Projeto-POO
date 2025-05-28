@@ -24,25 +24,23 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
     }
 
     try {
-        
         switch (userTypeSelect) {
             case 'aluno':
                 Student.addStudent(inputName, inputSurname, inputEmail, inputLocation, inputPassword)
-                alert('Aluno adicionado com sucesso')
-                window.location.href = '/html/profileStudent.html'
+                alert('Student signed up')
+                window.location.href = '/html/login.html'
                 break;
             case 'tutor':
                 Tutor.addTutor(inputName, inputSurname, inputEmail, inputLocation, inputPassword)
-                alert('Tutor adicionado com sucesso')
-                window.location.href = '/html/profileTutor.html'
+                alert('Tutor signed up')
+                window.location.href = '/html/login.html'
                 break;
             default:
                 throw new Error("Invalid user");
         }
     } catch (error) {
         alert(error.message);
-        console.error(error.message);
-        ;
-        
+        console.error(error.message);   
     }
 })
+
