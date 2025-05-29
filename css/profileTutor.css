@@ -1,0 +1,130 @@
+/* TUTOR PROFILE */
+.tutor-name {
+  font-size: 1.75rem;
+}
+
+.tutor-rating i {
+  font-size: 1rem;
+}
+
+.tutor-description {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.tutor-read-more {
+  color: #395D7F;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.tutor-read-more:hover {
+  text-decoration: underline;
+}
+
+.availability-table input[type="checkbox"] {
+  transform: scale(1.2);
+  pointer-events: none;
+}
+
+.tutor-contact-box .btn {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+}
+
+.tutor-contact-info a {
+  text-decoration: none;
+}
+
+.tutor-social-icons i {
+  font-size: 1.25rem;
+}
+
+.badge {
+  font-size: 0.875rem;
+  padding: 0.4em 0.6em;
+  border-radius: 0.375rem;
+}
+
+/* "SOBRE AS AULAS" SECTION */
+.tutor-lesson-options h5 {
+  font-size: 1.25rem;
+  color: #1f4e79;
+  font-weight: 600;
+}
+
+.lesson-icon {
+  font-size: 20px;
+  color: #1f4e79;
+}
+
+.tutor-lesson-options strong {
+  font-weight: 500;
+  color: #1f4e79;
+  font-size: 1rem;
+}
+
+.tutor-lesson-options .badge {
+  font-size: 0.875rem;
+  background-color: white;
+  color: #1f4e79;
+  border: 1px solid #ccc;
+  border-radius: 0.4rem;
+  padding: 0.35em 0.65em;
+  font-weight: 500;
+}
+
+/* Espaçamento entre blocos */
+.lesson-block {
+  text-align: left;
+}
+
+
+
+
+
+/* EDIT PROFILE MODAL */
+#editProfileModal .modal-dialog{
+    max-width: 60rem;
+    width: 100%;
+}
+
+#editProfileModal .modal-body {
+    padding-left: 3rem;
+    padding-right: 3rem;
+    padding-top: 3rem;
+}
+
+/* Modal Title "Edit Profile" */
+#editProfileModal .modal-header {
+    background-color: #395D7F;
+    color: white;
+}
+
+/* Close Modal Button */
+    #editProfileModal .btn-close {
+    filter: invert(1);
+}
+
+.form-select-dropdown{
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(31, 78, 121, 0.46) !important;
+    border-radius: 0.6rem;
+    color: #1f4e79;
+    font-weight: 500;
+    opacity: 0.95;
+    padding: 1rem !important;
+}
+
+/* form-control-input{
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(31, 78, 121, 0.46) !important;
+    border-radius: 0.6rem;
+    color: #1f4e79;
+    font-weight: 500;
+    opacity: 0.95;
+    padding: 1rem !important;
+} */

@@ -70,59 +70,69 @@
     </nav>
   </header>
 
-  <section class="bg-blue text-white">
-    <div class="container">
-      <h2 class="mb-4">Filtros</h2>
-      <div class="row g-3">
-        <div class="col-md-4">
-          <label class="form-label">Disciplinas</label>
-          <select class="form-select">
-            <option selected>Disciplinas</option>
-            <option>Matemática</option>
-            <option>Física</option>
-            <option>Português</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Nível de ensino</label>
-          <select class="form-select">
-            <option selected>Nível de ensino</option>
-            <option>Secundário</option>
-            <option>Universitário</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Modalidade</label>
-          <select class="form-select">
-            <option selected>Online / Presencial</option>
-            <option>Online</option>
-            <option>Presencial</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Data</label>
-          <input type="date" class="form-control">
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Localidade</label>
-          <select class="form-select">
-            <option selected>Localidade</option>
-            <option>Lisboa</option>
-            <option>Porto</option>
-            <option>Coimbra</option>
-          </select>
-        </div>
-        <div class="col-md-4">
-          <label class="form-label">Ordenar por:</label>
-          <select class="form-select">
-            <option selected>Mais populares</option>
-            <option>Mais recentes</option>
-            <option>Preço (menor ao maior)</option>
-          </select>
+<section class="filter-section">
+  <div class="container">
+    <h2 class="filter-title mb-4">Filtros</h2>
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label class="filter-label form-label">Disciplinas</label>
+        <select class="filter-select form-select">
+          <option selected>Disciplinas</option>
+          <option>Matemática</option>
+          <option>Física</option>
+          <option>Português</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="filter-label form-label">Nível de ensino</label>
+        <select class="filter-select form-select">
+          <option selected>Nível de ensino</option>
+          <option>Secundário</option>
+          <option>Universitário</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="filter-label form-label">Modalidade</label>
+        <select class="filter-select form-select">
+          <option selected>Online / Presencial</option>
+          <option>Online</option>
+          <option>Presencial</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="filter-label form-label">Data</label>
+        <input type="date" class="filter-input form-control">
+      </div>
+      <div class="col-md-4">
+        <label class="filter-label form-label">Localidade</label>
+        <select class="filter-select form-select">
+          <option selected>Localidade</option>
+          <option>Lisboa</option>
+          <option>Porto</option>
+          <option>Coimbra</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label class="filter-label form-label">Ordenar por:</label>
+        <select class="filter-select form-select">
+          <option selected>Mais populares</option>
+          <option>Mais recentes</option>
+          <option>Preço mais baixo</option>
+          <option>Preço mais alto</option>
+        </select>
+        <div class="col-12 d-flex justify-content-end mt-3">
+          <button class="custom-filter-icon-btn d-flex align-items-center">
+            <iconify-icon icon="healthicons:magnifying-glass" width="26" height="26"class="filter-search-icon"></iconify-icon>
+          </button>
         </div>
       </div>
+      
     </div>
+  </div>
+  
 </section>
+
+
   
   <section class="py-5">
     <div class="container">

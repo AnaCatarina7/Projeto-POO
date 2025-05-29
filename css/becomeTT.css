@@ -3,6 +3,17 @@
     border-bottom-right-radius: 60px;
 }
 
+/* Hero section */
+.custom-hero {
+    background: linear-gradient(120deg, #395d7f, #0c3153);
+    color: #fff;
+    padding-bottom: -20rem;
+}
+
+.container-textTT{
+    margin-top: 10rem;
+}
+
 /* Títulos */
 h3 {
     color: #395d7f;
@@ -11,21 +22,37 @@ h3 {
 
 /* Labels */
 .form-container .form-label{
-    font-weight: 600;
+    font-weight: 650;
     color: #395d7f;
     font-size: 1.2rem;
+
 }
 
 .form-check-label{
     font-weight: 500;
+    font-size: 1.2rem;
     color: #395d7f;
 }
 
+.form-check-input checked{
+    background-color: #395d7f;
+}
+
 .form-container input.form-control,
-.form-container select.form-select,
 .form-container textarea.form-control {
-    background-color: rgba(255, 255, 255, 0); /* transparente */
-    border: 1px solid rgba(31, 78, 121, 0.46) !important; /* azul com 46% opacidade */
+    background-color: rgba(255, 255, 255, 0); 
+    border: 1px solid rgba(31, 78, 121, 0.46) !important;
+    border-radius: 0.6rem;
+    color: #1f4e79;
+    font-weight: 500;
+    opacity: 0.95;
+    padding: 1rem !important;
+}
+
+.form-container .form-select-dropdown{
+    width: 100%!important;
+    background-color: rgba(255, 255, 255, 0);
+    border: 1px solid rgba(31, 78, 121, 0.46) !important; 
     border-radius: 0.6rem;
     color: #1f4e79;
     font-weight: 500;
@@ -79,17 +106,6 @@ textarea.form-control:focus {
     box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
 }
 
-/* Tabela de disponibilidade */
-table.table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
-
-table.table input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-}
-
 /* Botão concluir */
 .btn-warning {
     background-color: #fede89;
@@ -122,9 +138,74 @@ table.table input[type="checkbox"] {
     margin-bottom: 2rem !important;
 }
 
-/* Hero section */
-.custom-hero {
-    background: linear-gradient(120deg, #395d7f, #0c3153);
-    padding-top: 120px;
-    color: #fff;
+.availability-container {
+    max-width: 40rem;
+}
+        
+.availability-table {
+    width: 100%;
+}
+
+.availability-table th, 
+.availability-table td {
+    padding: 12px 8px;
+    text-align: center;
+}
+
+.availability-table th {
+    font-weight: 600;
+}
+
+.availability-table th:first-child {
+    text-align: left;
+    width: 30%;
+}
+
+.availability-checkbox {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.availability-checkbox input[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.availability-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.availability-checkbox input[type="checkbox"]:checked ~ .checkmark {
+    background-color: #395d7f;
+    border-color: #395d7f;
+}
+
+.availability-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.availability-checkbox input[type="checkbox"]:checked ~ .checkmark:after {
+    display: block;
 }

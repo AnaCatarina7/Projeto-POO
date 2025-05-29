@@ -10,229 +10,243 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <header>
-        <!-- Navbar Bootstrap -->
-        <nav class="navbar navbar-expand-lg fixed-top px-5">
-          <a class="navbar-brand" href="/index.html">
-            <img src="../assets/svg/logo.svg" alt="Logo" height="40">
-          </a>
-    
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-    
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto ms-4">
-              <li class="nav-item">
-                <a class="nav-link active" href="/index.html">Início</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/html/becomeTT.html">Torna-te Tutor</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/html/about.html">Sobre nós</a>
-              </li>
-            </ul>
-    
-            <form class="search-bar d-flex align-items-center me-3">
-                <input class="form-control bg-transparent text-white border-0" type="search" placeholder="Pesquisar..." aria-label="Pesquisar">
-                <button class="btn-search "  type="submit">
-                    <iconify-icon icon="healthicons:magnifying-glass" width="30" height="30" class="search-icon"></iconify-icon>
-                </button>
-              </form>
-    
-            <img src="img/userPic.jpg" alt="User Profile Pic" class="rounded-circle" style="width: 36px; height: 36px; object-fit: cover; ">
-          </div>
-        </nav>
-      </header>
+  <header>
+    <!-- Navbar  -->
+    <nav class="navbar navbar-expand-lg fixed-top px-5">
+      <a class="navbar-brand" href="../index.html">
+        <img src="../assets/svg/logo.svg" alt="Logo" height="40">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto ms-4">
+          <li class="nav-item">
+            <a class="nav-link active" href="../index.html">Início</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../html/becomeTT.html">Torna-te Tutor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../html/about.html">Sobre nós</a>
+          </li>
+        </ul>
+
+        <form class="search-bar d-flex align-items-center me-3">
+            <input class="form-control bg-transparent text-white border-0" type="search" placeholder="Pesquisar..." aria-label="Pesquisar">
+            <button class="btn-search "  type="submit">
+                <iconify-icon icon="healthicons:magnifying-glass" width="30" height="30" class="search-icon"></iconify-icon>
+            </button>
+          </form>
+
+      <div class="dropdown">
+        <div class="profile-pic-wrapper d-flex justify-content-center align-items-center rounded-circle bg-white icon-wrapper" data-bs-toggle="dropdown" aria-expanded="false">
+          <iconify-icon icon="mdi:account-circle" class="icon" width="45" height="45"></iconify-icon>
+        </div>
+        <ul class="dropdown-menu dropdown-menu-end">
+            <li>
+              <a class="dropdown-item" href="../html/profileTutor.html">
+                <iconify-icon icon="iconamoon:profile" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+                Meu Perfil
+              </a>
+            </li>
+            <li>
+            <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                <iconify-icon icon="tabler:edit" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+                Editar Perfil
+            </a>
+            </li>
+            <hr class="dropdown-line">
+            <li>
+              <a class="dropdown-item" href="#">
+                <iconify-icon icon="ic:round-logout" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+                Terminar Sessão
+              </a>
+            </li>
+          </ul>
+      </div>
+    </nav>
+  </header>
     
       <!-- Hero section -->
-      <section class="container-fluid py-5 px-5 d-flex flex-column flex-lg-row align-items-center justify-content-between custom-hero">
-        <div class="mb-4 mb-lg-0 ">
-          <h1 class=" display-4 fw-bold text-white">Encontre o explicador<br>perfeito para si!</h1>
-          <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. sapien nec tincidunt fringilla,</p>
-        </div>
-        <div>
-          <img src="../assets/svg/landingHeaderPic.svg" alt="Tutor and Student Image" class="img-fluid hero-picture" style="margin-bottom: 4rem;">
-        </div>
-      </section>
+  <section class="container-fluid px-5 d-flex flex-column flex-lg-row align-items-center justify-content-between custom-hero">
+    <div class="mb-2 mb-lg-0 container-textTT">
+      <h1 class=" display-4 fw-bold text-white text-becomeTT">Torna-te um Explicador!</h1>
+      <p class="text-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. sapien nec tincidunt fringilla, <br> Lorem ipsum dolor sit amet, Lorem ipsum dolor sit amet, consectetur adipis tempora enim,animi cumque quis providen</p>
+    </div>
+  </section>
 
-      <section class="container py-5 form-container">
-        <!-- Personal Information -->
-        <h3 class="mb-4 fw-semibold">Informações pessoais</h3>
-        <form>
-          <div class="row g-3 mb-4">
-            <div class="col-md-6">
-              <label for="firstName" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="firstName" placeholder="Nome">
-            </div>
-            <div class="col-md-6">
-              <label for="lastName" class="form-label">Apelido</label>
-              <input type="text" class="form-control" id="lastName" placeholder="Apelido">
-            </div>
-            <div class="col-md-6">
-              <label for="email" class="form-label">E-mail</label>
-              <input type="email" class="form-control" id="email" placeholder="E-mail">
-            </div>
-            <div class="col-md-6">
-              <label for="phone" class="form-label">Telefone</label>
-              <input type="tel" class="form-control" id="phone" placeholder="Telefone">
-            </div>
-            <div class="col-md-6">
-              <label for="location" class="form-label">Localidade</label>
-              <select class="form-select" id="location">
-                <option selected disabled>Localidade</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="photo" class="form-label">Fotografia</label>
-              <input type="file" class="form-control" id="photo" accept="image/png, image/jpeg">
-            </div>
-          </div>
-          <div class="mb-4">
-            <label for="bio" class="form-label">Breve descrição pessoal ou outras informações importantes</label>
-            <textarea class="form-control" id="bio" rows="3" placeholder="texto"></textarea>
-          </div>
-      
-          <!-- Education -->
-          <h3 class="mb-4 fw-semibold">Formação e ensino</h3>
-          <div class="row g-3 mb-3">
-            <div class="col-md-6">
-                <!-- Custom Dropdown with Checkboxes for "Disciplina" -->
-                <label class="form-label fw-semibold">Disciplina</label>
-                <div class="dropdown w-100">
-                  <button class="form-control input-subjects d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                    Selecionar disciplinas
-                  </button>
-                  <ul class="dropdown-menu w-100 p-3" aria-labelledby="subjectDropdown">
-                    <h6 class="dropdown-header">Ensino Básico</h6>
-                    <li>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="EB-Português" id="ebPortugues1">
-                        <label class="form-check-label" for="ebPortugues1">Português</label>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="EB-Matemática" id="ebMatematica">
-                        <label class="form-check-label" for="ebMatematica">Matemática</label>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="EB-Português2" id="ebPortugues2">
-                        <label class="form-check-label" for="ebPortugues2">Português</label>
-                      </div>
-                    </li>
-                    <hr class="dropdown-divider">
-                    <h6 class="dropdown-header">Ensino Secundário</h6>
-                    <li>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="ES-Português" id="esPortugues1">
-                        <label class="form-check-label" for="esPortugues1">Português</label>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="ES-Português2" id="esPortugues2" checked>
-                        <label class="form-check-label" for="esPortugues2">Português</label>
-                      </div>
-                    </li>
-                  </ul>
-                  <!-- Hidden input to store selected values -->
-                  <input type="hidden" name="selectedSubjects" id="selectedSubjects">
-                </div>
-              </div>
-              
-            <div class="col-md-6">
-              <label for="educationLevel" class="form-label">Nível de ensino</label>
-              <select class="form-select" id="educationLevel">
-                <option selected disabled>Nível de ensino</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="languages" class="form-label">Línguas que fala</label>
-              <select class="form-select" id="languages">
-                <option selected disabled>Português</option>
-              </select>
-            </div>
-            <div class="col-md-6">
-              <label for="price" class="form-label">Preço por aula</label>
-              <input type="text" class="form-control" id="price" placeholder="Preço">
+  <!-- Become a tutor FORM -->
+  <section class="container py-5 form-container">
+    <!-- Personal Information -->
+    <h3 class="mb-4 fw-semibold">Informações pessoais</h3>
+    <form>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+          <label for="firstName" class="form-label">Nome</label>
+          <input type="text" class="form-control" id="firstName" placeholder="Nome">
+        </div>
+        <div class="col-md-6">
+          <label for="lastName" class="form-label">Apelido</label>
+          <input type="text" class="form-control" id="lastName" placeholder="Apelido">
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">E-mail</label>
+          <input type="email" class="form-control" id="email" placeholder="E-mail">
+        </div>
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Telefone</label>
+          <input type="tel" class="form-control" id="phone" placeholder="Telefone">
+        </div>
+        <div class="col-md-6">
+          <label for="location" class="form-label">Localidade</label>
+          <select class="form-select form-select-dropdown" id="location">
+            <option selected disabled>Localidade</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="photo" class="form-label">Fotografia</label>
+          <input type="file" class="form-control" id="photo" accept="image/png, image/jpeg">
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="bio" class="form-label">Breve descrição pessoal ou outras informações importantes</label>
+        <textarea class="form-control" id="bio" rows="3" placeholder="texto"></textarea>
+      </div>
+  
+      <!-- Education -->
+      <h3 class="mb-4 fw-semibold">Formação e ensino</h3>
+      <div class="row g-3 mb-4">
+        <div class="col-md-6">
+            <!-- Custom Dropdown with Checkboxes for "Disciplina" -->
+            <label class="form-label fw-semibold">Disciplina</label>
+            <div class="dropdown w-100">
+            <button class="form-control input-subjects d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                Selecionar disciplinas
+            </button>
+            <ul class="dropdown-menu w-100 p-3" aria-labelledby="subjectDropdown">
+                <!-- Ensino Básico (3.º Ciclo) -->
+                <h6 class="dropdown-header">Ensino Básico (3.º Ciclo)</h6>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Português" id="ebPortugues1"><label class="form-check-label" for="ebPortugues1">Português</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Inglês" id="ebIngles"><label class="form-check-label" for="ebIngles">Inglês</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Francês" id="ebFrances"><label class="form-check-label" for="ebFrances">Francês</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Espanhol" id="ebEspanhol"><label class="form-check-label" for="ebEspanhol">Espanhol</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-História" id="ebHistoria"><label class="form-check-label" for="ebHistoria">História</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Geografia" id="ebGeografia"><label class="form-check-label" for="ebGeografia">Geografia</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Matemática" id="ebMatematica"><label class="form-check-label" for="ebMatematica">Matemática</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Ciências Naturais" id="ebCiencias"><label class="form-check-label" for="ebCiencias">Ciências Naturais</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Físico-Química" id="ebFisicoQuimica"><label class="form-check-label" for="ebFisicoQuimica">Físico-Química</label></div></li>
+
+                <hr class="dropdown-divider">
+
+                <!-- Ensino Secundário - Ciências e Tecnologias -->
+                <h6 class="dropdown-header">Ensino Secundário - Ciências e Tecnologias</h6>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Português" id="esPortugues1"><label class="form-check-label" for="esPortugues1">Português</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Língua Estrangeira" id="esLingua"><label class="form-check-label" for="esLingua">Língua Estrangeira</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Filosofia" id="esFilosofia"><label class="form-check-label" for="esFilosofia">Filosofia</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Matemática A" id="esMatematicaA"><label class="form-check-label" for="esMatematicaA">Matemática A</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Geometria Descritiva A" id="esGeometria"><label class="form-check-label" for="esGeometria">Geometria Descritiva A</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Física e Química A" id="esFisicaQuimica"><label class="form-check-label" for="esFisicaQuimica">Física e Química A</label></div></li>
+                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Biologia e Geologia" id="esBiologiaGeologia"><label class="form-check-label" for="esBiologiaGeologia">Biologia e Geologia</label></div></li>
+
+                <!-- Mantém este se for necessário -->
+                <!-- <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Português2" id="esPortugues2" checked><label class="form-check-label" for="esPortugues2">Português</label></div></li> -->
+            </ul>
+            <input type="hidden" name="selectedSubjects" id="selectedSubjects">
             </div>
           </div>
-      
-          <div class="row g-3 mb-4">
-            <div class="col-md-6">
-              <label class="form-label d-block mb-2">Modalidade de ensino:</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inPerson" value="inPerson">
-                <label class="form-check-label" for="inPerson">Presencial</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="online" value="online" checked>
-                <label class="form-check-label" for="online">Online</label>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label d-block mb-2">Tem formação para ensino a alunos com necessidades educativas especiais?</label>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsYes" value="yes">
-                <label class="form-check-label" for="specialNeedsYes">Sim</label>
-              </div>
-              <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsNo" value="no" checked>
-                <label class="form-check-label" for="specialNeedsNo">Não</label>
-              </div>
-            </div>
+          
+        <div class="col-md-6">
+          <label for="educationLevel" class="form-label">Nível de ensino</label>
+          <select class="form-select form-select-dropdown" id="educationLevel">
+            <option selected disabled>Nível de ensino</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="languages" class="form-label">Línguas que fala</label>
+          <select class="form-select form-select-dropdown" id="languages">
+            <option selected disabled>Português</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="price" class="form-label">Preço por aula</label>
+          <input type="text" class="form-control" id="price" placeholder="Preço">
+        </div>
+      </div>
+  
+      <div class="row g-4 mb-5">
+        <div class="col-md-6">
+          <label class="form-label d-block mb-5">Modalidade de ensino:</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="inPerson" value="inPerson">
+            <label class="form-check-label" for="inPerson" >Presencial</label>
           </div>
-      
-          <!-- Availability -->
-          <h3 class="mb-4 fw-semibold">Disponibilidade</h3>
-          <div class="table-responsive mb-4">
-            <table class="table table-bordered text-center align-middle">
-              <thead class="table-light">
-                <tr>
-                  <th></th>
-                  <th>2ª</th>
-                  <th>3ª</th>
-                  <th>4ª</th>
-                  <th>5ª</th>
-                  <th>6ª</th>
-                  <th>S</th>
-                  <th>D</th>
-                </tr>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="online" value="online" checked>
+            <label class="form-check-label" for="online">Online</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label d-block mb-4">Tem formação para ensino a alunos com necessidades educativas especiais?</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsYes" value="yes">
+            <label class="form-check-label" for="specialNeedsYes">Sim</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsNo" value="no" checked>
+            <label class="form-check-label" for="specialNeedsNo">Não</label>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Availability -->
+      <h3 class="mb-4 fw-semibold">Disponibilidade</h3>
+      <div class="availability-container">
+          <table class="availability-table">
+              <thead>
+                  <tr>
+                      <th></th>
+                      <th>2ª</th>
+                      <th>3ª</th>
+                      <th>4ª</th>
+                      <th>5ª</th>
+                      <th>6ª</th>
+                      <th>S</th>
+                      <th>D</th>
+                  </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">Manhã (8-12)</th>
-                  <td><input type="checkbox" name="monMorning"></td>
-                  <td><input type="checkbox" name="tueMorning"></td>
-                  <td><input type="checkbox" name="wedMorning"></td>
-                  <td><input type="checkbox" name="thuMorning"></td>
-                  <td><input type="checkbox" name="friMorning"></td>
-                  <td><input type="checkbox" name="satMorning"></td>
-                  <td><input type="checkbox" name="sunMorning"></td>
-                </tr>
-                <tr>
-                  <th scope="row">Tarde (14-19)</th>
-                  <td><input type="checkbox" name="monAfternoon"></td>
-                  <td><input type="checkbox" name="tueAfternoon"></td>
-                  <td><input type="checkbox" name="wedAfternoon"></td>
-                  <td><input type="checkbox" name="thuAfternoon"></td>
-                  <td><input type="checkbox" name="friAfternoon"></td>
-                  <td><input type="checkbox" name="satAfternoon"></td>
-                  <td><input type="checkbox" name="sunAfternoon"></td>
-                </tr>
+                  <tr>
+                      <th>Manhã (8-12)</th>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="monMorning"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="tueMorning"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="wedMorning"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="thuMorning"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="friMorning"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="satMorning"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="sunMorning"><span class="checkmark"></span></label></td>
+                  </tr>
+                  <tr>
+                      <th>Tarde (14-19)</th>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="monAfternoon"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="tueAfternoon"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="wedAfternoon"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="thuAfternoon"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="friAfternoon"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="satAfternoon"><span class="checkmark"></span></label></td>
+                      <td><label class="availability-checkbox"><input type="checkbox" name="sunAfternoon"><span class="checkmark"></span></label></td>
+                  </tr>
               </tbody>
-            </table>
-          </div>
-      
-          <div class="text-end">
-            <button type="submit" class="btn btn-warning px-5 py-2">Concluir</button>
-          </div>
-        </form>
-      </section>
+          </table>
+      </div>
+  
+      <div class="text-end">
+        <button type="submit" class="btn btn-warning px-5 py-2">Concluir</button>
+      </div>
+    </form>
+  </section>
       
 
       <!-- JS do Bootstrap necessário para dropdowns -->

@@ -4,7 +4,7 @@ main{
 
 /* Edit profile */
 
-.editProfile-container{
+/* .editProfile-container{
     width: 100%;
     max-width: 500px;
     border-radius: 10px;
@@ -12,8 +12,57 @@ main{
     flex-direction: column;
     position: relative;
     /* top: 50%; */
-    left: 35%;
-    /* transform: translate(-50%, -50%); */
+    /* left: 35%; */
+    /* transform: translate(-50%, -50%); 
+}*/
+
+
+/* MODAL EDIT PROFILE */
+.edit-student-body {
+  padding: 2rem;
+}
+
+/* Modal Title "Editar Perfil" */
+.edit-student-header {
+  background-color: #395D7F;
+  color: white;
+  border-bottom: none;
+}
+
+.edit-student-form {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 0 1rem;
+}
+
+.edit-student-form .form-control {
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.edit-student-form label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+/* Save Changes Button */
+.edit-student-btn {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.edit-student-dialog {
+  max-width: 600px;
+  margin: 1.75rem auto;
+}
+
+/* Close Modal Button */
+.edit-student-header .btn-close {
+  filter: invert(1);
 }
 
 
@@ -21,3 +70,4 @@ main{
    
    
 }
+
