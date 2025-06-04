@@ -4,6 +4,23 @@
     --bs-nav-link-color:var(--color-blue);
     --bs-nav-link-hover-color:var(--color-blue);
     gap: 50px;
-    font-size: 20px;
-    
+    font-size: 20px;   
+}
+
+.subjects-tab, .levels-tab, .tutors-tab {
+   margin: auto 10%;
+}
+
+@media only screen and (max-width: 600px) {
+  .admin-tabs .nav-link{
+    font-size: 0.75rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .subjects-table-body tr td i{
+    display: none;
+  }
+
+
+   
 }

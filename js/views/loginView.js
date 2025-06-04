@@ -41,5 +41,8 @@ document.querySelector('#login-form').addEventListener('submit', (e) => {
         return
     } catch {}
 
+    console.log(Admin.init());
+    
+
 })
 
