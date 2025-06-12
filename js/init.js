@@ -1,13 +1,15 @@
+window.initdata = function initdata() {
 
-window.initdata =function initdata() {
 
+  console.log("Executando initdata...");
 
-    console.log("Executando initdata...");
-  //Admins
+  //Users
 
-  if (!localStorage.getItem('admins')) {
-    
-    const admins = [
+  if (!localStorage.getItem('users')) {
+
+    const users = [
+
+      //Admins
       {
         name: "Ken",
         email: "ken@123",
@@ -25,15 +27,9 @@ window.initdata =function initdata() {
         email: "esmadAd@email.com",
         password: "123",
         userType: "admin"
-      }
-    ]
+      },
 
-    localStorage.setItem('admins', JSON.stringify(admins))
-  }
-
-  //Students
-  if (!localStorage.getItem('students')) {
-    const students = [
+      //Students
       {
         name: "EsmadAl",
         surname: "Aluno",
@@ -57,17 +53,9 @@ window.initdata =function initdata() {
         location: "Porto",
         password: "btrz789",
         userType: "aluno"
-      }
-    ]
+      },
 
-    localStorage.setItem('students', JSON.stringify(students))
-  }
-
-
-  //Tutors
-  if (!localStorage.getItem('tutors')) {
-    const tutors = [
-
+      //tutors
       {
         name: "Ana",
         surname: "Moura",
@@ -100,7 +88,7 @@ window.initdata =function initdata() {
       }
     ]
 
-    localStorage.setItem('tutors', JSON.stringify(tutors))
+    localStorage.setItem('users', JSON.stringify(users))
   }
   //Education levels
   if (!localStorage.educationLevels) {
@@ -165,18 +153,18 @@ window.initdata =function initdata() {
   }
 
   //SUBJECTS
-if (!localStorage.getItem('subjects')) {
-  const subjects = [
-    "Matemática",
-    "Português",
-    "Físico-Química",
-    "História",
-    "Geografia",
-    "Biologia",
-    "Inglês"
-  ];
-  localStorage.setItem('subjects', JSON.stringify(subjects));
-}
+  if (!localStorage.getItem('subjects')) {
+    const subjects = [
+      "Matemática",
+      "Português",
+      "Físico-Química",
+      "História",
+      "Geografia",
+      "Biologia",
+      "Inglês"
+    ];
+    localStorage.setItem('subjects', JSON.stringify(subjects));
+  }
 
 
   //Locations
@@ -192,7 +180,111 @@ if (!localStorage.getItem('subjects')) {
 
     localStorage.setItem('locations', JSON.stringify(locations))
   }
+
+
+    //Admins
+
+  // if (!localStorage.getItem('admins')) {
+
+  //   const admins = [
+  //     {
+  //       name: "Ken",
+  //       email: "ken@123",
+  //       password: "123",
+  //       userType: "admin"
+  //     },
+  //     {
+  //       name: "Catarina",
+  //       email: "cat@123",
+  //       password: "123",
+  //       userType: "admin"
+  //     },
+  //     {
+  //       name: "esmadAdmin",
+  //       email: "esmadAd@email.com",
+  //       password: "123",
+  //       userType: "admin"
+  //     }
+  //   ]
+
+  //   localStorage.setItem('admins', JSON.stringify(admins))
+  // }
+
+  //Students
+  // if (!localStorage.getItem('students')) {
+  //   const students = [
+  //     {
+  //       name: "EsmadAl",
+  //       surname: "Aluno",
+  //       email: "esmadAl@email.com",
+  //       location: "Vila do Conde",
+  //       password: "esmadal",
+  //       userType: "aluno"
+  //     },
+  //     {
+  //       name: "Tiago",
+  //       surname: "Costa",
+  //       email: "tiago.costa@email.com",
+  //       location: "Lisboa",
+  //       password: "tg456",
+  //       userType: "aluno"
+  //     },
+  //     {
+  //       name: "Beatriz",
+  //       surname: "Silva",
+  //       email: "beatriz.silva@email.com",
+  //       location: "Porto",
+  //       password: "btrz789",
+  //       userType: "aluno"
+  //     }
+  //   ]
+
+  //   localStorage.setItem('students', JSON.stringify(students))
+  // }
+
+
+  //Tutors
+  // if (!localStorage.getItem('tutors')) {
+  //   const tutors = [
+
+  //     {
+  //       name: "Ana",
+  //       surname: "Moura",
+  //       email: "ana@tutor.pt",
+  //       location: "Lisboa",
+  //       password: "tutor123",
+  //       subjects: ["Matemática", "Físico-Química"],
+  //       levels: ["Ensino Secundário - Ciências e Tecnologias"],
+  //       userType: "tutor"
+  //     },
+  //     {
+  //       name: "Carlos",
+  //       surname: "Lopes",
+  //       email: "carlos@tutor.pt",
+  //       location: "Coimbra",
+  //       password: "abcd123",
+  //       subjects: ["História", "Geografia"],
+  //       levels: ["Ensino Secundário - Línguas e Humanidades"],
+  //       userType: "tutor"
+  //     },
+  //     {
+  //       name: "EsmadTT",
+  //       surname: "Tutor",
+  //       email: "esmad@tutor.pt",
+  //       location: "Vila do Conde",
+  //       password: "esmadtt",
+  //       subjects: ["Português"],
+  //       levels: ["Ensino Básico (3.º Ciclo)"],
+  //       userType: "tutor"
+  //     }
+  //   ]
+
+  //   localStorage.setItem('tutors', JSON.stringify(tutors))
+  // }
 }
+
+
+
 
 initdata();
 
