@@ -19,8 +19,9 @@ document.querySelector('#login-form').addEventListener('submit', (e) => {
     try {
         if (User.loginUser(inputEmail, inputPassword))
         alert('user logged')
-        if (User.isLogged()) {
-            const loggedUser = JSON.parse(sessionStorage.getItem("loggedUser"));
+        const loggedUser = User.getLoggedUser()
+        if (loggedUser) {
+            
             console.log(loggedUser);
               switch (loggedUser.userType) {
             case 'aluno':
