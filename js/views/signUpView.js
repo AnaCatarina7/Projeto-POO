@@ -1,9 +1,6 @@
-// Importações originais (código da sua colega)
-import * as Student from "../models/studentModel.js";
-import * as Tutor from "../models/tutorModel.js";
+import * as User from "../models/userModel.js"
 
-Student.init();
-Tutor.init();
+User.initUsers()
 
 document.querySelector('#signup-form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -42,25 +39,33 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
   }
 });
 
-// Inputs da secção do  tutor
+// Setup tutor-specific UI elements
 function setupTutorUI() {
   const userTypeSelect = document.getElementById('userType');
   const tutorFields = document.getElementById('tutorFields');
   
-  // Mostrar/ocultar campos do tutor
-  if (userTypeSelect) {
-    userTypeSelect.addEventListener('change', function() {
-      const isTutor = this.value === 'Tutor';
-      tutorFields.style.display = isTutor ? 'block' : 'none';
-      document.getElementById('phone').required = isTutor;
-      document.getElementById('bio').required = isTutor;
-    });
+  // Update tutor fields visibility based on user type selection
+  function updateTutorFieldsVisibility() {
+    const isTutor = userTypeSelect.value.toLowerCase() === 'tutor';
+    tutorFields.style.display = isTutor ? 'block' : 'none';
+    document.getElementById('phone').required = isTutor;
+    document.getElementById('bio').required = isTutor;
   }
 
+  // Initialize visibility on page load
+  updateTutorFieldsVisibility();
+  
+  // Update visibility when user type changes
+  if (userTypeSelect) {
+    userTypeSelect.addEventListener('change', updateTutorFieldsVisibility);
+  }
+
+  // Handle subject selection dropdown
   const subjectDropdown = document.getElementById('subjectDropdown');
   const subjectCheckboxes = document.querySelectorAll('#subjectDropdown + .dropdown-menu input[type="checkbox"]');
   const subjectHidden = document.getElementById('selectedSubjects');
 
+  // For the subjects selection dropdown
   function updateSubjectSelection() {
     const selected = [];
     subjectCheckboxes.forEach(cb => {
@@ -68,7 +73,6 @@ function setupTutorUI() {
         selected.push(cb.value.replace("-", " - "));
       }
     });
-
     subjectHidden.value = selected.join(',');
 
     if (selected.length > 0) {
@@ -78,8 +82,8 @@ function setupTutorUI() {
     }
   }
 
-  // Inicializar eventos
-  if (subjectCheckboxes) {
+  // Initialize subject selection events
+if (subjectCheckboxes) {
     subjectCheckboxes.forEach(cb => {
       cb.addEventListener('change', updateSubjectSelection);
     });
@@ -87,4 +91,5 @@ function setupTutorUI() {
   }
 }
 
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', setupTutorUI);
