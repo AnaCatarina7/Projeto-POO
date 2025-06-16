@@ -1,0 +1,77 @@
+import * as User from "../models/userModel.js";
+
+// Initialize and render the tutor Catalog
+// export function tutorCatalogView() {
+//     const users = User.initUsers();
+//     const tutors = users.filter(user => user.userType === 'tutor');
+//     renderTutorCatalog(tutors);
+// }
+
+export function tutorCatalogView() {
+    console.log("Iniciando tutorCatalogView...");
+    const users = User.initUsers();
+    console.log("Users carregados:", users);
+    const tutors = users.filter(user => user.userType === 'tutor');
+    console.log("Tutores filtrados:", tutors);
+    renderTutorCatalog(tutors);
+}
+
+// Render Tutor Catalog
+function renderTutorCatalog(tutors = []) {
+    let result = '';
+    
+    // Gets only until 8 different tutors 
+    const topTutors = tutors.slice(0, 8);
+
+    // Generates the cards for each tutor
+    for (const tutor of topTutors) {
+        result += generateTutorCard(tutor);
+    }
+    
+    // Insert in the container on the main page
+    document.querySelector("#tutor-catalog-container").innerHTML = `
+        <div class="row px-4 align-items-center justify-content-center display-flex">
+            ${result}
+        </div>
+    `;
+}
+
+
+// Tutor Card
+function generateTutorCard(tutor) {
+    const modalityText = tutor.modality === 'online' ? 'Online' :  tutor.modality === 'inPerson' ? 'Presencial' : 
+                        Array.isArray(tutor.modality) ? tutor.modality.join('/') : 'Não informado';
+
+    return `
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+                <img src="${tutor.image || './assets/svg/tutor1.svg'}" class="card-img-top" alt="Foto do tutor">
+                <div class="position-absolute top-0 end-0 p-2">
+                    <button class="tutor-favorite" data-tutor-id="${tutor.email}" style="background: transparent; border: none;">
+                        <iconify-icon icon="mdi:heart" width="40" height="40" style="color: white;"></iconify-icon>
+                    </button>
+                </div>
+                <div class="card-body px-4 pt-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <span class="rating fw-semibold" style="font-size: 0.9rem;">
+                            ${tutor.rating || '5'} 
+                            <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+                        </span>
+                        <span class="text-muted small category-text">${tutor.subjects?.[0] || 'Geral'}</span>
+                    </div>
+                    <h6 class="fw-bold mb-1">${tutor.name} ${tutor.surname}</h6>
+                    <p class="text-muted mb-2" style="font-size: 0.85rem;">
+                        ${tutor.location || 'Não informado'} (${modalityText})
+                    </p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="fw-bold text-dark">${tutor.price ? tutor.price + '€/h' : 'Preço não informado'}</span>
+                        ${tutor.firstClassFree ? 
+                            '<span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>' : ''}
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+tutorCatalogView();

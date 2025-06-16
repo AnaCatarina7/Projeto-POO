@@ -6,8 +6,9 @@
     <title>Editar Perfil Tutor</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -104,9 +105,6 @@
                         <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Geometria Descritiva A" id="esGeometria"><label class="form-check-label" for="esGeometria">Geometria Descritiva A</label></div></li>
                         <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Física e Química A" id="esFisicaQuimica"><label class="form-check-label" for="esFisicaQuimica">Física e Química A</label></div></li>
                         <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Biologia e Geologia" id="esBiologiaGeologia"><label class="form-check-label" for="esBiologiaGeologia">Biologia e Geologia</label></div></li>
-
-                        <!-- Mantém este se for necessário -->
-                        <!-- <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Português2" id="esPortugues2" checked><label class="form-check-label" for="esPortugues2">Português</label></div></li> -->
                     </ul>
                     <input type="hidden" name="selectedSubjects" id="selectedSubjects">
                     </div>
@@ -171,7 +169,7 @@
         <!-- Left Column -->
         <div class="col-lg-8">
         <div class="tutor-profile-header mb-4">
-            <h2 class="tutor-name fw-semibold">Sobre Vanessa Ferreira</h2>
+            <h2 id="tutor-profile-name" class="tutor-name fw-semibold"></h2>
             <div class="tutor-rating d-flex align-items-center gap-2">
             <div class="text-warning">
                 <iconify-icon icon="mdi:star" style="color: #f8c100;" width="23" height="23"></iconify-icon>
@@ -183,12 +181,7 @@
             <small class="text-muted">2 Avaliações</small>
             <span class="text-muted">• Categoria</span>
             </div>
-            <p class="tutor-description mt-3">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, sapien nec tincidunt fringilla, lacus erat suscipit enim, non vulputate nulla lorem ac nisi.
-            Nulla facilisi. Suspendisse potenti. Proin nec justo vitae lorem malesuada egestas. Donec gravida, eros in tincidunt consequat, nulla urna vehicula lorem,
-            nec fermentum libero justo in tortor.
-            </p>
-            <a href="#" class="tutor-read-more">ler mais</a>
+            <p id="tutor-profile-bio" class="tutor-description mt-3"></p>
         </div>
 
         <!-- Lesson Details -->
@@ -196,7 +189,7 @@
                 <h5 class="fw-semibold mb-4" style="color: #1b2e4b;">Sobre as aulas</h5>
 
                 <!-- Níveis de ensino -->
-                <div class="lesson-block mb-4">
+                <div class="lesson-block mb-4" id="educationLevel">
                     <div class="row">
                         <div class="col-12 d-flex align-items-center gap-2">
                             <iconify-icon icon="mdi:school-outline" class="lesson-icon"></iconify-icon>
@@ -204,9 +197,7 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-12 d-flex flex-wrap gap-2">
-                            <span class="badge">Todos os níveis</span>
-                            <span class="badge">Preparação para exames</span>
+                        <div id="tutor-educationLevel" class="col-12 d-flex flex-wrap gap-2">
                         </div>
                     </div>
                 </div>
@@ -220,7 +211,7 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-12 d-flex flex-wrap gap-2">
+                        <div  class="col-12 d-flex flex-wrap gap-2">
                             <span class="badge">Português</span>
                             <span class="badge">Inglês</span>
                         </div>
@@ -228,7 +219,7 @@
                 </div>
 
                 <!-- Disciplina -->
-                <div class="lesson-block mb-4">
+                <div class="lesson-block mb-4" id="tutor-subjects">
                     <div class="row">
                         <div class="col-12 d-flex align-items-center gap-2">
                             <iconify-icon icon="mdi:book-open-variant" class="lesson-icon"></iconify-icon>
@@ -236,8 +227,7 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-12 d-flex flex-wrap gap-2">
-                            <span class="badge">Matemática</span>
+                        <div id="tutor-subjects-container" class="col-12 d-flex flex-wrap gap-2">
                         </div>
                     </div>
                 </div>
@@ -251,8 +241,33 @@
                         </div>
                     </div>
                     <div class="row mt-2">
-                        <div class="col-12 d-flex flex-wrap gap-2">
-                            <span class="badge">Sim</span>
+                        <div id="tutor-specialNeeds" class="col-12 d-flex flex-wrap gap-2"></div>
+                    </div>
+                </div>
+
+                <!-- Modalidade -->
+                <div class="lesson-block mb-4">
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center gap-2">
+                            <iconify-icon icon="mdi:teach" class="lesson-icon"></iconify-icon>
+                            <strong>Modalidade</strong>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div id="tutor-modality-container" class="col-12 d-flex flex-wrap gap-2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lesson-block mb-4">
+                    <div class="row">
+                        <div class="col-12 d-flex align-items-center gap-2">
+                            <iconify-icon icon="mdi:money" class="lesson-icon"></iconify-icon>
+                            <strong>Preço</strong>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div id="tutor-price" class="col-12 d-flex flex-wrap gap-2">
                         </div>
                     </div>
                 </div>
@@ -262,7 +277,7 @@
         <!-- Right Column -->
         <div class="col-lg-4">
         <div class="tutor-contact-box text-end mb-4">
-            <button class="btn btn-warning fw-semibold">Contactar</button>
+            <button class="btn btn-warning fw-semibold" id="contact-btn">Contactar</button>
         </div>
 
         <!-- Availability -->
@@ -309,18 +324,33 @@
         <!-- Contacts -->
         <div class="tutor-contact-info p-3 bg-light rounded">
             <h6 class="fw-semibold">Contactos</h6>
-            <p class="mb-1"><strong>Telemóvel:</strong><br>9112345678</p>
-            <p class="mb-1"><strong>Email:</strong><br><a href="mailto:vanessaferreira@gmail.com">vanessaferreira@gmail.com</a></p>
-            <div class="tutor-social-icons d-flex gap-3 mt-2">
-            <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
-            <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
+            <p class="mb-1"><strong>Telemóvel:</strong> <span id="tutor-phone"></span></p>
+            <p class="mb-1"><strong>Email:</strong> <span id="tutor-email"></span></p>
+            <p class="mb-1"><strong>Redes sociais:</strong></p>
+            <div class="tutor-social-icons d-flex gap-3 mt-1">
+                <a href="#" class="text-dark"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-dark"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-dark"><i class="bi bi-linkedin"></i></a>
             </div>
         </div>
+
+    </div>
+
+    <!-- Successfully Contacted PopUp -->
+    <!-- <div id="success-popup" class="popup-overlay d-none">
+    <div class="popup-box">
+        <div class="popup-icon">
+        ícone
         </div>
+        <p class="popup-text">Aula marcada com sucesso!</p>
+        <button id="close-popup" class="btn btn-success mt-3">Fechar</button>
     </div>
-    </div>
+    </div> -->
+
+    <script src="/js/init.js"></script>
 <script type="module" src="/js/views/navbarView.js"></script>
+
+<script type="module" src="/js/views/tutorView.js"></script>
 
 </body>
 
@@ -332,9 +362,9 @@ const subjectHidden = document.getElementById('selectedSubjects');
 
 function updateSubjectSelection() {
   const selected = [];
-  subjectCheckboxes.forEach(cb => {
-    if (cb.checked) {
-      selected.push(cb.value.replace("-", " - "));
+  subjectCheckboxes.forEach(checkbox => {
+    if (checkbox.checked) {
+      selected.push(checkbox.value.replace("-", " - "));
     }
   });
 

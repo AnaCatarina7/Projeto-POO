@@ -6,21 +6,20 @@ export function initUsers() {
     return users;
 }
 // ADD USER
-export function addUser(name, surname, email, location, password, userType) {
+export function addUser(name, surname, email, location, password, userType, tutorInfo = {}) {
     if (users.some((user) => user.email === email)) {
         throw Error(`User with email "${email}" already exists!`);
     }
 
     try {
-        users.push(new User(name, surname, email, location, password, userType));
+        users.push(new User(name, surname, email, location, password, userType, tutorInfo));
         localStorage.setItem("users", JSON.stringify(users));
     } catch (error) {
         alert(error.message);
         console.error(error.message);
     }
-
-
 }
+
 // LOGIN USERS 
 export function loginUser(email, password) {
     const user = users.find(
@@ -65,10 +64,8 @@ export function addFavourite(tutor) { // receive a userType 'tutor' to add to fa
 }
 
 
-
-
 class User {
-    constructor(name, surname, email, location, password, userType) {
+    constructor(name, surname, email, location, password, userType, tutorInfo = {}) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -79,5 +76,18 @@ class User {
         this.favourites = []
         this.reward = []
 
+        if (userType === 'tutor') {
+            this.subjects = tutorInfo.subjects || [];
+            this.phone = tutorInfo.phone || '';
+            this.bio = tutorInfo.bio || '';
+            this.educationLevel = tutorInfo.educationLevel || '';
+            this.price = tutorInfo.price || 0;
+            this.modality = tutorInfo.modality || '';
+            this.specialNeeds = tutorInfo.specialNeeds || '';
+            this.availability = tutorInfo.availability || '';
+            this.image = tutorInfo.image || '';
+        }
     };
 }
+
+
