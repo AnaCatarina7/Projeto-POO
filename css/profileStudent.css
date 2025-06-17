@@ -76,6 +76,9 @@ main{
 .edit-student-header .btn-close {
   filter: invert(1);
 }
+.favCatalog{
+  
+}
 
 
 @media only screen and (max-width: 600px) {

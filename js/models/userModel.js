@@ -46,21 +46,66 @@ export function logout() {
     sessionStorage.removeItem("loggedUser");
 }
 
-export function addFavourite(tutor) { // receive a userType 'tutor' to add to favourites
+// CHECK IF TUTOR IS FAVOURITE
+export function isFavourite(tutorEmail) {
+    const loggedUser = getLoggedUser();
+    if (!loggedUser || loggedUser.userType !== 'aluno') {
+        return false;
+    }
+    return loggedUser.favourites.some(fav => fav.email === tutorEmail);
+}
+
+// ADD TUTOR TO FAVOURITES
+export function addFavourite(tutorEmail) { // receive a userType 'tutor' to add to favourites
     const loggedUser = getLoggedUser();
     if (!loggedUser) {
         throw Error("Crie uma conta ou faça login para adicionar favoritos!");
     }
-    if (loggedUser.userType != 'aluno') {
+    if (loggedUser.userType !== 'aluno') {
         throw Error("Apenas alunos podem adicionar favoritos!");
     }
+    if (isFavourite(tutorEmail)) {
+        throw Error("Este tutor já está nos seus favoritos!");
+    }
+    let tutorToAdd = users.find(user => user.email === tutorEmail && user.userType === 'tutor');
+    if (!tutorToAdd) {
+        throw new Error("Tutor não encontrado!");
+    }
     try {
-        loggedUser.favourites.push(tutor);
+        loggedUser.favourites.push(tutorToAdd);
+        sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser)); // update loggedUser in sessionStorage
+
+
+        const userIndex = users.findIndex(user => user.email === loggedUser.email);// find the index of the logged user in the localstorage users array 
+        if (userIndex !== -1) {
+           users[userIndex]= loggedUser; 
+           console.log("User updated in localstorage:", users[userIndex].favourites);
+           
+        }else{
+             throw new Error("User não encontrado!");
+        }
+        localStorage.setItem("users", JSON.stringify(users)); // update users in localstorage  
 
     } catch (error) {
         alert(error.message);
         console.error(error.message);
     }
+}
+
+export function removeFavourite(tutorEmail) {
+    const loggedUser = getLoggedUser();
+    if (!loggedUser || loggedUser.userType !== 'aluno') {
+        throw new Error("Apenas alunos logados podem remover favoritos!")
+    }
+
+    const userIndex = users.findIndex(user => user.email === loggedUser.email);// find the index of the logged user in the localstorage users array 
+    if (userIndex === -1) {
+        throw new Error("User não encontrado!");
+    }
+
+    users[userIndex].favourites = users[userIndex].favourites.filter(fav => fav.email !==tutorEmail); // remove tutor from favourites in localstorage
+    localStorage.setItem("users", JSON.stringify(users));
+    sessionStorage.setItem("loggedUser", JSON.stringify(users[userIndex]));
 }
 
 
