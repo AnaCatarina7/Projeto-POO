@@ -30,7 +30,9 @@ window.initdata = function initdata() {
         email: "esmadAl@email.com",
         location: "Vila do Conde",
         password: "esmadal",
-        userType: "aluno"
+        userType: "aluno",
+        favourites:[],
+        reward:[],
       },
       {
         name: "Tiago",
@@ -38,15 +40,18 @@ window.initdata = function initdata() {
         email: "tiago.costa@email.com",
         location: "Lisboa",
         password: "tg456",
-        userType: "aluno"
+        userType: "aluno",
+        favourites:[],
+        reward:[],
       },
       {
         name: "Beatriz",
         surname: "Silva",
         email: "beatriz.silva@email.com",
         location: "Porto",
-        password: "btrz789",
-        userType: "aluno"
+        userType: "aluno",
+        favourites:[],
+        reward:[],
       },
 
       // TUTORES 
