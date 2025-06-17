@@ -33,36 +33,29 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
         </div>
         <div class="modal-body">
-            <!-- TODO: Podes depois associar a um id de form para submissão -->
             <form>
-            <!-- Informações pessoais -->
+            <!-- Personal Information -->
             <h3 class="mb-4 fw-semibold">Informações pessoais</h3>
             <div class="row g-3 mb-4">
                 <div class="col-md-6">
-                <label for="firstName" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="firstName" placeholder="Nome">
+                    <label for="firstName" class="form-label">Nome</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="Nome">
                 </div>
                 <div class="col-md-6">
-                <label for="lastName" class="form-label">Apelido</label>
-                <input type="text" class="form-control" id="lastName" placeholder="Apelido">
+                    <label for="lastName" class="form-label">Apelido</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Apelido">
                 </div>
                 <div class="col-md-6">
-                <label for="email" class="form-label">E-mail</label>
-                <input type="email" class="form-control" id="email" placeholder="E-mail">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" class="form-control" id="email" placeholder="E-mail">
                 </div>
                 <div class="col-md-6">
-                <label for="phone" class="form-label">Telefone</label>
-                <input type="tel" class="form-control" id="phone" placeholder="Telefone">
+                    <label for="phone" class="form-label">Telefone</label>
+                    <input type="tel" class="form-control" id="phone" placeholder="Telefone">
                 </div>
                 <div class="col-md-6">
-                <label for="location" class="form-label">Localidade</label>
-                <select class="form-select form-select-dropdown" id="location">
-                    <option selected disabled>Localidade</option>
-                </select>
-                </div>
-                <div class="col-md-6">
-                <label for="photo" class="form-label">Fotografia</label>
-                <input type="file" class="form-control" id="photo" accept="image/png, image/jpeg">
+                    <label for="signUp-city" class="form-label">Localidade</label>
+                    <input type="text" class="form-control input_form" id="signup-city" placeholder="Cidade" required>
                 </div>
             </div>
 
@@ -71,63 +64,61 @@
                 <textarea class="form-control" id="bio" rows="3" placeholder="texto"></textarea>
             </div>
 
-            <!-- Formação -->
+            <!-- Formation -->
             <h3 class="mb-4 fw-semibold">Formação e ensino</h3>
             <div class="row g-3 mb-4">
-                <div class="col-md-6">
-                                <!-- Custom Dropdown with Checkboxes for "Disciplina" -->
-                    <label class="form-label fw-semibold">Disciplina</label>
-                    <div class="dropdown w-100">
-                    <button class="form-control input-subjects d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        Selecionar disciplinas
-                    </button>
-                    <ul class="dropdown-menu w-100 p-3" aria-labelledby="subjectDropdown">
-                        <!-- Ensino Básico (3.º Ciclo) -->
-                        <h6 class="dropdown-header">Ensino Básico (3.º Ciclo)</h6>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Português" id="ebPortugues1"><label class="form-check-label" for="ebPortugues1">Português</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Inglês" id="ebIngles"><label class="form-check-label" for="ebIngles">Inglês</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Francês" id="ebFrances"><label class="form-check-label" for="ebFrances">Francês</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Espanhol" id="ebEspanhol"><label class="form-check-label" for="ebEspanhol">Espanhol</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-História" id="ebHistoria"><label class="form-check-label" for="ebHistoria">História</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Geografia" id="ebGeografia"><label class="form-check-label" for="ebGeografia">Geografia</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Matemática" id="ebMatematica"><label class="form-check-label" for="ebMatematica">Matemática</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Ciências Naturais" id="ebCiencias"><label class="form-check-label" for="ebCiencias">Ciências Naturais</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Físico-Química" id="ebFisicoQuimica"><label class="form-check-label" for="ebFisicoQuimica">Físico-Química</label></div></li>
 
-                        <hr class="dropdown-divider">
-
-                        <!-- Ensino Secundário - Ciências e Tecnologias -->
-                        <h6 class="dropdown-header">Ensino Secundário - Ciências e Tecnologias</h6>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Português" id="esPortugues1"><label class="form-check-label" for="esPortugues1">Português</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Língua Estrangeira" id="esLingua"><label class="form-check-label" for="esLingua">Língua Estrangeira</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Filosofia" id="esFilosofia"><label class="form-check-label" for="esFilosofia">Filosofia</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Matemática A" id="esMatematicaA"><label class="form-check-label" for="esMatematicaA">Matemática A</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Geometria Descritiva A" id="esGeometria"><label class="form-check-label" for="esGeometria">Geometria Descritiva A</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Física e Química A" id="esFisicaQuimica"><label class="form-check-label" for="esFisicaQuimica">Física e Química A</label></div></li>
-                        <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Biologia e Geologia" id="esBiologiaGeologia"><label class="form-check-label" for="esBiologiaGeologia">Biologia e Geologia</label></div></li>
-                    </ul>
-                    <input type="hidden" name="selectedSubjects" id="selectedSubjects">
+                <!-- Education Level -->
+                <div class="form-group">
+                    <div class="mb-3">
+                        <label for="educationLevel" class="form-label">Nível de ensino</label>
+                        <select class="form-select" id="educationLevel">
+                            <option selected disabled>Nível de ensino</option>
+                            <option value="basico">Ensino Básico (3.º Ciclo)</option>
+                            <option value="secundario">Ensino Secundário</option>
+                            <option value="ambos">Ambos</option>
+                        </select>
                     </div>
 
+                    <!-- Subjects -->
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Disciplina</label>
+                        <div class="dropdown w-100">
+                            <button class="form-control input-subjects d-flex justify-content-between align-items-center dropdown-toggle" type="button" id="subjectDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Selecionar disciplinas
+                            </button>
+                            <ul class="dropdown-menu w-100 p-3" aria-labelledby="subjectDropdown">
+                                <h6 class="dropdown-header">Ensino Básico (3.º Ciclo)</h6>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Português" id="ebPortugues1"><label class="form-check-label" for="ebPortugues1">Português</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Inglês" id="ebIngles"><label class="form-check-label" for="ebIngles">Inglês</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Francês" id="ebFrances"><label class="form-check-label" for="ebFrances">Francês</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Espanhol" id="ebEspanhol"><label class="form-check-label" for="ebEspanhol">Espanhol</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-História" id="ebHistoria"><label class="form-check-label" for="ebHistoria">História</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Geografia" id="ebGeografia"><label class="form-check-label" for="ebGeografia">Geografia</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Matemática" id="ebMatematica"><label class="form-check-label" for="ebMatematica">Matemática</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Ciências Naturais" id="ebCiencias"><label class="form-check-label" for="ebCiencias">Ciências Naturais</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="EB-Físico-Química" id="ebFisicoQuimica"><label class="form-check-label" for="ebFisicoQuimica">Físico-Química</label></div></li>
+
+                                <hr class="dropdown-divider">
+
+                                <h6 class="dropdown-header">Ensino Secundário</h6>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Português" id="esPortugues1"><label class="form-check-label" for="esPortugues1">Português</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Língua Estrangeira" id="esLingua"><label class="form-check-label" for="esLingua">Língua Estrangeira</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Filosofia" id="esFilosofia"><label class="form-check-label" for="esFilosofia">Filosofia</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Matemática A" id="esMatematicaA"><label class="form-check-label" for="esMatematicaA">Matemática A</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Geometria Descritiva A" id="esGeometria"><label class="form-check-label" for="esGeometria">Geometria Descritiva A</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Física e Química A" id="esFisicaQuimica"><label class="form-check-label" for="esFisicaQuimica">Física e Química A</label></div></li>
+                                <li><div class="form-check"><input class="form-check-input" type="checkbox" value="ES-Biologia e Geologia" id="esBiologiaGeologia"><label class="form-check-label" for="esBiologiaGeologia">Biologia e Geologia</label></div></li>
+                            </ul>
+                            <input type="hidden" name="selectedSubjects" id="selectedSubjects">
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-md-6">
-                <label for="educationLevel" class="form-label">Nível de ensino</label>
-                <select class="form-select form-select-dropdown" id="educationLevel">
-                    <option selected disabled>Nível de ensino</option>
-                </select>
-                </div>
-
-                <div class="col-md-6">
-                <label for="languages" class="form-label">Línguas que fala</label>
-                <select class="form-select form-select-dropdown" id="languages">
-                    <option selected disabled>Português</option>
-                </select>
-                </div>
-
-                <div class="col-md-6">
-                <label for="price" class="form-label">Preço por aula</label>
-                <input type="text" class="form-control" id="price" placeholder="Preço">
+                <!-- Price -->
+                 <div class="col-md-6">
+                    <label for="price" class="form-label">Preço por aula (€)</label>
+                    <input type="number" class="form-control" id="price" placeholder="Preço">
                 </div>
             </div>
 
@@ -135,11 +126,11 @@
                 <div class="col-md-6">
                 <label class="form-label d-block mb-4">Modalidade de ensino:</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inPerson" value="inPerson">
+                    <input class="form-check-input" type="checkbox" id="inPerson" value="Presencial">
                     <label class="form-check-label" for="inPerson">Presencial</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="online" value="online" checked>
+                    <input class="form-check-input" type="checkbox" id="online" value="Online" checked>
                     <label class="form-check-label" for="online">Online</label>
                 </div>
                 </div>
@@ -147,16 +138,30 @@
                 <div class="col-md-6">
                 <label class="form-label d-block mb-4">Tem formação para ensino a alunos com necessidades educativas especiais?</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsYes" value="yes">
+                    <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsYes" value="Sim">
                     <label class="form-check-label" for="specialNeedsYes">Sim</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsNo" value="no" checked>
+                    <input class="form-check-input" type="radio" name="specialNeeds" id="specialNeedsNo" value="Não" checked>
                     <label class="form-check-label" for="specialNeedsNo">Não</label>
                 </div>
                 </div>
             </div>
 
+            <div class="form-group">
+                <div class="mb-3">
+                    <label for="newPassword" class="form-label">Nova Palavra-passe</label>
+                    <input type="password" class="form-control" id="newPassword" placeholder="Digite nova palavra-passe" autocomplete="new-password" />
+                </div>
+                <div class="mb-3">
+                    <label for="confirmPassword" class="form-label">Confirmar Palavra-passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirme a palavra-passe" autocomplete="new-password" />
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="saveChangesBtn">Guardar alterações</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            </div>
             </form>
         </div>
         </div>
@@ -336,47 +341,12 @@
 
     </div>
 
-    <!-- Successfully Contacted PopUp -->
-    <!-- <div id="success-popup" class="popup-overlay d-none">
-    <div class="popup-box">
-        <div class="popup-icon">
-        ícone
-        </div>
-        <p class="popup-text">Aula marcada com sucesso!</p>
-        <button id="close-popup" class="btn btn-success mt-3">Fechar</button>
-    </div>
-    </div> -->
-
     <script src="/js/init.js"></script>
-<script type="module" src="/js/views/navbarView.js"></script>
-
-<script type="module" src="/js/views/tutorView.js"></script>
+    <script type="module" src="/js/views/navbarView.js"></script>
+    <script type="module" src="/js/views/tutorView.js"></script>
 
 </body>
 
 </html>
 <script>
-const subjectCheckboxes = document.querySelectorAll('#subjectDropdown + .dropdown-menu input[type="checkbox"]');
-const subjectButton = document.getElementById('subjectDropdown');
-const subjectHidden = document.getElementById('selectedSubjects');
-
-function updateSubjectSelection() {
-  const selected = [];
-  subjectCheckboxes.forEach(checkbox => {
-    if (checkbox.checked) {
-      selected.push(checkbox.value.replace("-", " - "));
-    }
-  });
-
-  subjectHidden.value = selected.join(',');
-
-  if (selected.length > 0) {
-    subjectButton.innerHTML = selected.map(val => `<span class="badge-subject">${val}</span>`).join(' ');
-  } else {
-    subjectButton.textContent = 'Selecionar disciplinas';
-  }
-}
-
-subjectCheckboxes.forEach(cb => cb.addEventListener('change', updateSubjectSelection));
-window.addEventListener('DOMContentLoaded', updateSubjectSelection);
 </script>

@@ -6,12 +6,12 @@ if (!User.isLogged()) {
     window.location.href = '/html/login.html';
 } else {
     loadTutorProfile();
+    changeTutorData();
 }
 
 function loadTutorProfile() {
     // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
     const tutorEmail = localStorage.getItem('selectedTutorEmail');
-
     let tutor;
 
     // Logic to determine which tutor to load:
@@ -24,7 +24,6 @@ function loadTutorProfile() {
             window.location.href = 'tutorCatalog.html';
             return;
         }
-
         localStorage.removeItem('selectedTutorEmail');
 
         } else {
@@ -50,12 +49,11 @@ function loadTutorProfile() {
     price.textContent = tutor.price ? `${tutor.price}€/aula` : 'Preço não informado';
     specialNeeds.innerHTML = `<span class="badge">${tutor.specialNeeds || 'Não informado'}</span>`;
     
-    // Safe handling for modality (can be string or array)
-    modality.innerHTML = typeof tutor.modality === 'string' ? 
-        `<span class="badge">${tutor.modality}</span>` :
+    // Safe handling for modality
+    modality.innerHTML = typeof tutor.modality === 'string' ?  `<span class="badge">${tutor.modality}</span>` :
         (tutor.modality?.map(m => `<span class="badge">${m}</span>`).join(' ') || 'Não Informado');
 
-    // Education Level (original logic preserved)
+    // Education Level 
     if (tutor.educationLevel === 'ambos') {
         educationLevel.innerHTML = `
             <span class="badge">Ensino Básico</span>
@@ -65,7 +63,7 @@ function loadTutorProfile() {
         educationLevel.innerHTML = `<span class="badge">${tutor.educationLevel || 'Não Informado'}</span>`;
     }
 
-    // Subjects (with safer handling)
+    // Subjects 
     const subjects = tutor.subjects ?? [];
     subjectsContainer.innerHTML = subjects.length > 0 ? 
         subjects.map(subj => `<span class="badge">${subj.replace(" - ", " ")}</span>`).join(' ') : 
@@ -75,4 +73,131 @@ function loadTutorProfile() {
     if (!tutorEmail && User.getLoggedUser()?.email === tutor.email) {
         console.log("Tutor a ver o seu perfil");
     }
+};
+
+function changeTutorData() {
+    // Get currently logged in user
+    const loggedUser = User.getLoggedUser();
+    const users = User.initUsers();
+    
+    // Fill form when modal opens
+    document.getElementById('editProfileModal').addEventListener('show.bs.modal', () => {
+        // Basic info
+        document.getElementById("firstName").value = loggedUser.name || '';
+        document.getElementById("lastName").value = loggedUser.surname || '';
+        document.getElementById("email").value = loggedUser.email || '';
+        document.getElementById("phone").value = loggedUser.phone || '';
+        document.getElementById("signup-city").value = loggedUser.location || '';
+        document.getElementById("bio").value = loggedUser.bio || '';
+        document.getElementById("price").value = loggedUser.price || '';
+        document.getElementById("specialNeedsYes").checked = loggedUser.specialNeeds === "Sim";
+        document.getElementById("specialNeedsNo").checked = loggedUser.specialNeeds === "Não";
+        document.getElementById("educationLevel").value = loggedUser.educationLevel || '';
+        
+         // Modalities
+        const modalities = Array.isArray(loggedUser.modality) ? loggedUser.modality : [loggedUser.modality];
+        document.getElementById("online").checked = modalities.includes('Online');
+        document.getElementById("inPerson").checked = modalities.includes('Presencial');
+        
+        
+        // Subjects (checkboxes)
+        const subjects = loggedUser.subjects || [];
+        document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(checkbox => {
+            checkbox.checked = subjects.includes(checkbox.value);
+        });
+    });
+
+    // Handle form submission when user clicks on "Save Changes"
+    document.getElementById("saveChangesBtn").addEventListener("click", (event) => {
+        event.preventDefault(); // Prevent form from reloading the page
+
+        const newPassword = document.getElementById("newPassword").value;
+        const confirmPassword = document.getElementById("confirmPassword").value;
+
+        // Validate password confirmation
+        if (newPassword && newPassword !== confirmPassword) {
+            alert("As palavras-passes são diferentes!");
+            return;
+        }
+
+        // Collect updated data from the form
+        const updatedData = {
+            name: document.getElementById("firstName").value,
+            surname: document.getElementById("lastName").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            location: document.getElementById("signup-city").value,
+            bio: document.getElementById("bio").value,
+            price: document.getElementById("price").value,
+            educationLevel: document.getElementById("educationLevel").value,
+            modality: [
+                document.getElementById("online").checked ? 'Online' : null,
+                document.getElementById("inPerson").checked ? 'Presencial' : null
+            ].filter(Boolean),
+            specialNeeds: document.getElementById("specialNeedsYes").checked ? "Sim" : "Não",
+            subjects: Array.from(document.querySelectorAll('.dropdown-menu input[type="checkbox"]:checked'))
+                        .map(checkbox => checkbox.value)
+        };
+
+        // Include password only if the user entered a new one
+        if (newPassword) {
+            updatedData.password = newPassword;
+        }
+
+        // Find the index of the logged-in user in the users array
+        const userIndex = users.findIndex(user => user.email === loggedUser.email);
+        if (userIndex !== -1) {
+            // Merge the updated data into the existing user object
+            const user = users[userIndex];
+            Object.assign(user, updatedData);
+
+            // Save the updated users array back to localStorage
+            localStorage.setItem("users", JSON.stringify(users));
+
+            // Also update the loggedUser in localStorage
+            localStorage.setItem("loggedUser", JSON.stringify(user));
+
+            alert("Dados atualizados com sucesso!");
+
+            // Reload the tutor profile view
+            loadTutorProfile();
+
+            // Close the modal window
+            const modal = bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
+            if (modal) {
+                modal.hide();
+            }
+        } else {
+            alert("Erro ao atualizar os dados. Por favor, tente novamente.");
+        }
+    });
+};
+
+// For the Subjects Dropdown(Styling)
+function subjectDropdown() {
+    const subjectCheckboxes = document.querySelectorAll('#subjectDropdown + .dropdown-menu input[type="checkbox"]');
+    const subjectButton = document.getElementById('subjectDropdown');
+    const subjectHidden = document.getElementById('selectedSubjects');
+
+    function updateSubjectSelection() {
+        const selected = [];
+        subjectCheckboxes.forEach(checkbox => {
+            if (checkbox.checked) {
+                selected.push(checkbox.value.replace("-", " - "));
+            }
+        });
+
+        subjectHidden.value = selected.join(',');
+
+        if (selected.length > 0) {
+            subjectButton.innerHTML = selected.map(val => `<span class="badge-subject">${val}</span>`).join(' ');
+        } else {
+            subjectButton.textContent = 'Selecionar disciplinas';
+        }
+    }
+
+    subjectCheckboxes.forEach(cb => cb.addEventListener('change', updateSubjectSelection));
+    updateSubjectSelection();
 }
+
+subjectDropdown();
