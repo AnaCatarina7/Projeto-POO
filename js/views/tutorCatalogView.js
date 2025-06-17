@@ -36,7 +36,6 @@ function renderTutorCatalog(tutors = []) {
     `;
 }
 
-
 // Tutor Card
 function generateTutorCard(tutor) {
     const modalityText = tutor.modality === 'online' ? 'Online' :  tutor.modality === 'inPerson' ? 'Presencial' : 
