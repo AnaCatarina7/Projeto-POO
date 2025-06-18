@@ -8,11 +8,8 @@ import * as User from "../models/userModel.js";
 // }
 
 export function tutorCatalogView() {
-    console.log("Iniciando tutorCatalogView...");
     let users = User.initUsers();
-    console.log("Users carregados:", users);
     const tutors = users.filter(user => user.userType === 'tutor');
-    console.log("Tutores filtrados:", tutors);
     renderTutorCatalog(tutors);
     addFavouriteBtn();
 }
@@ -35,8 +32,17 @@ function renderTutorCatalog(tutors = []) {
             ${result}
         </div>
     `;
-}
 
+    document.querySelectorAll('.tutor-card').forEach(card => {
+        card.addEventListener('click', function(e) {
+            if (e.target.closest('.tutor-favoritebtn')) return;
+
+            const tutorEmail = this.getAttribute('data-tutor-email');
+            localStorage.setItem('selectedTutorEmail', tutorEmail);
+            window.location.href = '/html/profileTutor.html';
+        });
+    });
+}
 
 // Tutor Card
 function generateTutorCard(tutor) {
@@ -47,10 +53,13 @@ function generateTutorCard(tutor) {
    
     return `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
+            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden tutor-card" 
+                 data-tutor-email="${tutor.email}"
+                 style="cursor: pointer;">
                 <img src="${tutor.image || './assets/svg/tutor1.svg'}" class="card-img-top" alt="Foto do tutor">
                 <div class="position-absolute top-0 end-0 p-2">
-                    <button class="tutor-favoritebtn" data-tutor-id="${tutor.email}" style="background: transparent; border: none;">
+                    <button class="tutor-favoritebtn" data-tutor-id="${tutor.email}" 
+                            style="background: transparent; border: none;">
                         <iconify-icon icon="mdi:heart" width="40" height="40" style="color: ${heartColor};"></iconify-icon>
                     </button>
                 </div>
@@ -78,29 +87,30 @@ function generateTutorCard(tutor) {
 }
 
 
-    function addFavouriteBtn() {
-        document.querySelectorAll('.tutor-favoritebtn').forEach(button => {
-            button.addEventListener('click', (event) => {
-                event.preventDefault();
+function addFavouriteBtn() {
+    document.querySelectorAll('.tutor-favoritebtn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.preventDefault();
 
-                const tutorEmail = event.currentTarget.dataset.tutorId;
-                const isCurrentlyFav = User.isFavourite(tutorEmail);
+            const tutorEmail = event.currentTarget.dataset.tutorId;
+            const isCurrentlyFav = User.isFavourite(tutorEmail);
 
-                try {
-                    if (isCurrentlyFav) {
-                        User.removeFavourite(tutorEmail);
-                        location.reload();
-                        console.log("Removendo favorito");
-                        
-                    } else {
-                        User.addFavourite(tutorEmail);
-                        location.reload();
-                        console.log("Tutor adicionado ");
-                    }
-                } catch (error) {
-                    alert(error.message);
+            try {
+                if (isCurrentlyFav) {
+                    User.removeFavourite(tutorEmail);
+                    location.reload();
+                    console.log("Removendo favorito");
+                    
+                } else {
+                    User.addFavourite(tutorEmail);
+                    location.reload();
+                    console.log("Tutor adicionado ");
                 }
-            });
+            } catch (error) {
+                alert(error.message);
+            }
         });
-    }
-    tutorCatalogView();
+    });
+}
+
+tutorCatalogView();

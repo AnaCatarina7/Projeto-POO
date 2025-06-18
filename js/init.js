@@ -69,10 +69,10 @@ window.initdata = function initdata() {
         modality: ["Presencial"], 
         phone: "912345678",
         bio: "Professora com 10 anos de experiência no ensino secundário.",
-        educationLevel: "Mestrado em Ensino da Matemática",
+        educationLevel: "Ensino Secundário",
         price: 20,
         image: "/assets/svg/tutor1.svg",
-        specialNeeds: "yes", 
+        specialNeeds: "Sim", 
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
@@ -90,10 +90,10 @@ window.initdata = function initdata() {
         modality: ["Online"],
         phone: "913456789",
         bio: "Apaixonado por história, com experiência em ensino remoto.",
-        educationLevel: "Licenciatura em História",
+        educationLevel: "Ensino Secundário",
         price: 18,
         image: "/assets/svg/tutor2.svg",
-        specialNeeds: "no",
+        specialNeeds: "Não",
         // availability: {
         //   monMorning: false, tueMorning: true, wedMorning: false, thuMorning: true, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: false, tueAfternoon: false, wedAfternoon: false, thuAfternoon: false, friAfternoon: false, satAfternoon: false, sunAfternoon: false
@@ -111,9 +111,9 @@ window.initdata = function initdata() {
         modality: ["Online"],
         phone: "914567890",
         bio: "Explicadora dedicada, com foco em preparação para exames nacionais.",
-        educationLevel: "Mestrado em Engenharia Química",
+        educationLevel: "Ensino Secundário",
         price: 22,
-        specialNeeds: "yes",
+        specialNeeds: "Sim",
         image: "/assets/svg/tutor3.svg",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: true, sunMorning: true,
@@ -132,9 +132,10 @@ window.initdata = function initdata() {
         modality: ["Online"],
         phone: "912345678",
         bio: "Sou licenciada em Línguas e Literaturas Modernas e dou explicações há mais de 5 anos.",
-        educationLevel: "Mestrado em Ensino de Línguas",
+        educationLevel: ["Ensino Básico","Ensino Secundário"],
         price: 15,
-        specialNeeds: "yes",
+        specialNeeds: "Não",
+        image: "/assets/svg/tutor4.svg",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
@@ -152,10 +153,10 @@ window.initdata = function initdata() {
         modality: ["Presencial"],
         phone: "915678901",
         bio: "Experiência com alunos do 3.º ciclo e reforço de gramática.",
-        educationLevel: "Licenciatura em Línguas e Literaturas",
+        educationLevel: "Ensino Básico",
         price: 15,
-        specialNeeds: "no",
-        image: "/assets/svg/tutor2.svg",
+        specialNeeds: "Não",
+        image: "/assets/svg/tutor6.svg",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false

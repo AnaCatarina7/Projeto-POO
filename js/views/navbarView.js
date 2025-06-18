@@ -52,8 +52,8 @@ function navbarView() {
               </a>
             </li>
             <li>
-              <a class="dropdown-item" href="" id="editProfile_link" >
-                <iconify-icon icon="tabler:edit" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
+              <a class="dropdown-item" href="#" id="editProfile_link" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                <iconify-icon icon="tabler:edit" ...></iconify-icon>
                 Editar Perfil
               </a>
             </li>
@@ -129,23 +129,39 @@ function navbarView() {
 
   // Click Edit Profile btn
 
-  document.getElementById("editProfile_link").addEventListener("click", (e) => {
-    e.preventDefault();
+document.getElementById("editProfile_link").addEventListener("click", (e) => {
+  e.preventDefault();
 
-    const userEmail = loggedUser.email;
-    let user = users.find(user => user.email === userEmail);
+  const userEmail = loggedUser.email;
+  let user = users.find(user => user.email === userEmail);
+
+  if (!user) return;
+
+  if (user.userType === 'aluno') {
     document.getElementById("editStudentFname").value = user.name;
     document.getElementById("editStudentLocation").value = user.location;
     document.getElementById("editStudentEmail").value = user.email;
     document.getElementById("editStudentUserType").value = user.userType;
     document.getElementById("editStudentLname").value = user.surname;
 
-    let modal = new bootstrap.Modal(document.getElementById('editStudentModal'))
+    let modal = new bootstrap.Modal(document.getElementById('editStudentModal'));
     modal.show();
-    console.log("Modal opened");
+    console.log("Modal aluno aberto");
+  }
 
+  else if (user.userType === 'tutor') {
+    document.getElementById("editTutorFname").value = user.name;
+    document.getElementById("editTutorLocation").value = user.location;
+    document.getElementById("editTutorEmail").value = user.email;
+    document.getElementById("editTutorUserType").value = user.userType;
+    document.getElementById("editTutorLname").value = user.surname;
 
-  });
+    let modal = new bootstrap.Modal(document.getElementById('editTutorModal'));
+    modal.show();
+    console.log("Modal tutor aberto");
+  }
+});
+
 
   // Click Logout btn
   document.getElementById("logout_link").addEventListener("click", (e) => {
