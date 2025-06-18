@@ -6,7 +6,37 @@ if (!User.isLogged()) {
     window.location.href = '/html/login.html';
 }
 
-export function changeData() {// Function to change user data (password and location)
+document.addEventListener('DOMContentLoaded', function() {
+    renderStudentWelcome()
+    changeData();
+    renderFav()
+})
+
+// Student hero section
+
+function renderStudentWelcome() {
+    const loggedUser = User.getLoggedUser();
+
+   const heroConteiner= document.getElementById('hero-student-section')
+   heroConteiner.innerHTML=`
+   
+    <div class="d-flex align-items-center">
+    <div class="student-foto-wrapper me-4">
+       <img src="/assets/img/pexels-ann-h-45017-1762851.jpg" alt="foto" class="student-foto">
+    
+    </div>
+    <div class="text-white">
+      <h2 class="fw-bold mb-1">${loggedUser.name} ${loggedUser.surname}</h2>
+      <p class="mb-0"> Aluno | ${loggedUser.location}</p>
+    </div>
+  </div>
+   `
+
+}
+
+
+// Students edit data view
+function changeData() {// Function to change user data (password and location)
     const loggedUser = User.getLoggedUser();
     console.log(loggedUser.password, loggedUser.location);
 
@@ -54,9 +84,11 @@ export function changeData() {// Function to change user data (password and loca
         }
     })
 }
-changeData();
 
-export function renderFav() {
+
+
+// Students favourites tutors view
+function renderFav() {
     const favTutorsCatalog = document.getElementById('favTutorsCatalog')
     favTutorsCatalog.innerHTML = ""
 
@@ -142,5 +174,10 @@ function generateTutorCard(tutor) {
     `;
 }
 
-renderFav()
+
+
+// Students rewords view
+
+
+
 

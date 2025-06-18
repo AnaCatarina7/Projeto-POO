@@ -78,11 +78,11 @@ export function addFavourite(tutorEmail) { // receive a userType 'tutor' to add 
 
         const userIndex = users.findIndex(user => user.email === loggedUser.email);// find the index of the logged user in the localstorage users array 
         if (userIndex !== -1) {
-           users[userIndex]= loggedUser; 
-           console.log("User updated in localstorage:", users[userIndex].favourites);
-           
-        }else{
-             throw new Error("User não encontrado!");
+            users[userIndex] = loggedUser;
+            console.log("User updated in localstorage:", users[userIndex].favourites);
+
+        } else {
+            throw new Error("User não encontrado!");
         }
         localStorage.setItem("users", JSON.stringify(users)); // update users in localstorage  
 
@@ -103,7 +103,7 @@ export function removeFavourite(tutorEmail) {
         throw new Error("User não encontrado!");
     }
 
-    users[userIndex].favourites = users[userIndex].favourites.filter(fav => fav.email !==tutorEmail); // remove tutor from favourites in localstorage
+    users[userIndex].favourites = users[userIndex].favourites.filter(fav => fav.email !== tutorEmail); // remove tutor from favourites in localstorage
     localStorage.setItem("users", JSON.stringify(users));
     sessionStorage.setItem("loggedUser", JSON.stringify(users[userIndex]));
 }
@@ -118,8 +118,12 @@ class User {
         this.password = password;
         this.userType = userType;
 
-        this.favourites = []
-        this.reward = []
+
+        if (userType === 'aluno') {
+            this.favourites = []
+            this.rewardUsed = []
+            this.classestaken=[]
+        }
 
         if (userType === 'tutor') {
             this.subjects = tutorInfo.subjects || [];
