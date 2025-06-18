@@ -24,10 +24,10 @@ function loadTutorProfile() {
             window.location.href = 'tutorCatalog.html';
             return;
         }
-        localStorage.removeItem('selectedTutorEmail');
+        // localStorage.removeItem('selectedTutorEmail');
 
-        } else {
-            tutor = User.getLoggedUser();
+        // } else {
+        //     tutor = User.getLoggedUser();
         }
 
     // Get DOM elements for profile information
