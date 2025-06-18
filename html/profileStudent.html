@@ -18,6 +18,20 @@
     <nav class="navbar navbar-expand-lg fixed-top px-5" id="navbar"></nav>
   </header>
 
+<section class="hero-student-section d-flex align-items-center " id="hero-student-section">
+  <!-- <div class="d-flex align-items-center">
+    <div class="student-foto-wrapper me-4">
+      <img src="/assets/img/pexels-ann-h-45017-1762851.jpg" alt="foto" class="student-foto">
+    </div>
+    <div class="text-white">
+      <h2 class="fw-bold mb-1">Leonor Almeida</h2>
+      <p class="mb-0">Aluno | Vila do Conde</p>
+    </div>
+  </div> -->
+</section>
+
+
+
   <!-- Modal de "Editar Perfil" -->
   <div class="modal fade" id="editStudentModal" tabindex="-1" aria-labelledby="editStudentModalLabel"
     aria-hidden="true">
@@ -58,12 +72,10 @@
             </div>
             <div class="mb-3">
               <label for="editStudentPassword" class="form-label">Nova Palavra-passe</label>
-              <input type="password" id="editStudentPassword" class="form-control" placeholder="Palavra-passe"
-                 />
+              <input type="password" id="editStudentPassword" class="form-control" placeholder="Palavra-passe" />
               <br />
               <label for="editStudentPasswordConfirm" class="form-label">Confirmar palavra-passe</label>
-              <input type="password" id="editStudentPasswordConfirm" class="form-control" placeholder="Palavra-passe"
-                 />
+              <input type="password" id="editStudentPasswordConfirm" class="form-control" placeholder="Palavra-passe" />
             </div>
 
             <!-- Botão de submissão -->
@@ -97,15 +109,68 @@
   <!-- CONTEÚDO DAS TABS -->
   <div class="tab-content mt-3" id="studentsTabsContent">
     <div class="tab-pane fade favouritesTT-tab show active" id="favouritesTT" role="tabpanel">
-      <div class="row px-4 align-items-center justify-content-center display-flex table-responsive favCatalog" id="favTutorsCatalog">
-       
+      <div class="row px-4 align-items-center justify-content-center display-flex table-responsive favCatalog"
+        id="favTutorsCatalog">
+
       </div>
     </div>
-    <div class="tab-pane fade budgets-tab" id="budgets" role="tabpanel">
-      <div class="table-responsive">
-      </div>
+    <div class="tab-pane fade budgets-tab d-flex flex-wrap justify-content-center gap-3" id="budgets" role="tabpanel">
+  <div class="d-flex flex-wrap justify-content-center gap-3">
+
+    <!-- 1: Ativo -->
+    <div class="reward-card">
+      <h6 class="reward-title">
+        <iconify-icon icon="mdi:school-outline"></iconify-icon> 1ª Aula Grátis
+      </h6>
+      <p class="reward-desc">Para novos alunos. Usa se o tutor não oferecer aula gratuita.</p>
     </div>
+
+    <!-- 2: Blocked -->
+    <div class="reward-card locked">
+      <h6 class="reward-title">
+        <iconify-icon icon="mdi:star-outline"></iconify-icon> Desconto 5%
+      </h6>
+      <p class="reward-desc">Depois de 3 aulas, recebe 5% de desconto na próxima.</p>
+    </div>
+
+    <!-- 3: Blocked -->
+    <div class="reward-card locked">
+      <h6 class="reward-title">
+        <iconify-icon icon="mdi:medal-outline"></iconify-icon> Aula para Exame
+      </h6>
+      <p class="reward-desc">Ao fazer 5 aulas com o mesmo tutor, ganha 1 aula grátis focada em exames.</p>
+    </div>
+
+    <!-- 4: Blocked -->
+    <div class="reward-card locked">
+      <h6 class="reward-title">
+        <iconify-icon icon="mdi:gift-outline"></iconify-icon> Desconto Especial 🎁
+      </h6>
+      <p class="reward-desc">Com 7 aulas, desbloqueia 25% de desconto numa próxima sessão.</p>
+    </div>
+
+    <!-- 5: Blocked -->
+    <div class="reward-card locked">
+      <h6 class="reward-title">
+        <iconify-icon icon="mdi:cash-refund"></iconify-icon> Reembolso
+      </h6>
+      <p class="reward-desc">Na 10ª aula, recebe 50% de volta de uma sessão anterior.</p>
+    </div>
+
+    <!-- 6: Blocked -->
+    <div class="reward-card locked">
+      <h6 class="reward-title">
+        <iconify-icon icon="mdi:crown-outline"></iconify-icon> Acesso Premium 👑
+      </h6>
+      <p class="reward-desc">Ao completar 15 aulas com o mesmo tutor, ganha materiais exclusivos do tutor.</p>
+    </div>
+   
   </div>
+   <br><br><br>
+</div>
+
+  </div>
+
 
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

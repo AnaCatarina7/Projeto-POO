@@ -32,7 +32,8 @@ window.initdata = function initdata() {
         password: "esmadal",
         userType: "aluno",
         favourites:[],
-        reward:[],
+        rewardUsed:[],
+        classestaken:[]
       },
       {
         name: "Tiago",
@@ -42,7 +43,8 @@ window.initdata = function initdata() {
         password: "tg456",
         userType: "aluno",
         favourites:[],
-        reward:[],
+        rewardUsed:[],
+        classestaken:[]
       },
       {
         name: "Beatriz",
@@ -51,7 +53,8 @@ window.initdata = function initdata() {
         location: "Porto",
         userType: "aluno",
         favourites:[],
-        reward:[],
+        rewardUsed:[],
+        classestaken:[]
       },
 
       // TUTORES 

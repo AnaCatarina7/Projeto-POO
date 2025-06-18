@@ -1,8 +1,45 @@
 main{
     background-color: #f0f0f0
 }
+
+:root {
+  --cor-fundo-student: #325577;
+  --borda-amarela-student: #ffc107;
+  --borda-branca-student: #ffffff;
+  --tamanho-foto-student: 150px;
+  --espessura-borda-student: 6px;
+  --espaco-entre-foto-e-texto: 1rem;
+}
+
+.hero-student-section {
+  background-color: var(--cor-fundo-student);
+  padding: 5rem;
+}
+
+.student-foto-wrapper {
+  width: var(--tamanho-foto-student);
+  height: var(--tamanho-foto-student);
+  border: var(--espessura-borda-student) solid var(--borda-amarela-student);
+  border-radius: 50%;
+  padding: 4px;
+  background-color: var(--borda-branca-student);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--espaco-entre-foto-e-texto);
+  color: #fff;
+}
+
+.student-foto {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
 .student-tabs{
-    /* margin-top: 5%; */
+
     padding: 80px;
     --bs-nav-link-color:var(--color-blue);
     --bs-nav-link-hover-color:var(--color-blue);
@@ -76,8 +113,46 @@ main{
 .edit-student-header .btn-close {
   filter: invert(1);
 }
-.favCatalog{
-  
+/* rewords */
+.reward-card {
+  /* border: 2px solid ; */
+  border-radius: 16px;
+  /* background-color: #f9fafb; */
+  padding: 16px;
+  width: 260px;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  margin: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease;
+}
+
+.reward-card:hover {
+  transform: translateY(-4px);
+}
+
+.reward-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-blue);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+}
+
+.reward-title iconify-icon {
+  margin-right: 8px;
+}
+
+.reward-desc {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+/* Desativado */
+.reward-card.locked {
+  opacity: 0.8;
+  pointer-events: none;
+  filter: grayscale(80%);
 }
 
 
