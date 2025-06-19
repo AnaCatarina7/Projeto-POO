@@ -252,6 +252,8 @@ export function getTutors(levelFilter = null, modalityFilter = null, locationFil
   }
   
   return filteredTutors;
+}
+
 class User {
     constructor(name, surname, email, location, password, userType, tutorInfo = {}) {
         this.name = name;
