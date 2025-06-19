@@ -150,7 +150,7 @@ document.getElementById("editProfile_link").addEventListener("click", (e) => {
 
     let modal = new bootstrap.Modal(document.getElementById('editStudentModal'));
     modal.show();
-    console.log("Modal aluno aberto");
+    //console.log("Modal aluno aberto");
   }
 
   else if (user.userType === 'tutor') {
@@ -162,7 +162,7 @@ document.getElementById("editProfile_link").addEventListener("click", (e) => {
 
     let modal = new bootstrap.Modal(document.getElementById('editTutorModal'));
     modal.show();
-    console.log("Modal tutor aberto");
+    //console.log("Modal tutor aberto");
   }
 });
 

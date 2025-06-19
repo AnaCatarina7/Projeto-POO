@@ -1,37 +1,37 @@
 let tutors;
 
-// GET tutors FROM LOCALSTORAGE
-export function init() {
-  tutors = localStorage.tutors ? JSON.parse(localStorage.tutors) : [];
-}
+// // GET tutors FROM LOCALSTORAGE
+// export function init() {
+//   tutors = localStorage.tutors ? JSON.parse(localStorage.tutors) : [];
+// }
 
-// ADD TUTOR
-export function addTutor(name, surname, email, location, password, profileData) {
-  if (tutors.some((tutor) => tutor.email === email)) {
-    throw Error(`User with email "${email}" already exists!`);
-  } else {
-    tutors.push(new Tutor(name, surname, email, location, password, profileData));
-    localStorage.setItem("tutors", JSON.stringify(tutors));
-  }
-}
+// // ADD TUTOR
+// export function addTutor(name, surname, email, location, password, profileData) {
+//   if (tutors.some((tutor) => tutor.email === email)) {
+//     throw Error(`User with email "${email}" already exists!`);
+//   } else {
+//     tutors.push(new Tutor(name, surname, email, location, password, profileData));
+//     localStorage.setItem("tutors", JSON.stringify(tutors));
+//   }
+// }
 
-// LOGIN TUTOR 
-export function logintutor(inputEmail, inputPassword) {
-  const tutor = tutors.find(
-    (tutor) => tutor.email === inputEmail && tutor.password === inputPassword
-  );
-  if (tutor) {
-    sessionStorage.setItem("loggedTutor", JSON.stringify(tutor));
-    return true;
-  } else {
-    throw Error("Invalid login!");
-  }
-}
+// // LOGIN TUTOR 
+// export function logintutor(inputEmail, inputPassword) {
+//   const tutor = tutors.find(
+//     (tutor) => tutor.email === inputEmail && tutor.password === inputPassword
+//   );
+//   if (tutor) {
+//     sessionStorage.setItem("loggedTutor", JSON.stringify(tutor));
+//     return true;
+//   } else {
+//     throw Error("Invalid login!");
+//   }
+// }
 
-// LOGOUT DO TUTOR
-export function logout() {
-  sessionStorage.removeItem("loggedTutor");
-}
+// // LOGOUT DO TUTOR
+// export function logout() {
+//   sessionStorage.removeItem("loggedTutor");
+// }
 
 // Get the logged tutor
 export function getLoggedTutor() {

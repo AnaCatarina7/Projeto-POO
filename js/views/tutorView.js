@@ -1,27 +1,30 @@
 import * as User from '../models/userModel.js';
-
+const users = User.initUsers();
 // Check if a user is logged in
 // If not, redirect them to the login page
 if (!User.isLogged()) {
     window.location.href = '/html/login.html';
 } else {
-    loadTutorProfile();
-    changeTutorData();
+    document.addEventListener('DOMContentLoaded', function () {
+        loadTutorProfile();
+        changeTutorData();
+        subjectDropdown();
+    })
+
 }
 
-function loadTutorProfile() {
+export function loadTutorProfile() {
     // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
     const tutorEmail = localStorage.getItem('selectedTutorEmail');
     let tutor;
 
     // Logic to determine which tutor to load:
     if (tutorEmail) {
-        const users = User.initUsers();
         tutor = users.find(user => user.email === tutorEmail);
 
         if (!tutor) {
             alert('Tutor not found!');
-            window.location.href = 'tutorCatalog.html';
+            window.location.href = '/index.html';
             return;
         }
 
@@ -49,9 +52,9 @@ function loadTutorProfile() {
     email.innerHTML = `<a href="mailto:${tutor.email}">${tutor.email}</a>`;
     price.textContent = tutor.price ? `${tutor.price}€/aula` : 'Preço não informado';
     specialNeeds.innerHTML = `<span class="badge">${tutor.specialNeeds || 'Não informado'}</span>`;
-    
+
     // Safe handling for modality
-    modality.innerHTML = typeof tutor.modality === 'string' ?  `<span class="badge">${tutor.modality}</span>` :
+    modality.innerHTML = typeof tutor.modality === 'string' ? `<span class="badge">${tutor.modality}</span>` :
         (tutor.modality?.map(m => `<span class="badge">${m}</span>`).join(' ') || 'Não Informado');
 
     // Education Level 
@@ -66,8 +69,8 @@ function loadTutorProfile() {
 
     // Subjects 
     const subjects = tutor.subjects ?? [];
-    subjectsContainer.innerHTML = subjects.length > 0 ? 
-        subjects.map(subj => `<span class="badge">${subj.replace(" - ", " ")}</span>`).join(' ') : 
+    subjectsContainer.innerHTML = subjects.length > 0 ?
+        subjects.map(subj => `<span class="badge">${subj.replace(" - ", " ")}</span>`).join(' ') :
         'Não Informado';
 
     // Specific logic for when it's the tutor's own profile
@@ -79,8 +82,7 @@ function loadTutorProfile() {
 function changeTutorData() {
     // Get currently logged in user
     const loggedUser = User.getLoggedUser();
-    const users = User.initUsers();
-    
+
     // Fill form when modal opens
     document.getElementById('editProfileModal').addEventListener('show.bs.modal', () => {
         // Basic info
@@ -94,13 +96,13 @@ function changeTutorData() {
         document.getElementById("specialNeedsYes").checked = loggedUser.specialNeeds === "Sim";
         document.getElementById("specialNeedsNo").checked = loggedUser.specialNeeds === "Não";
         document.getElementById("educationLevel").value = loggedUser.educationLevel || '';
-        
-         // Modalities
+
+        // Modalities
         const modalities = Array.isArray(loggedUser.modality) ? loggedUser.modality : [loggedUser.modality];
         document.getElementById("online").checked = modalities.includes('Online');
         document.getElementById("inPerson").checked = modalities.includes('Presencial');
-        
-        
+
+
         // Subjects (checkboxes)
         const subjects = loggedUser.subjects || [];
         document.querySelectorAll('.dropdown-menu input[type="checkbox"]').forEach(checkbox => {
@@ -136,7 +138,7 @@ function changeTutorData() {
             ].filter(Boolean),
             specialNeeds: document.getElementById("specialNeedsYes").checked ? "Sim" : "Não",
             subjects: Array.from(document.querySelectorAll('.dropdown-menu input[type="checkbox"]:checked'))
-                        .map(checkbox => checkbox.value)
+                .map(checkbox => checkbox.value)
         };
 
         // Include password only if the user entered a new one
@@ -200,4 +202,28 @@ function subjectDropdown() {
     updateSubjectSelection();
 }
 
-subjectDropdown();
+// Contact tutor
+document.getElementById('contact-btn').addEventListener('click', () => {
+    // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
+    const tutorEmail = localStorage.getItem('selectedTutorEmail');
+    let tutor;
+    // Logic to determine which tutor to load:
+    if (tutorEmail) {
+        tutor = users.find(user => user.email === tutorEmail);
+    }
+    //console.log(tutorEmail);
+    User.bookLesson(tutor.email)
+    showSuccessMessage();
+});
+
+// Show alert
+function showSuccessMessage() {
+
+    const modal = new bootstrap.Modal(document.getElementById('successModal'));
+    modal.show();
+
+    setTimeout(() => {
+        modal.hide();
+    }, 2500);
+
+}

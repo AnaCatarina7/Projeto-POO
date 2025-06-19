@@ -1,13 +1,16 @@
 import * as User from '../models/userModel.js';
-
+import { generateTutorCard,clickTutorCard } from "../views/tutorCatalogView.js";
+//import { loadTutorProfile } from "../views/tutorView.js";
 let users = User.initUsers();
 
 if (!User.isLogged()) {
+
     window.location.href = '/html/login.html';
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     renderStudentWelcome()
+    unlockRewords()
     changeData();
     renderFav()
 })
@@ -16,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
 function renderStudentWelcome() {
     const loggedUser = User.getLoggedUser();
 
-   const heroConteiner= document.getElementById('hero-student-section')
-   heroConteiner.innerHTML=`
+    const heroConteiner = document.getElementById('hero-student-section')
+    heroConteiner.innerHTML = `
    
     <div class="d-flex align-items-center">
     <div class="student-foto-wrapper me-4">
@@ -30,14 +33,13 @@ function renderStudentWelcome() {
     </div>
   </div>
    `
-
+   
 }
-
 
 // Students edit data view
 function changeData() {// Function to change user data (password and location)
     const loggedUser = User.getLoggedUser();
-    console.log(loggedUser.password, loggedUser.location);
+    //console.log(loggedUser.password, loggedUser.location);
 
     document.getElementById("editStudentForm").addEventListener("submit", (event) => {
         event.preventDefault();
@@ -54,6 +56,11 @@ function changeData() {// Function to change user data (password and location)
             if (user) {
 
                 if (newPassword || confirmPassword) {
+                    if (newPassword.length<6){
+                        alert("A palavra passe deve ter pelo menos 6 caracteres")
+                        return
+                    }
+
                     if (newPassword !== confirmPassword) {
                         alert("As palavras-passe não coincidem. Por favor, tente novamente.");
                         return;
@@ -63,14 +70,14 @@ function changeData() {// Function to change user data (password and location)
                         alert("A nova palavra-passe não pode ser igual à atual.")
                         return;
                     }
-
                     user.password = newPassword;
-
+                    loggedUser.password=newPassword;
                 }
                 user.location = newLocation;
-                localStorage.setItem("users", JSON.stringify(users));
+                loggedUser.location=newLocation
+                User.updateStorages(loggedUser)
                 alert("Dados atualizados com sucesso!");
-                console.log(user);
+                console.log(user,loggedUser);
 
                 let modal = bootstrap.Modal.getInstance(document.getElementById('editStudentModal'))
                 if (modal) {
@@ -84,8 +91,6 @@ function changeData() {// Function to change user data (password and location)
     })
 }
 
-
-
 // Students favourites tutors view
 function renderFav() {
     const favTutorsCatalog = document.getElementById('favTutorsCatalog')
@@ -97,20 +102,14 @@ function renderFav() {
         favTutorsCatalog.innerHTML = " <h4>Não tem tutores favoritos :(</h4>"
         console.log(loggedUser.favourites);
         return
-
     }
     try {
         loggedUser.favourites.forEach(tutor => {
-
             favTutorsCatalog.innerHTML += generateTutorCard(tutor)
-
         });
     } catch (error) {
         console.log(error);
-
     }
-
-
     document.querySelectorAll('.tutor-favoritebtn').forEach(button => {
         button.addEventListener('click', (event) => {
             event.preventDefault();
@@ -123,60 +122,60 @@ function renderFav() {
                     User.removeFavourite(tutorEmail);
                     location.reload();
                     console.log("Removendo favorito");
-
-                } 
+                }
             } catch (error) {
                 alert(error.message);
             }
         });
     });
 
-
-
+     clickTutorCard()
+  
 }
-
-function generateTutorCard(tutor) {
-    const modalityText = tutor.modality === 'online' ? 'Online' : tutor.modality === 'inPerson' ? 'Presencial' :
-        Array.isArray(tutor.modality) ? tutor.modality.join('/') : 'Não informado';
-
-    const heartColor = User.isFavourite(tutor.email) ? 'red' : 'white';
-
-    return `
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-            <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden">
-                <img src="${tutor.image || '/assets/svg/tutor1.svg'}" class="card-img-top" alt="Foto do tutor">
-                <div class="position-absolute top-0 end-0 p-2">
-                    <button class="tutor-favoritebtn" data-tutor-id="${tutor.email}" style="background: transparent; border: none;">
-                        <iconify-icon icon="mdi:heart" width="40" height="40" style="color: ${heartColor};"></iconify-icon>
-                    </button>
-                </div>
-                <div class="card-body px-4 pt-3">
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                        <span class="rating fw-semibold" style="font-size: 0.9rem;">
-                            ${tutor.rating || '5'} 
-                            <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
-                        </span>
-                        <span class="text-muted small category-text">${tutor.subjects?.[0] || 'Geral'}</span>
-                    </div>
-                    <h6 class="fw-bold mb-1">${tutor.name} ${tutor.surname}</h6>
-                    <p class="text-muted mb-2" style="font-size: 0.85rem;">
-                        ${tutor.location || 'Não informado'} (${modalityText})
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <span class="fw-bold text-dark">${tutor.price ? tutor.price + '€/h' : 'Preço não informado'}</span>
-                        ${tutor.firstClassFree ?
-            '<span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>' : ''}
-                    </div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-
 
 // Students rewords view
+function unlockRewords() {
+    const loggedUser = User.getLoggedUser();
+    let lessons = loggedUser.classesTaken || [];
+    let totalLessons = lessons.length
+    if (!Array.isArray(loggedUser.rewardUsed)) {
+        loggedUser.rewardUsed = [];
+    }
+    console.log(loggedUser.rewardUsed, 'ok', totalLessons)
 
 
+    if (totalLessons >= 0) {
+        activateRewardCard(1, "1º Aula gratuíta") // esta sempre ativo
 
+    }
+    if (loggedUser.rewardUsed.includes("5% de Desconto")) {
+        activateRewardCard(2, "Ganhou uma aula gratuita com este tutor!")
+
+    }
+    if (loggedUser.rewardUsed.includes("Aula gratuita com tutor")) {
+        activateRewardCard(3, "Tem 25% de desconto disponível!")
+
+
+    }
+    if (loggedUser.rewardUsed.includes("25% de Desconto")) {
+        activateRewardCard(4, "Desbloqueou 50% de reembolso!")
+
+
+    }
+    if (loggedUser.rewardUsed.includes("10% de Reembolso")) {
+        activateRewardCard(5, "Receba 10% de reembolso numa aula anterior.")
+
+    }
+    if (loggedUser.rewardUsed.includes("Materiais de apoio")) {
+        activateRewardCard(6, "Agora é um aluno Premium! Acesso a materiais!")
+
+    }
+
+}
+
+function activateRewardCard(id, message) {
+    const card = document.querySelector(`.reward-card[data-reward-id="${id}"]`)
+    if (!card) return
+    card.classList.remove('locked')
+}
 
