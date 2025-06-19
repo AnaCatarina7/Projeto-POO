@@ -57,7 +57,7 @@ function navbarView() {
             </li>
             <li>
               <a class="dropdown-item" href="#" id="editProfile_link" data-bs-toggle="modal" data-bs-target="#editProfileModal">
-                <iconify-icon icon="tabler:edit" ...></iconify-icon>
+                <iconify-icon icon="tabler:edit" width="20" height="20" class="me-2" style="color: #395d7f;"></iconify-icon>
                 Editar Perfil
               </a>
             </li>
@@ -175,15 +175,15 @@ document.getElementById("editProfile_link").addEventListener("click", (e) => {
   });
 
 
-// Search 
-    document.getElementById("navbarSearchForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const searchTerm = document.getElementById("navbarSearchInput").value.trim();
-    
-    if (searchTerm) {
-      localStorage.setItem('searchTerm', searchTerm.toLowerCase());
-      window.location.href = "/html/filter.html";
-    }
+// NavBar Search
+  document.getElementById("navbarSearchForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const searchTerm = document.getElementById("navbarSearchInput").value.trim();
+      
+      if (searchTerm) {
+          localStorage.setItem('searchTerm', searchTerm);
+          window.location.href = "/html/filter.html";
+      }
   });
 }
 
