@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 // Student hero section
-
 function renderStudentWelcome() {
     const loggedUser = User.getLoggedUser();
 

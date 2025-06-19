@@ -21,6 +21,7 @@ class User {
             this.specialNeeds = tutorInfo.specialNeeds || '';
             this.availability = tutorInfo.availability || '';
             this.image = tutorInfo.image || '';
+            this.favoriteCount = tutorInfo.favoriteCount || 0;
             this.createdAt = new Date().toISOString();
         }
     };
@@ -100,6 +101,8 @@ export function addFavourite(tutorEmail) { // receive a userType 'tutor' to add 
         throw new Error("Tutor não encontrado!");
     }
     try {
+        tutorToAdd.favoriteCount = (tutorToAdd.favoriteCount || 0) + 1; //Increment the favoriteCount of the tutor
+
         loggedUser.favourites.push(tutorToAdd);
         sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser)); // update loggedUser in sessionStorage
 
@@ -127,6 +130,11 @@ export function removeFavourite(tutorEmail) {
         throw new Error("Apenas alunos logados podem remover favoritos!")
     }
 
+    const tutorIndex = users.findIndex(user => user.email === tutorEmail && user.userType === 'tutor');
+    if (tutorIndex !== -1) {
+        users[tutorIndex].favoriteCount = Math.max(0, (users[tutorIndex].favoriteCount || 0) - 1);  //Decrement the favoriteCount of the tutor
+    }
+
     const userIndex = users.findIndex(user => user.email === loggedUser.email);// find the index of the logged user in the localstorage users array 
     if (userIndex === -1) {
         throw new Error("User não encontrado!");
@@ -139,8 +147,8 @@ export function removeFavourite(tutorEmail) {
 
 
 // FILTER TUTORS
-export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null) {
-  let filteredTutors = users.filter(user => user.userType === 'tutor');  // Use let instead of const
+export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null, subjectFilter = null, searchTerm = null) {
+  let filteredTutors = users.filter(user => user.userType === 'tutor');
   
   // Education Level Filter
   if (levelFilter && levelFilter !== "Nível de ensino") {
@@ -187,19 +195,49 @@ export function getTutors(levelFilter = null, modalityFilter = null, locationFil
     });
   }
 
+    // Subject Filter
+  if (subjectFilter && subjectFilter !== "Disciplinas") {
+    filteredTutors = filteredTutors.filter(tutor => {
+      if (!tutor.subjects || tutor.subjects.length === 0) return false;
+      
+      return tutor.subjects.some(subject => 
+        subject.toLowerCase().includes(subjectFilter.toLowerCase())
+      );
+    });
+  }
+
+    // Search Term Filter on the navBar
+  if (searchTerm && searchTerm.trim() !== "") {
+    const term = searchTerm.toLowerCase().trim();
+    filteredTutors = filteredTutors.filter(tutor => {
+      const fullText = `
+        ${tutor.name.toLowerCase()} 
+        ${tutor.surname.toLowerCase()} 
+        ${tutor.subjects?.join(' ').toLowerCase() || ''}
+        ${tutor.bio?.toLowerCase() || ''}
+      `;
+      return fullText.includes(term);
+    });
+  }
+
     // Order logic
   if (orderBy) {
     switch(orderBy) {
-      case "Preço mais baixo":
-        filteredTutors.sort((a, b) => a.price - b.price); // Ascending
-        break;
-      case "Preço mais alto":
-        filteredTutors.sort((a, b) => b.price - a.price); // Descending
-        break;
-      case "Mais recentes":
-        filteredTutors.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        break;
-    }
+        case "Preço mais baixo":
+            filteredTutors.sort((a, b) => a.price - b.price); // Ascending
+            break;
+        case "Preço mais alto":
+            filteredTutors.sort((a, b) => b.price - a.price); // Descending
+            break;
+        case "Mais recentes":
+            filteredTutors.sort((a, b) => {
+                    return new Date(b.createdAt) - new Date(a.createdAt);
+            });
+            break;
+        case "Mais populares":
+            filteredTutors.sort((a, b) => (b.favoriteCount || 0) - (a.favoriteCount || 0));
+            break;
+        }
   }
   
   return filteredTutors;

@@ -28,10 +28,14 @@ function navbarView() {
           </li>
         </ul>
 
-        <form class="search-bar d-flex align-items-center me-3">
-          <input class="form-control bg-transparent text-white border-0" type="search" placeholder="Pesquisar..."
-            aria-label="Pesquisar">
-          <button class="btn-search " type="submit">
+        <form class="search-bar d-flex align-items-center me-3" id="navbarSearchForm">
+          <input class="form-control bg-transparent text-white border-0" 
+                type="search" 
+                placeholder="Pesquisar..."
+                aria-label="Pesquisar"
+                id="navbarSearchInput"
+                name="search">
+          <button class="btn-search" type="submit">
             <iconify-icon icon="healthicons:magnifying-glass" width="30" height="30" class="search-icon"></iconify-icon>
           </button>
         </form>
@@ -169,9 +173,20 @@ document.getElementById("editProfile_link").addEventListener("click", (e) => {
     User.logout();
     window.location.href = "/index.html";
   });
+
+
+// Search 
+    document.getElementById("navbarSearchForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const searchTerm = document.getElementById("navbarSearchInput").value.trim();
+    
+    if (searchTerm) {
+      localStorage.setItem('searchTerm', searchTerm.toLowerCase());
+      window.location.href = "/html/filter.html";
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   navbarView();
 })
-

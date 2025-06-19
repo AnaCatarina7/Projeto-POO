@@ -24,10 +24,11 @@ function loadTutorProfile() {
             window.location.href = 'tutorCatalog.html';
             return;
         }
-        // localStorage.removeItem('selectedTutorEmail');
 
-        // } else {
-        //     tutor = User.getLoggedUser();
+        localStorage.removeItem('selectedTutorEmail');
+
+        } else {
+            tutor = User.getLoggedUser();
         }
 
     // Get DOM elements for profile information
@@ -114,11 +115,10 @@ function changeTutorData() {
         const newPassword = document.getElementById("newPassword").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
 
-        // Validate password confirmation
         if (newPassword && newPassword !== confirmPassword) {
             alert("As palavras-passes são diferentes!");
             return;
-        }
+        } // Validate password confirmation
 
         // Collect updated data from the form
         const updatedData = {
