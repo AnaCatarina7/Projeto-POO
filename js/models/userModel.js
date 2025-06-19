@@ -345,6 +345,7 @@ class User {
             this.specialNeeds = tutorInfo.specialNeeds || '';
             this.availability = tutorInfo.availability || '';
             this.image = tutorInfo.image || '';
+            this.favoriteCount = tutorInfo.favoriteCount || 0;
             this.createdAt = new Date().toISOString();
         }
     };
