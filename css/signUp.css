@@ -26,16 +26,16 @@ main {
 }
 
 .singup-text h2 {
-    color: #395d7f;
+    color: var(--color-blue);
     font-weight: 600;
 }
 
 .singup-text p {
-    color: #1f4e79;
+    color: var(--color-blue);
 }
 
 h3 {
-    color: #395d7f;
+    color:var(--color-blue);
     font-weight: 600;
 }
 
@@ -50,7 +50,7 @@ h3 {
 
 .form-label {
     font-weight: 650;
-    color: #395d7f;
+    color:var(--color-blue);
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
     display: block;
@@ -62,7 +62,7 @@ h3 {
     background-color: rgba(255, 255, 255, 0); 
     border: 1px solid rgba(31, 78, 121, 0.46) !important;
     border-radius: 0.6rem;
-    color: #1f4e79;
+    color: var(--color-blue);
     font-weight: 500;
     opacity: 0.95;
     padding: 1rem !important;
@@ -74,14 +74,14 @@ h3 {
     background-color: rgba(255, 255, 255, 0);
     border: 1px solid rgba(31, 78, 121, 0.46) !important; 
     border-radius: 0.6rem;
-    color: #1f4e79;
+    color: var(--color-blue);
     font-weight: 500;
     opacity: 0.95;
     padding: 1rem !important;
 }
 
 ::placeholder {
-    color: #395d7f;
+    color:var(--color-blue);
     opacity: 1;
     font-weight: 400;
 }
@@ -92,7 +92,7 @@ h3 {
     border-radius: 0.8rem;
     border: 1px solid rgba(31, 78, 121, 0.46)!important;
     background-color: white !important;
-    color: #395d7f;
+    color:var(--color-blue);
     text-align: left;
 }
 
@@ -111,7 +111,7 @@ h3 {
 
 .dropdown-header {
     font-weight: 600;
-    color: #1f4e79;
+    color: var(--color-blue);
 }
 
 /* Seção de tutor */
@@ -127,7 +127,7 @@ h3 {
 .form-check-label {
     font-weight: 500;
     font-size: 1.2rem;
-    color: #395d7f;
+    color:var(--color-blue);
     cursor: pointer;
 }
 
@@ -137,8 +137,8 @@ h3 {
 }
 
 .form-check-input:checked {
-    background-color: #395d7f;
-    border-color: #395d7f;
+    background-color:var(--color-blue);
+    border-color:var(--color-blue);
 }
 
 /* Espaçamento entre seções */
@@ -167,7 +167,7 @@ h3 {
 /* Cabeçalho */
 .availability-table thead th {
     background-color: #f8f9fa;
-    color: #395d7f;
+    color:var(--color-blue);
     font-weight: 600;
     padding: 12px 8px;
     text-align: center;
@@ -178,7 +178,7 @@ h3 {
 .availability-table th:first-child {
     text-align: left;
     background: transparent;
-    color: #395d7f;
+    color:var(--color-blue);
     font-weight: 600;
     font-size: 1.1rem;
 }
@@ -225,13 +225,13 @@ h3 {
 }
 
 .availability-checkbox:hover .checkmark {
-    border-color: #395d7f;
+    border-color:var(--color-blue);
 }
 
 /* Checkbox selecionado */
 .availability-checkbox input[type="checkbox"]:checked ~ .checkmark {
-    background-color: #395d7f;
-    border-color: #395d7f;
+    background-color:var(--color-blue);
+    border-color:var(--color-blue);
 }
 
 .availability-checkbox .checkmark:after {
@@ -280,10 +280,10 @@ h3 {
 
 /* Botão de submit */
 .formBtn {
-    background-color: #fede89;
-    color: #1f4e79;
+    background-color: var(--color-yellow);
+    color: var(--color-blue);
     border: none;
-    border-radius: 12px;
+    border-radius: 4px;
     font-weight: 600;
     font-size: 1.1rem;
     transition: all 0.2s ease;
@@ -298,9 +298,9 @@ h3 {
 
 /* Links */
 a {
-    color: #fede89;
+    color: var(--color-yellow);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 a:hover {
@@ -311,7 +311,7 @@ a:hover {
 .badge-subject {
   /* display: inline-block; */
   background-color: #ffffff;
-  color: #395d7f;
+  color:var(--color-blue);
   padding: 2px 8px;
   border-radius: 12px;
   margin: 2px;

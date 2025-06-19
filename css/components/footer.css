@@ -20,7 +20,7 @@
     opacity: 1;
 }
 
-a {
+.footer-container a {
     font-weight: 250;
     font-size: 1.1rem;
 }

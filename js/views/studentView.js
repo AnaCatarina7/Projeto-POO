@@ -121,7 +121,7 @@ function renderFav() {
             try {
                 if (isCurrentlyFav) {
                     User.removeFavourite(tutorEmail);
-                    location.reload();
+                    renderFav()
                     console.log("Removendo favorito");
                 }
             } catch (error) {
@@ -174,7 +174,7 @@ function unlockRewords() {
 
 }
 
-function activateRewardCard(id, message) {
+function activateRewardCard(id) {
     const card = document.querySelector(`.reward-card[data-reward-id="${id}"]`)
     if (!card) return
     card.classList.remove('locked')

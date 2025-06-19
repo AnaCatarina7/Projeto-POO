@@ -1,29 +1,29 @@
 import * as User from "../models/userModel.js";
 
 document.addEventListener('DOMContentLoaded', function () {
-  tutorCatalogView();
+    tutorCatalogView();
 })
 
 export function tutorCatalogView() {
-  User.initUsers();
-  
-  renderTutorCatalog(User.getTutors());
+    User.initUsers();
 
-  document.querySelector("#btnFilter").addEventListener("click", () => {
-    const selectedLevel = document.querySelector("#filter-level").value; // Get education level filter
-    const selectedModality = document.querySelector("#filter-modality").value; // Get modality filter
-    const selectedLocation = document.querySelector("#filter-location").value; //Get location filter
-    const selectedOrder = document.querySelector("#order").value; // Get sort order
+    renderTutorCatalog(User.getTutors());
 
-    // Apply both filters
-    renderTutorCatalog(User.getTutors(selectedLevel, selectedModality, selectedLocation, selectedOrder));
-  });
+    //   document.querySelector("#btnFilter").addEventListener("click", () => {
+    //     const selectedLevel = document.querySelector("#filter-level").value; // Get education level filter
+    //     const selectedModality = document.querySelector("#filter-modality").value; // Get modality filter
+    //     const selectedLocation = document.querySelector("#filter-location").value; //Get location filter
+    //     const selectedOrder = document.querySelector("#order").value; // Get sort order
 
-  addFavouriteBtn();
+    //     // Apply both filters
+    //     renderTutorCatalog(User.getTutors(selectedLevel, selectedModality, selectedLocation, selectedOrder));
+    //   });
+
+    addFavouriteBtn();
 }
 
 
-            
+
 
 // Render Tutor Catalog
 function renderTutorCatalog(tutors = []) {
@@ -32,9 +32,13 @@ function renderTutorCatalog(tutors = []) {
     // Gets only until 8 different tutors 
     const topTutors = tutors.slice(0, 8);
 
+
     // Generates the cards for each tutor
     for (const tutor of topTutors) {
+
         result += generateTutorCard(tutor);
+
+
     }
 
     // Insert in the container on the main page
@@ -48,26 +52,29 @@ function renderTutorCatalog(tutors = []) {
 }
 
 export function clickTutorCard() {
-      document.querySelectorAll('.tutor-card').forEach(card => {
-            card.addEventListener('click', function(e) {
-                if (e.target.closest('.tutor-favoritebtn')) return;
-    
-                const tutorEmail = this.getAttribute('data-tutor-email');
-                localStorage.setItem('selectedTutorEmail', tutorEmail);
-                window.location.href = '/html/profileTutor.html';
-            });
+    document.querySelectorAll('.tutor-card').forEach(card => {
+        card.addEventListener('click', function (e) {
+            if (e.target.closest('.tutor-favoritebtn')) return;
+
+            const tutorEmail = this.getAttribute('data-tutor-email');
+            localStorage.setItem('selectedTutorEmail', tutorEmail);
+            window.location.href = '/html/profileTutor.html';
         });
+    });
 }
 
 
 // Tutor Card
 export function generateTutorCard(tutor) {
-    const modalityText = tutor.modality === 'online' ? 'Online' : tutor.modality === 'inPerson' ? 'Presencial' :
-        Array.isArray(tutor.modality) ? tutor.modality.join('/') : 'Não informado';
 
-    const heartColor = User.isFavourite(tutor.email) ? 'red' : 'white';
-   
-    return `
+        const modalityText = tutor.modality === 'online' ? 'Online' : tutor.modality === 'inPerson' ? 'Presencial' :
+            Array.isArray(tutor.modality) ? tutor.modality.join('/') : 'Não informado';
+
+        const heartColor = User.isFavourite(tutor.email) ? 'red' : 'white';
+
+        //console.log(tutor.isAuthorized);     
+
+        return `
         <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
             <div class="card border-0 shadow-sm rounded-4 position-relative overflow-hidden tutor-card" 
                  data-tutor-email="${tutor.email}"
@@ -94,12 +101,14 @@ export function generateTutorCard(tutor) {
                     <div class="d-flex justify-content-between align-items-center">
                         <span class="fw-bold text-dark">${tutor.price ? tutor.price + '€/h' : 'Preço não informado'}</span>
                         ${tutor.firstClassFree ?
-            '<span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>' : ''}
+                '<span class="text-warning fw-semibold small">• 1ª Aula Grátis</span>' : ''}
                     </div>
                 </div>
             </div>
         </div>
-    `;
+    `
+
+
 }
 
 // Favourite Button
@@ -116,7 +125,7 @@ function addFavouriteBtn() {
                     User.removeFavourite(tutorEmail);
                     location.reload();
                     console.log("Removendo favorito");
-                    
+
                 } else {
                     User.addFavourite(tutorEmail);
                     location.reload();

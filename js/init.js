@@ -77,7 +77,8 @@ window.initdata = function initdata() {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
         // },
-        userType: "tutor"
+        userType: "tutor",
+        isAuthorized:true
       },
       {
         name: "Carlos",
@@ -98,7 +99,8 @@ window.initdata = function initdata() {
         //   monMorning: false, tueMorning: true, wedMorning: false, thuMorning: true, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: false, tueAfternoon: false, wedAfternoon: false, thuAfternoon: false, friAfternoon: false, satAfternoon: false, sunAfternoon: false
         // },
-        userType: "tutor"
+        userType: "tutor",
+        isAuthorized:true
       },
       {
         name: "Ana",
@@ -119,7 +121,8 @@ window.initdata = function initdata() {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: true, sunMorning: true,
         //   monAfternoon: false, tueAfternoon: false, wedAfternoon: false, thuAfternoon: false, friAfternoon: false, satAfternoon: false, sunAfternoon: false
         // },
-        userType: "tutor"
+        userType: "tutor",
+        isAuthorized:true
       },
       {
         name: "Mariana",
@@ -140,7 +143,8 @@ window.initdata = function initdata() {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
         // },
-        userType: "tutor"
+        userType: "tutor",
+        isAuthorized:false,
       },
       {
         name: "EsmadTT",
@@ -161,7 +165,8 @@ window.initdata = function initdata() {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
         // },
-        userType: "tutor"
+        userType: "tutor",
+        isAuthorized:true
       }
     ];
 
@@ -172,9 +177,9 @@ window.initdata = function initdata() {
   if (!localStorage.educationLevels) {
     const educationLevels = [
       {
-        id: "basico",
-        nome: "Ensino Básico (3.º Ciclo)",
-        disciplinas: [
+        id: 1,
+        name: "Ensino Básico (3.º Ciclo)",
+        subjects: [
           "EB-Português",
           "EB-Inglês",
           "EB-Francês",
@@ -187,9 +192,9 @@ window.initdata = function initdata() {
         ]
       },
       {
-        id: "secundario",
-        nome: "Ensino Secundário",
-        disciplinas: [
+        id: 2,
+        name: "Ensino Secundário",
+        subjects: [
           "ES-Português",
           "ES-Língua Estrangeira",
           "ES-Filosofia",
@@ -210,19 +215,16 @@ window.initdata = function initdata() {
 
   // Subjects 
   if (!localStorage.getItem('subjects')) {
-    const subjects = [
-      // Ensino Básico
-      "EB-Português", "EB-Inglês", "EB-Francês", "EB-Espanhol", 
-      "EB-História", "EB-Geografia", "EB-Matemática", 
-      "EB-Ciências Naturais", "EB-Físico-Química",
-      
-      // Ensino Secundário
-      "ES-Português", "ES-Língua Estrangeira", "ES-Filosofia", 
-      "ES-Matemática A", "ES-Geometria Descritiva A", 
-      "ES-Física e Química A", "ES-Biologia e Geologia",
-      "ES-Economia A", "ES-Geografia A", "ES-História B",
-      "ES-Literatura Portuguesa"
-    ];
+const subjects = [
+  "Português", "Inglês", "Francês", "Espanhol",
+  "História", "Geografia", "Matemática",
+  "Ciências Naturais", "Físico-Química",
+  "Língua Estrangeira", "Filosofia", "Matemática A",
+  "Geometria Descritiva A", "Física e Química A",
+  "Biologia e Geologia", "Economia A", "Geografia A",
+  "História B", "Literatura Portuguesa"
+];
+
     localStorage.setItem('subjects', JSON.stringify(subjects));
   }
 
