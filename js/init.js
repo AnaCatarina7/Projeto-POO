@@ -33,7 +33,7 @@ window.initdata = function initdata() {
         userType: "aluno",
         favourites:[],
         rewardUsed:[],
-        classestaken:[]
+        classesTaken:[]
       },
       {
         name: "Tiago",
@@ -44,7 +44,7 @@ window.initdata = function initdata() {
         userType: "aluno",
         favourites:[],
         rewardUsed:[],
-        classestaken:[]
+        classestTaken:[]
       },
       {
         name: "Beatriz",
@@ -54,7 +54,7 @@ window.initdata = function initdata() {
         userType: "aluno",
         favourites:[],
         rewardUsed:[],
-        classestaken:[]
+        classesTaken:[]
       },
 
       // TUTORES 

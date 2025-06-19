@@ -35,6 +35,7 @@ export function loginUser(email, password) {
 // LOGGED USER
 export function isLogged() {
     return sessionStorage.getItem("loggedUser") ? true : false;
+
 }
 
 export function getLoggedUser() {
@@ -53,6 +54,20 @@ export function isFavourite(tutorEmail) {
         return false;
     }
     return loggedUser.favourites.some(fav => fav.email === tutorEmail);
+}
+
+export function updateStorages(loggedUser) {
+
+    sessionStorage.setItem("loggedUser", JSON.stringify(loggedUser)); // update loggedUser in sessionStorage
+
+
+    const userIndex = users.findIndex(user => user.email === loggedUser.email);// find the index of the logged user in the localstorage users array 
+    if (userIndex !== -1) {
+        users[userIndex] = loggedUser;
+    } else {
+        throw new Error("User não encontrado!");
+    }
+    localStorage.setItem("users", JSON.stringify(users)); // update users in localstorage 
 }
 
 // ADD TUTOR TO FAVOURITES
@@ -108,6 +123,67 @@ export function removeFavourite(tutorEmail) {
     sessionStorage.setItem("loggedUser", JSON.stringify(users[userIndex]));
 }
 
+export function bookLesson(tutorEmail) {
+    const loggedUser = getLoggedUser();
+
+    if (loggedUser.userType !== 'aluno') {
+        alert('Apenas alunos podem marcar aulas')
+    }
+
+    if (!loggedUser.classesTaken) {
+        loggedUser.classesTaken = [];
+    }
+
+    try {
+        const sameTutorLessons = loggedUser.classesTaken.filter(lesson => lesson.tutorEmail === tutorEmail);
+        const numLessonWithTutor = sameTutorLessons.length + 1;
+        const newClass = {
+            tutorEmail: tutorEmail,
+            date: new Date().toISOString().slice(0, 10),
+            numLesson: numLessonWithTutor
+        };
+        loggedUser.classesTaken.push(newClass)
+        giveReword(loggedUser, numLessonWithTutor)
+        updateStorages(loggedUser)
+        console.log(loggedUser.classesTaken);
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
+    let totalLessons = loggedUser.classesTaken.length
+
+    if (totalLessons >= 0 && !loggedUser.rewardUsed.includes("1ª Aula Grátis")) {
+        loggedUser.rewardUsed.push("1ª Aula Grátis")
+    }
+
+    if (totalLessons >= 3 && !loggedUser.rewardUsed.includes("5% de Desconto")) {
+        loggedUser.rewardUsed.push("5% de Desconto")
+        console.log(numLessonWithTutor);
+
+    }
+
+    if (numLessonWithTutor >= 5 && !loggedUser.rewardUsed.includes("Aula gratuita com tutor")) {
+        loggedUser.rewardUsed.push("Aula gratuita com tutor")
+        console.log(numLessonWithTutor);
+    }
+    if (totalLessons >= 7 && !loggedUser.rewardUsed.includes("25% de Desconto")) {
+        loggedUser.rewardUsed.push("25% de Desconto")
+        console.log(numLessonWithTutor);
+    }
+    if (numLessonWithTutor >= 15 && !loggedUser.rewardUsed.includes("10% de Reembolso")) {
+        loggedUser.rewardUsed.push("10% de Reembolso")
+
+    }
+    if (numLessonWithTutor >= 10 && !loggedUser.rewardUsed.includes("Materiais de apoio")) {
+        loggedUser.rewardUsed.push("Materiais de apoio")
+        console.log(sameTutorLessons);
+        
+
+    }
+    console.log(loggedUser.rewardUsed, numLessonWithTutor);
+}
 
 class User {
     constructor(name, surname, email, location, password, userType, tutorInfo = {}) {
@@ -122,7 +198,7 @@ class User {
         if (userType === 'aluno') {
             this.favourites = []
             this.rewardUsed = []
-            this.classestaken=[]
+            this.classesTaken = []
         }
 
         if (userType === 'tutor') {
@@ -135,8 +211,10 @@ class User {
             this.specialNeeds = tutorInfo.specialNeeds || '';
             this.availability = tutorInfo.availability || '';
             this.image = tutorInfo.image || '';
+            this.createdAt = new Date().toISOString();
         }
     };
+
 }
 
 

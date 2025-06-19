@@ -18,8 +18,8 @@
     <nav class="navbar navbar-expand-lg fixed-top px-5" id="navbar"></nav>
   </header>
 
-<section class="hero-student-section d-flex align-items-center " id="hero-student-section">
-  <!-- <div class="d-flex align-items-center">
+  <section class="hero-student-section d-flex align-items-center " id="hero-student-section">
+    <!-- <div class="d-flex align-items-center">
     <div class="student-foto-wrapper me-4">
       <img src="/assets/img/pexels-ann-h-45017-1762851.jpg" alt="foto" class="student-foto">
     </div>
@@ -28,7 +28,7 @@
       <p class="mb-0">Aluno | Vila do Conde</p>
     </div>
   </div> -->
-</section>
+  </section>
 
 
 
@@ -98,7 +98,7 @@
   <ul class="nav nav-underline overflow-auto flex-nowrap student-tabs" id="studentTabs" role="tablist">
     <li class="nav-item" role="presentation">
       <button class="nav-link active" id="dashboard-tab" data-bs-toggle="tab" data-bs-target="#favouritesTT"
-        type="button" role="tab">Explicadore Favoritos</button>
+        type="button" role="tab">Explicadores Favoritos</button>
     </li>
     <li class="nav-item" role="presentation">
       <button class="nav-link" id="users-tab" data-bs-toggle="tab" data-bs-target="#budgets" type="button"
@@ -115,61 +115,74 @@
       </div>
     </div>
     <div class="tab-pane fade budgets-tab d-flex flex-wrap justify-content-center gap-3" id="budgets" role="tabpanel">
-  <div class="d-flex flex-wrap justify-content-center gap-3">
+      <div class="d-flex flex-wrap justify-content-center gap-3">
 
-    <!-- 1: Ativo -->
-    <div class="reward-card">
-      <h6 class="reward-title">
-        <iconify-icon icon="mdi:school-outline"></iconify-icon> 1ª Aula Grátis
-      </h6>
-      <p class="reward-desc">Para novos alunos. Usa se o tutor não oferecer aula gratuita.</p>
+        <!-- 1: Ativo -->
+        <div class="reward-card locked" data-reward-id="1">
+          <h6 class="reward-title">
+            <iconify-icon icon="mdi:school-outline"></iconify-icon> 1ª Aula Grátis
+          </h6>
+          <p class="reward-desc">Para novos alunos. Usa se o tutor não oferecer aula gratuita.</p>
+        </div>
+
+        <!-- 2: Blocked -->
+        <div class="reward-card locked" data-reward-id="2">
+          <h6 class="reward-title">
+            <iconify-icon icon="mdi:star-outline"></iconify-icon> Desconto 5%
+          </h6>
+          <p class="reward-desc">Depois de 3 aulas, recebe 5% de desconto na próxima.</p>
+        </div>
+
+        <!-- 3: Blocked -->
+        <div class="reward-card locked" data-reward-id="3">
+          <h6 class="reward-title">
+            <iconify-icon icon="mdi:medal-outline"></iconify-icon> Aula para Exame
+          </h6>
+          <p class="reward-desc">Ao fazer 5 aulas com o mesmo tutor, ganha 1 aula grátis focada em exames.</p>
+        </div>
+
+        <!-- 4: Blocked -->
+        <div class="reward-card locked" data-reward-id="4">
+          <h6 class="reward-title">
+            <iconify-icon icon="mdi:gift-outline"></iconify-icon> Desconto Especial 🎁
+          </h6>
+          <p class="reward-desc">Com 7 aulas, desbloqueia 25% de desconto numa próxima sessão.</p>
+        </div>
+
+        <!-- 5: Blocked -->
+        <div class="reward-card locked" data-reward-id="5">
+          <h6 class="reward-title">
+            <iconify-icon icon="mdi:cash-refund"></iconify-icon> Reembolso
+          </h6>
+          <p class="reward-desc">Na 15ª aula, recebe 10% de volta de uma sessão anterior.</p>
+        </div>
+
+        <!-- 6: Blocked -->
+        <div class="reward-card locked" data-reward-id="6" >
+          <h6 class="reward-title">
+            <iconify-icon icon="mdi:crown-outline"></iconify-icon> Acesso Premium 👑
+          </h6>
+          <p class="reward-desc">Ao completar 30 aulas com o mesmo tutor, ganha materiais exclusivos do tutor.</p>
+        </div>
+
+      </div>
+      <br><br><br>
     </div>
 
-    <!-- 2: Blocked -->
-    <div class="reward-card locked">
-      <h6 class="reward-title">
-        <iconify-icon icon="mdi:star-outline"></iconify-icon> Desconto 5%
-      </h6>
-      <p class="reward-desc">Depois de 3 aulas, recebe 5% de desconto na próxima.</p>
-    </div>
-
-    <!-- 3: Blocked -->
-    <div class="reward-card locked">
-      <h6 class="reward-title">
-        <iconify-icon icon="mdi:medal-outline"></iconify-icon> Aula para Exame
-      </h6>
-      <p class="reward-desc">Ao fazer 5 aulas com o mesmo tutor, ganha 1 aula grátis focada em exames.</p>
-    </div>
-
-    <!-- 4: Blocked -->
-    <div class="reward-card locked">
-      <h6 class="reward-title">
-        <iconify-icon icon="mdi:gift-outline"></iconify-icon> Desconto Especial 🎁
-      </h6>
-      <p class="reward-desc">Com 7 aulas, desbloqueia 25% de desconto numa próxima sessão.</p>
-    </div>
-
-    <!-- 5: Blocked -->
-    <div class="reward-card locked">
-      <h6 class="reward-title">
-        <iconify-icon icon="mdi:cash-refund"></iconify-icon> Reembolso
-      </h6>
-      <p class="reward-desc">Na 10ª aula, recebe 50% de volta de uma sessão anterior.</p>
-    </div>
-
-    <!-- 6: Blocked -->
-    <div class="reward-card locked">
-      <h6 class="reward-title">
-        <iconify-icon icon="mdi:crown-outline"></iconify-icon> Acesso Premium 👑
-      </h6>
-      <p class="reward-desc">Ao completar 15 aulas com o mesmo tutor, ganha materiais exclusivos do tutor.</p>
-    </div>
-   
   </div>
-   <br><br><br>
+
+<div class="modal fade" id="rewardModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <i class="bi bi-gift-fill" style="font-size: 2.5rem; color: #ffc107;"></i>
+        <p id="reward-modal-text" class="mt-3 mb-0"></p>
+      </div>
+    </div>
+  </div>
 </div>
 
-  </div>
+
 
 
   <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>

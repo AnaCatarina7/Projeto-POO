@@ -1,11 +1,8 @@
 import * as User from "../models/userModel.js";
 
-// Initialize and render the tutor Catalog
-// export function tutorCatalogView() {
-//     const users = User.initUsers();
-//     const tutors = users.filter(user => user.userType === 'tutor');
-//     renderTutorCatalog(tutors);
-// }
+document.addEventListener('DOMContentLoaded', function () {
+  tutorCatalogView();
+})
 
 export function tutorCatalogView() {
     let users = User.initUsers();
@@ -32,20 +29,24 @@ function renderTutorCatalog(tutors = []) {
             ${result}
         </div>
     `;
+    clickTutorCard()
 
-    document.querySelectorAll('.tutor-card').forEach(card => {
-        card.addEventListener('click', function(e) {
-            if (e.target.closest('.tutor-favoritebtn')) return;
+}
 
-            const tutorEmail = this.getAttribute('data-tutor-email');
-            localStorage.setItem('selectedTutorEmail', tutorEmail);
-            window.location.href = '/html/profileTutor.html';
+export function clickTutorCard() {
+      document.querySelectorAll('.tutor-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.tutor-favoritebtn')) return;
+    
+                const tutorEmail = this.getAttribute('data-tutor-email');
+                localStorage.setItem('selectedTutorEmail', tutorEmail);
+                window.location.href = '/html/profileTutor.html';
+            });
         });
-    });
 }
 
 // Tutor Card
-function generateTutorCard(tutor) {
+export function generateTutorCard(tutor) {
     const modalityText = tutor.modality === 'online' ? 'Online' : tutor.modality === 'inPerson' ? 'Presencial' :
         Array.isArray(tutor.modality) ? tutor.modality.join('/') : 'Não informado';
 
@@ -113,4 +114,3 @@ function addFavouriteBtn() {
     });
 }
 
-tutorCatalogView();
