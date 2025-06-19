@@ -31,7 +31,7 @@ export function loadTutorProfile() {
 
         // } else {
         //     tutor = User.getLoggedUser();
-    }
+        }
 
     // Get DOM elements for profile information
     const name = document.querySelector('#tutor-profile-name');

@@ -1,3 +1,4 @@
+
 let users;
 
 // GET USERS FROM LOCALSTORAGE
@@ -107,6 +108,7 @@ export function addFavourite(tutorEmail) { // receive a userType 'tutor' to add 
     }
 }
 
+// REMOVE TUTOR FROM FAVOURITES
 export function removeFavourite(tutorEmail) {
     const loggedUser = getLoggedUser();
     if (!loggedUser || loggedUser.userType !== 'aluno') {
@@ -185,6 +187,71 @@ function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
     console.log(loggedUser.rewardUsed, numLessonWithTutor);
 }
 
+// FILTER TUTORS
+export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null) {
+  let filteredTutors = users.filter(user => user.userType === 'tutor');  // Use let instead of const
+  
+  // Education Level Filter
+  if (levelFilter && levelFilter !== "Nível de ensino") {
+    filteredTutors = filteredTutors.filter(tutor => {
+      if (!tutor.levels) return false;
+      
+      const levelMap = {
+        "Ensino Básico": "basico",
+        "Ensino Secundário": "secundario",
+        "Ambos": "ambos"
+      };
+      
+      const levelToFind = levelMap[levelFilter];
+      
+      if (levelFilter === "Ambos") {
+        return tutor.levels.includes("ambos") || 
+              (tutor.levels.includes("basico") && tutor.levels.includes("secundario"));
+      }
+      
+      return tutor.levels.includes(levelToFind);
+    });
+  }
+
+  // Modality Filter
+  if (modalityFilter && modalityFilter !== "Online / Presencial") {
+    filteredTutors = filteredTutors.filter(tutor => {
+      if (!tutor.modality) return false;
+      
+      // Normalize modality values
+      const tutorModalities = Array.isArray(tutor.modality) 
+        ? tutor.modality.map(m => m.toLowerCase())
+        : [tutor.modality.toLowerCase()];
+      
+      const filterModality = modalityFilter.toLowerCase();
+      
+      return tutorModalities.includes(filterModality);
+    });
+  }
+
+    // Location Filter
+  if (locationFilter && locationFilter !== "Localidade") {
+    filteredTutors = filteredTutors.filter(tutor => {
+      return tutor.location === locationFilter;
+    });
+  }
+
+    // Order logic
+  if (orderBy) {
+    switch(orderBy) {
+      case "Preço mais baixo":
+        filteredTutors.sort((a, b) => a.price - b.price); // Ascending
+        break;
+      case "Preço mais alto":
+        filteredTutors.sort((a, b) => b.price - a.price); // Descending
+        break;
+      case "Mais recentes":
+        filteredTutors.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        break;
+    }
+  }
+  
+  return filteredTutors;
 class User {
     constructor(name, surname, email, location, password, userType, tutorInfo = {}) {
         this.name = name;
@@ -216,5 +283,6 @@ class User {
     };
 
 }
+
 
 

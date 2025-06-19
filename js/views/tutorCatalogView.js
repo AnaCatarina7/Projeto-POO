@@ -5,11 +5,25 @@ document.addEventListener('DOMContentLoaded', function () {
 })
 
 export function tutorCatalogView() {
-    let users = User.initUsers();
-    const tutors = users.filter(user => user.userType === 'tutor');
-    renderTutorCatalog(tutors);
-    addFavouriteBtn();
+  User.initUsers();
+  
+  renderTutorCatalog(User.getTutors());
+
+  document.querySelector("#btnFilter").addEventListener("click", () => {
+    const selectedLevel = document.querySelector("#filter-level").value; // Get education level filter
+    const selectedModality = document.querySelector("#filter-modality").value; // Get modality filter
+    const selectedLocation = document.querySelector("#filter-location").value; //Get location filter
+    const selectedOrder = document.querySelector("#order").value; // Get sort order
+
+    // Apply both filters
+    renderTutorCatalog(User.getTutors(selectedLevel, selectedModality, selectedLocation, selectedOrder));
+  });
+
+  addFavouriteBtn();
 }
+
+
+            
 
 // Render Tutor Catalog
 function renderTutorCatalog(tutors = []) {
@@ -44,6 +58,7 @@ export function clickTutorCard() {
             });
         });
 }
+
 
 // Tutor Card
 export function generateTutorCard(tutor) {
@@ -87,7 +102,7 @@ export function generateTutorCard(tutor) {
     `;
 }
 
-
+// Favourite Button
 function addFavouriteBtn() {
     document.querySelectorAll('.tutor-favoritebtn').forEach(button => {
         button.addEventListener('click', (event) => {
