@@ -18,13 +18,17 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
     alert('Preencha todos os campos!');
     return;
   }
+  if (password.length < 6) {
+    alert("A palavra passe deve ter pelo menos 6 caracteres")
+    return
+  }
 
   try {
     if (userType === 'aluno') {
       // Create regular student account
       User.addUser(name, surname, email, location, password, 'aluno');
       alert('Aluno registrado com sucesso!');
-    } 
+    }
     else if (userType === 'tutor') {
       // Create tutor account with extended information
       const tutorInfo = {
@@ -35,8 +39,8 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
         educationLevel: document.getElementById('educationLevel').value,
         price: parseFloat(document.getElementById('price').value),
         modality: [
-            ...(document.getElementById('inPerson').checked ? ['Presencial'] : []),
-            ...(document.getElementById('online').checked ? ['Online'] : [])
+          ...(document.getElementById('inPerson').checked ? ['Presencial'] : []),
+          ...(document.getElementById('online').checked ? ['Online'] : [])
         ],
         specialNeeds: document.querySelector('input[name="specialNeeds"]:checked').value,
       };
@@ -48,14 +52,14 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
 
       // Validate image was selected
       if (!selectedImage) {
-      alert('Por favor, selecione uma imagem!');
-      return;
+        alert('Por favor, selecione uma imagem!');
+        return;
       }
 
       User.addUser(name, surname, email, location, password, 'tutor', tutorInfo);
       alert('Tutor registado com sucesso!');
     }
-    
+
     // Redirect to login page after successful registration
     window.location.href = '/html/login.html';
   } catch (error) {
@@ -69,7 +73,7 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
 function handleTutorForm() {
   const userTypeSelect = document.getElementById('userType');
   const tutorFields = document.getElementById('tutorFields');
-  
+
   // Update tutor fields visibility based on user type selection
   function updateTutorFieldsVisibility() {
     const isTutor = userTypeSelect.value.toLowerCase() === 'tutor';
@@ -80,7 +84,7 @@ function handleTutorForm() {
 
   // Initialize visibility on page load
   updateTutorFieldsVisibility();
-  
+
   // Update visibility when user type changes
   if (userTypeSelect) {
     userTypeSelect.addEventListener('change', updateTutorFieldsVisibility);
@@ -109,7 +113,7 @@ function handleTutorForm() {
   }
 
   // Initialize subject selection events
-if (subjectCheckboxes) {
+  if (subjectCheckboxes) {
     subjectCheckboxes.forEach(cb => {
       cb.addEventListener('change', updateSubjectSelection);
     });
@@ -122,19 +126,19 @@ if (subjectCheckboxes) {
 let selectedImage = null;
 
 // Converts uploaded image to Base64 (string) for localStorage and displays preview
-document.getElementById('photo').addEventListener('change', function(e) {
-    const file = e.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        // Convert image to Base64 for storage
-        reader.onload = function(e) {
-            selectedImage = e.target.result;
-            // Display preview
-            document.getElementById('photo-preview').src = selectedImage;
-            document.getElementById('photo-preview').style.display = 'block';
-        };
-        reader.readAsDataURL(file);
-    }
+document.getElementById('photo').addEventListener('change', function (e) {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    // Convert image to Base64 for storage
+    reader.onload = function (e) {
+      selectedImage = e.target.result;
+      // Display preview
+      document.getElementById('photo-preview').src = selectedImage;
+      document.getElementById('photo-preview').style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
 });
 
 

@@ -20,11 +20,21 @@ export function addUser(name, surname, email, location, password, userType, tuto
     }
 }
 
+export function getAuthorizedTutors() {
+  const users = JSON.parse(localStorage.getItem("users")) || [];
+  return users.filter(user => user.userType === 'tutor' && user.isAuthorized === true);
+}
+
+
 // LOGIN USERS 
 export function loginUser(email, password) {
     const user = users.find(
         (user) => user.email === email && user.password === password);
     if (user) {
+        if(user.userType==='tutor'&& user.isAuthorized===false){
+            throw new Error("Conta de tutor ainda não autorizada pelo administrador.");
+            
+        }
         sessionStorage.setItem("loggedUser", JSON.stringify(user));
         return true;
     } else {
@@ -194,8 +204,8 @@ function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
 }
 
 // FILTER TUTORS
-export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null, subjectFilter = null, searchTerm = null) {
-  let filteredTutors = users.filter(user => user.userType === 'tutor');
+export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null) {
+  let filteredTutors = getAuthorizedTutors();  // Use let instead of const
   
   // Education Level Filter
   if (levelFilter && levelFilter !== "Nível de ensino") {
@@ -290,6 +300,15 @@ export function getTutors(levelFilter = null, modalityFilter = null, locationFil
   return filteredTutors;
 }
 
+
+// REMOVE TUTOR (ADMIN)
+export function deleteTutor(users, tutorToDelete) {
+  users = users.filter(user => user.email !== tutorToDelete)
+  localStorage.setItem("users", JSON.stringify(users));
+  console.log(tutorToDelete);
+
+}
+
 class User {
     constructor(name, surname, email, location, password, userType, tutorInfo = {}) {
         this.name = name;
@@ -318,6 +337,7 @@ class User {
             this.image = tutorInfo.image || '';
             this.favoriteCount = tutorInfo.favoriteCount || 0;
             this.createdAt = new Date().toISOString();
+            this.isAuthorized= false
         }
     };
 
