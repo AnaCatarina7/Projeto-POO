@@ -1,5 +1,4 @@
 window.initdata = function initdata() {
-  console.log("Executando initdata...");
 
   if (!localStorage.getItem('users')) {
     const users = [
@@ -57,7 +56,7 @@ window.initdata = function initdata() {
         classesTaken:[]
       },
 
-      // TUTORES 
+      // TUTORS 
       {
         name: "Ana",
         surname: "Moura",
@@ -73,6 +72,8 @@ window.initdata = function initdata() {
         price: 20,
         image: "/assets/svg/tutor1.svg",
         specialNeeds: "Sim", 
+        favoriteCount: 5,
+        createdAt: "2024-04-01T10:00:00",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
@@ -95,6 +96,8 @@ window.initdata = function initdata() {
         price: 18,
         image: "/assets/svg/tutor2.svg",
         specialNeeds: "Não",
+        favoriteCount: 8,
+        createdAt: "2024-04-05T14:30:00",
         // availability: {
         //   monMorning: false, tueMorning: true, wedMorning: false, thuMorning: true, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: false, tueAfternoon: false, wedAfternoon: false, thuAfternoon: false, friAfternoon: false, satAfternoon: false, sunAfternoon: false
@@ -116,7 +119,9 @@ window.initdata = function initdata() {
         educationLevel: "Ensino Secundário",
         price: 22,
         specialNeeds: "Sim",
+        favoriteCount: 12,
         image: "/assets/svg/tutor3.svg",
+        createdAt: "2024-04-06T14:30:00",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: true, sunMorning: true,
         //   monAfternoon: false, tueAfternoon: false, wedAfternoon: false, thuAfternoon: false, friAfternoon: false, satAfternoon: false, sunAfternoon: false
@@ -139,6 +144,8 @@ window.initdata = function initdata() {
         price: 15,
         specialNeeds: "Não",
         image: "/assets/svg/tutor4.svg",
+        favoriteCount: 3,
+        createdAt: "2024-04-03T14:30:00",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
@@ -160,7 +167,9 @@ window.initdata = function initdata() {
         educationLevel: "Ensino Básico",
         price: 15,
         specialNeeds: "Não",
+        favoriteCount: 15,
         image: "/assets/svg/tutor6.svg",
+        createdAt: "2024-05-10T14:30:00",
         // availability: {
         //   monMorning: false, tueMorning: false, wedMorning: false, thuMorning: false, friMorning: false, satMorning: false, sunMorning: false,
         //   monAfternoon: true, tueAfternoon: true, wedAfternoon: true, thuAfternoon: true, friAfternoon: true, satAfternoon: false, sunAfternoon: false
@@ -228,7 +237,7 @@ const subjects = [
     localStorage.setItem('subjects', JSON.stringify(subjects));
   }
 
-  // Locations (mantido igual)
+  // Locations
   if (!localStorage.locations) {
     const locations = [
       "Porto", "Lisboa", "Braga", "Coimbra", "Vila do Conde", "Faro"

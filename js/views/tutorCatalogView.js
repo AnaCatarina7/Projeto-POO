@@ -29,11 +29,8 @@ export function tutorCatalogView() {
 function renderTutorCatalog(tutors = []) {
     let result = '';
 
-    // Gets only until 8 different tutors 
-    const topTutors = tutors.slice(0, 8);
+    const topTutors = tutors.slice(0, 8); // Gets only until 8 different tutors 
 
-
-    // Generates the cards for each tutor
     for (const tutor of topTutors) {
 
         result += generateTutorCard(tutor);
@@ -41,12 +38,11 @@ function renderTutorCatalog(tutors = []) {
 
     }
 
-    // Insert in the container on the main page
     document.querySelector("#tutor-catalog-container").innerHTML = `
         <div class="row px-4 align-items-center justify-content-center display-flex">
             ${result}
         </div>
-    `;
+    `;  // Insert in the container on the main page
     clickTutorCard()
 
 }
@@ -88,9 +84,9 @@ export function generateTutorCard(tutor) {
                 </div>
                 <div class="card-body px-4 pt-3">
                     <div class="d-flex justify-content-between align-items-center mb-1">
-                        <span class="rating fw-semibold" style="font-size: 0.9rem;">
-                            ${tutor.rating || '5'} 
-                            <iconify-icon icon="mdi:star" style="color: #f8c100;" width="16" height="16"></iconify-icon>
+                        <span class="popularity fw-semibold" style="font-size: 0.9rem;">
+                            ${tutor.favoriteCount || 0} 
+                            <iconify-icon icon="mdi:heart" style="color: #ff4081;" width="16" height="16"></iconify-icon>
                         </span>
                         <span class="text-muted small category-text">${tutor.subjects?.[0] || 'Geral'}</span>
                     </div>
