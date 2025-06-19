@@ -1,32 +1,3 @@
-// USER CLASS
-class User {
-    constructor(name, surname, email, location, password, userType, tutorInfo = {}) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.location = location;
-        this.password = password;
-        this.userType = userType;
-
-        this.favourites = []
-        this.reward = []
-
-        if (userType === 'tutor') {
-            this.subjects = tutorInfo.subjects || [];
-            this.phone = tutorInfo.phone || '';
-            this.bio = tutorInfo.bio || '';
-            this.educationLevel = tutorInfo.educationLevel || '';
-            this.price = tutorInfo.price || 0;
-            this.modality = tutorInfo.modality || '';
-            this.specialNeeds = tutorInfo.specialNeeds || '';
-            this.availability = tutorInfo.availability || '';
-            this.image = tutorInfo.image || '';
-            this.favoriteCount = tutorInfo.favoriteCount || 0;
-            this.createdAt = new Date().toISOString();
-        }
-    };
-}
-
 let users;
 
 // GET USERS FROM LOCALSTORAGE

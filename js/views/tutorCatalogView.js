@@ -7,18 +7,29 @@ document.addEventListener('DOMContentLoaded', function () {
 export function tutorCatalogView() {
   User.initUsers();
 
-  renderTutorCatalog(User.getTutors());
-
-
-  document.querySelector("#btnFilter").addEventListener("click", () => {
+    // Retrieve any previous search term saved in localStorage
+    const searchTerm = localStorage.getItem('searchTerm');
+    
     renderTutorCatalog(
-      User.getTutors(
-        document.querySelector("#filter-level").value, // Get education level filter
-        document.querySelector("#filter-modality").value, // Get modality filter
-        document.querySelector("#filter-location").value,  //Get location filter
-        document.querySelector("#order").value, // Get sort order
-        document.querySelector("#filter-subject").value,
-        document.querySelector("#navbarSearchInput").value.trim(), // searchTerm
+        searchTerm 
+            ? User.getTutors(null, null, null, null, null, searchTerm)
+            : User.getTutors()
+    ); // Render tutor catalog, using the search term if it exists
+
+    localStorage.removeItem('searchTerm');
+
+    // Handle filter and search button click
+    document.querySelector("#btnFilter").addEventListener("click", () => {
+        const newSearch = document.querySelector("#navbarSearchInput").value.trim();
+        renderTutorCatalog(
+            User.getTutors(
+                document.querySelector("#filter-level").value, // Get education level filter
+                document.querySelector("#filter-modality").value, // Get modality filter
+                document.querySelector("#filter-location").value,  //Get location filter
+                document.querySelector("#order").value, // Get sort order
+                document.querySelector("#filter-subject").value,
+                document.querySelector("#navbarSearchInput").value.trim(), // searchTerm
+                newSearch
       )
     );
   });
@@ -31,7 +42,9 @@ export function tutorCatalogView() {
 function renderTutorCatalog(tutors = []) {
     let result = '';
 
-    const topTutors = tutors.slice(0, 8); // Gets only until 8 different tutors 
+    const topTutors = tutors
+    .sort((a, b) => (b.favoriteCount || 0) - (a.favoriteCount || 0))
+    .slice(0, 8); // Gets only the top 8 most favorited tutors
 
     for (const tutor of topTutors) {
         result += generateTutorCard(tutor);
