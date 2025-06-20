@@ -1,4 +1,3 @@
-
 let users;
 
 // GET USERS FROM LOCALSTORAGE
@@ -310,7 +309,6 @@ export function getDisplayLevels(levels) {
         secundario: "Ensino Secundário",
         ambos: ["Ensino Básico", "Ensino Secundário"]
     };
-    
     return levelMap[levels] || levels;
 }
 
@@ -320,7 +318,6 @@ export function deleteTutor(users, tutorToDelete) {
   users = users.filter(user => user.email !== tutorToDelete)
   localStorage.setItem("users", JSON.stringify(users));
   console.log(tutorToDelete);
-
 }
 
 class User {

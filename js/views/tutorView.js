@@ -15,10 +15,7 @@ if (!User.isLogged()) {
 export function loadTutorProfile() {
     // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
     const tutorEmail = localStorage.getItem('selectedTutorEmail');
-    let tutor;
-
-        console.log("Tutor object:", tutor);
-    
+    let tutor;   
 
     // Logic to determine which tutor to load:
     if (tutorEmail) {
@@ -66,12 +63,6 @@ export function loadTutorProfile() {
         subjects.map(subj => `<span class="badge">${subj.replace(" - ", " ")}</span>`).join(' ') :
         'Não Informado';
 
-    
-    // Specific logic for when it's the tutor's own profile
-    if (!tutorEmail && User.getLoggedUser()?.email === tutor.email) {
-        console.log("Tutor a ver o seu perfil");
-    }
-
     const displayValue = User.getDisplayLevels(tutor.levels); //Get the function from the user model (function that converts de values)
 
     if (Array.isArray(displayValue)) {
@@ -88,7 +79,6 @@ export function loadTutorProfile() {
     User.bookLesson(tutor.email)
     showSuccessMessage();
 });
-
 };
 
 function changeTutorData() {

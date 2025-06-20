@@ -437,33 +437,33 @@ window.initdata = function initdata() {
     localStorage.setItem('users', JSON.stringify(users));
   }
 
-  // Education levels 
-  // if (!localStorage.subjects) {
-  //   const subjects = [
-  //         "EB-Português",
-  //         "EB-Inglês",
-  //         "EB-Francês",
-  //         "EB-Espanhol",
-  //         "EB-História",
-  //         "EB-Geografia",
-  //         "EB-Matemática",
-  //         "EB-Ciências Naturais",
-  //         "EB-Físico-Química",
-  //         "ES-Português",
-  //         "ES-Língua Estrangeira",
-  //         "ES-Filosofia",
-  //         "ES-Matemática A",
-  //         "ES-Geometria Descritiva A",
-  //         "ES-Física e Química A",
-  //         "ES-Biologia e Geologia",
-  //         "ES-Economia A",
-  //         "ES-Geografia A",
-  //         "ES-História B",
-  //         "ES-Literatura Portuguesa"
-  //   ];
+  // Subjects with levels prefix 
+  if (!localStorage.getItem('subjects')) {
+  const subjects = [
+          "EB-Português",
+          "EB-Inglês",
+          "EB-Francês",
+          "EB-Espanhol",
+          "EB-História",
+          "EB-Geografia",
+          "EB-Matemática",
+          "EB-Ciências Naturais",
+          "EB-Físico-Química",
+          "ES-Português",
+          "ES-Língua Estrangeira",
+          "ES-Filosofia",
+          "ES-Matemática A",
+          "ES-Geometria Descritiva A",
+          "ES-Física e Química A",
+          "ES-Biologia e Geologia",
+          "ES-Economia A",
+          "ES-Geografia A",
+          "ES-História B",
+          "ES-Literatura Portuguesa"
+    ];
 
-  //   localStorage.setItem('subjects', JSON.stringify(subjects));
-  // }
+    localStorage.setItem('subjects', JSON.stringify(subjects));
+  }
 
   // Subjects 
   if (!localStorage.getItem('subjects')) {
