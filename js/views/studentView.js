@@ -33,7 +33,6 @@ function renderStudentWelcome() {
     </div>
   </div>
    `
-   
 }
 
 // Students edit data view

@@ -14,7 +14,7 @@
     margin-top: 10rem;
 }
 
-/* Títulos */
+/* Titles */
 h3 {
     color: #395d7f;
     font-weight: 600;
@@ -66,7 +66,6 @@ h3 {
   font-weight: 400;
 }
 
-/* Botão dropdown com múltiplas seleções */
 .input-subjects {
   padding: 0.85rem 1rem;
   border-radius: 0.8rem;
@@ -76,7 +75,6 @@ h3 {
   background-color: white !important;
 }
 
-/* Badge de disciplinas selecionadas */
 .badge-subject {
   background-color: white;
   color: #395d7f;
@@ -87,26 +85,12 @@ h3 {
   font-weight: 500;
 }
 
-
-/* Focus dos inputs */
-/* input.form-control:focus,
-select.form-select:focus,
-textarea.form-control:focus {
-    border-color: #1f4e79;
-    background-color: rgba(255, 255, 255, 0);
-    box-shadow: 0 0 0 2px rgba(31, 78, 121, 0.2);
-    outline: none;
-} */
-
-
-/* Dropdown personalizado */
 .dropdown-menu {
     border-radius: 10px;
     border: 1px solid #e0e0e0;
     box-shadow: 0px 4px 8px rgba(0,0,0,0.05);
 }
 
-/* Botão concluir */
 .btn-warning {
     background-color: #fede89;
     color: white;
@@ -123,7 +107,6 @@ textarea.form-control:focus {
     box-shadow: 0 6px 10px rgba(0,0,0,0.15);
 }
 
-/* Checkbox inline (modalidade e necessidades especiais) */
 .form-check-input {
     margin-top: 0.3rem;
     cursor: pointer;
@@ -133,7 +116,6 @@ textarea.form-control:focus {
     cursor: pointer;
 }
 
-/* Espacamento inferior entre blocos */
 .mb-4 {
     margin-bottom: 2rem !important;
 }

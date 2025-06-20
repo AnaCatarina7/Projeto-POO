@@ -170,6 +170,7 @@ export function bookLesson(tutorEmail) {
     }
 }
 
+// Give Reward to Tutor
 function rewardTutor(tutorEmail) {
     const users = initUsers();
     const tutor = users.find(u => u.email === tutorEmail && u.userType === 'tutor');
@@ -197,7 +198,6 @@ function rewardTutor(tutorEmail) {
         tutor.badges.push('Lenda da Explicação');
     }
 
-    // Atualiza apenas no localStorage, sem mexer no sessionStorage
     const userIndex = users.findIndex(u => u.email === tutorEmail);
     if (userIndex !== -1) {
         users[userIndex] = tutor;
@@ -206,6 +206,7 @@ function rewardTutor(tutorEmail) {
 }
 
 
+// Give Reward to Student
 function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
     let totalLessons = loggedUser.classesTaken.length
 
@@ -234,7 +235,6 @@ function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
     if (numLessonWithTutor >= 10 && !loggedUser.rewardUsed.includes("Materiais de apoio")) {
         loggedUser.rewardUsed.push("Materiais de apoio")
         console.log(sameTutorLessons);
-        
 
     }
     console.log(loggedUser.rewardUsed, numLessonWithTutor);
@@ -337,7 +337,7 @@ export function getTutors(levelFilter = null, modalityFilter = null, locationFil
   return filteredTutors;
 }
 
-// Convert the values of levels from localStorage
+// Convert the values of "levels" from localStorage
 export function getDisplayLevels(levels) {
     if (!levels) return "Não Informado";
     
