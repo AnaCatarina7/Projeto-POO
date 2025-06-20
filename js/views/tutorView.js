@@ -73,12 +73,14 @@ export function loadTutorProfile() {
         level.innerHTML = `<span class="badge">${displayValue}</span>`;
     }
 
+    displayTutorMedals(tutor);
+
     // Contact tutor
     document.getElementById('contact-btn').addEventListener('click', () => {
-    //console.log(tutor.email);
     User.bookLesson(tutor.email)
     showSuccessMessage();
 });
+
 };
 
 function changeTutorData() {
@@ -215,4 +217,17 @@ function showSuccessMessage() {
         modal.hide();
     }, 2500);
 
+}
+
+// Badges
+function displayTutorMedals(tutor) {
+    const medalsContainer = document.querySelector('#tutor-medals');
+    if (!tutor.badges || tutor.badges.length === 0) {
+        medalsContainer.innerHTML = '<span class="text-muted small">Este tutor ainda não ganhou conquistas</span>';
+        return;
+    }
+
+    medalsContainer.innerHTML = tutor.badges.map(badge => {
+        return `<span class="tutor-medal">${badge}</span>`;
+    }).join(' ');
 }

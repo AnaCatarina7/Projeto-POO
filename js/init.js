@@ -75,6 +75,8 @@ window.initdata = function initdata() {
         favoriteCount: 5,
         createdAt: "2024-04-01T10:00:00",
         userType: "tutor",
+        classCounter: 0,
+        badges: [],
         isAuthorized:true
       },
       {
@@ -94,6 +96,8 @@ window.initdata = function initdata() {
         favoriteCount: 8,
         createdAt: "2024-04-05T14:30:00",
         userType: "tutor",
+        classCounter: 0,
+        badges: [],
         isAuthorized:true
       },
       {
@@ -113,6 +117,8 @@ window.initdata = function initdata() {
         image: "/assets/svg/tutor3.svg",
         createdAt: "2024-04-06T14:30:00",
         userType: "tutor",
+        classCounter: 0,
+        badges: [],
         isAuthorized:true
       },
       {
@@ -132,6 +138,8 @@ window.initdata = function initdata() {
         favoriteCount: 3,
         createdAt: "2024-04-03T14:30:00",
         userType: "tutor",
+        classCounter: 8,
+        badges: ["Estrela das 2 Aulas", "Estrela das 4 Aulas", "Estrela das 6 Aulas", "Lenda da Explicação"],
         isAuthorized:false,
       },
       {
@@ -150,6 +158,8 @@ window.initdata = function initdata() {
         image: "/assets/svg/tutor6.svg",
         createdAt: "2024-05-10T14:30:00",
         userType: "tutor",
+        classCounter: 4,
+        badges: ["Estrela das 2 Aulas", "Top Explicador"],
         isAuthorized:true
       },
       {
@@ -170,6 +180,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor7.svg",
       createdAt: "2024-03-15T10:00:00",
       userType: "tutor",
+      classCounter: 2, 
+      badges: ["Estrela das 2 Aulas"],
       isAuthorized: true
     },
     {
@@ -190,6 +202,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor13.svg",
       createdAt: "2024-01-22T12:00:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -210,6 +224,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor8.svg",
       createdAt: "2024-02-10T09:30:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -230,6 +246,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor12.svg",
       createdAt: "2024-03-20T11:00:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -250,6 +268,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor9.svg",
       createdAt: "2024-04-15T13:00:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -270,6 +290,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor11.svg",
       createdAt: "2024-03-05T10:30:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -290,6 +312,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor10.svg",
       createdAt: "2024-02-28T14:00:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -310,6 +334,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor15.svg",
       createdAt: "2024-04-10T15:30:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -330,6 +356,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor16.svg",
       createdAt: "2024-03-18T09:00:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -350,6 +378,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor17.svg",
       createdAt: "2024-03-12T11:45:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -370,6 +400,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor18.svg",
       createdAt: "2024-04-01T14:20:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -390,6 +422,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor19.svg",
       createdAt: "2024-02-25T10:10:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -410,6 +444,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor20.svg",
       createdAt: "2024-03-30T12:00:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     {
@@ -430,6 +466,8 @@ window.initdata = function initdata() {
       image: "/assets/svg/tutor21.svg",
       createdAt: "2024-04-12T13:30:00",
       userType: "tutor",
+      classCounter: 0,
+      badges: [],
       isAuthorized: true
     },
     ];

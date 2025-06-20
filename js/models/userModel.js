@@ -163,11 +163,48 @@ export function bookLesson(tutorEmail) {
         loggedUser.classesTaken.push(newClass)
         giveReword(loggedUser, numLessonWithTutor)
         updateStorages(loggedUser)
+        rewardTutor(tutorEmail);  //Reward Tutor (badge)
         console.log(loggedUser.classesTaken);
     } catch (error) {
         console.log(error)
     }
 }
+
+function rewardTutor(tutorEmail) {
+    const users = initUsers();
+    const tutor = users.find(u => u.email === tutorEmail && u.userType === 'tutor');
+    if (!tutor) return;
+
+    if (!tutor.classCounter) {
+        tutor.classCounter = 0;
+        tutor.badges = [];
+    }
+
+    tutor.classCounter++;
+
+    if (tutor.classCounter % 2 === 0) { 
+        const badgeName = `Estrela das ${tutor.classCounter} Aulas`;
+        if (!tutor.badges.includes(badgeName)) {
+            tutor.badges.push(badgeName);
+        }
+    }
+
+    if (tutor.classCounter === 4 && !tutor.badges.includes('Top Explicador')) {
+        tutor.badges.push('Top Explicador');
+    } else if (tutor.classCounter === 6 && !tutor.badges.includes('Estrela da Plataforma')) {
+        tutor.badges.push('Estrela da Plataforma');
+    } else if (tutor.classCounter >= 8 && !tutor.badges.includes('Lenda da Explicação')) {
+        tutor.badges.push('Lenda da Explicação');
+    }
+
+    // Atualiza apenas no localStorage, sem mexer no sessionStorage
+    const userIndex = users.findIndex(u => u.email === tutorEmail);
+    if (userIndex !== -1) {
+        users[userIndex] = tutor;
+        localStorage.setItem("users", JSON.stringify(users));
+    }
+}
+
 
 function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
     let totalLessons = loggedUser.classesTaken.length
@@ -347,6 +384,8 @@ class User {
             this.availability = tutorInfo.availability || '';
             this.image = tutorInfo.image || '';
             this.favoriteCount = tutorInfo.favoriteCount || 0;
+            this.classCounter = 0;
+            this.badges = [];
             this.createdAt = new Date().toISOString();
             this.isAuthorized= false
         }
