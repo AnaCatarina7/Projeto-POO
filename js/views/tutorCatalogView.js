@@ -12,8 +12,8 @@ export function tutorCatalogView() {
     
     renderTutorCatalog(
         searchTerm 
-            ? User.getTutors(null, null, null, null, null, searchTerm)
-            : User.getTutors()
+            ? User.getAuthorizedTutors(null, null, null, null, null, searchTerm)
+            : User.getAuthorizedTutors()
     ); // Render tutor catalog, using the search term if it exists
 
     localStorage.removeItem('searchTerm');
@@ -22,7 +22,7 @@ export function tutorCatalogView() {
     document.querySelector("#btnFilter").addEventListener("click", () => {
         const newSearch = document.querySelector("#navbarSearchInput").value.trim();
         renderTutorCatalog(
-            User.getTutors(
+            User.getAuthorizedTutors(
                 document.querySelector("#filter-level").value, // Get education level filter
                 document.querySelector("#filter-modality").value, // Get modality filter
                 document.querySelector("#filter-location").value,  //Get location filter
