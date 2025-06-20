@@ -203,9 +203,6 @@ function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
     }
     console.log(loggedUser.rewardUsed, numLessonWithTutor);
 }
- let filteredTutors = getAuthorizedTutors(); 
- console.log(filteredTutors);
- 
 
 // FILTER TUTORS
 export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null) {

@@ -19,20 +19,20 @@ export function tutorCatalogView() {
     localStorage.removeItem('searchTerm');
 
     // Handle filter and search button click
-    document.querySelector("#btnFilter").addEventListener("click", () => {
-        const newSearch = document.querySelector("#navbarSearchInput").value.trim();
-        renderTutorCatalog(
-            User.getAuthorizedTutors(
-                document.querySelector("#filter-level").value, // Get education level filter
-                document.querySelector("#filter-modality").value, // Get modality filter
-                document.querySelector("#filter-location").value,  //Get location filter
-                document.querySelector("#order").value, // Get sort order
-                document.querySelector("#filter-subject").value,
-                document.querySelector("#navbarSearchInput").value.trim(), // searchTerm
-                newSearch
-      )
-    );
-  });
+//     document.querySelector("#btnFilter").addEventListener("click", () => {
+//         const newSearch = document.querySelector("#navbarSearchInput").value.trim();
+//         renderTutorCatalog(
+//             User.getAuthorizedTutors(
+//                 document.querySelector("#filter-level").value, // Get education level filter
+//                 document.querySelector("#filter-modality").value, // Get modality filter
+//                 document.querySelector("#filter-location").value,  //Get location filter
+//                 document.querySelector("#order").value, // Get sort order
+//                 document.querySelector("#filter-subject").value,
+//                 document.querySelector("#navbarSearchInput").value.trim(), // searchTerm
+//                 newSearch
+//       )
+//     );
+//   });
 
 
     addFavouriteBtn();
