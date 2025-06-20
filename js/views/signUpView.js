@@ -36,7 +36,7 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
         image: selectedImage,
         bio: document.getElementById('bio').value.trim(),
         subjects: document.getElementById('selectedSubjects').value.split(','),
-        educationLevel: document.getElementById('educationLevel').value,
+        levels: document.getElementById('levels').value,
         price: parseFloat(document.getElementById('price').value),
         modality: [
           ...(document.getElementById('inPerson').checked ? ['Presencial'] : []),

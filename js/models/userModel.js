@@ -301,6 +301,19 @@ export function getTutors(levelFilter = null, modalityFilter = null, locationFil
   return filteredTutors;
 }
 
+// Convert the values of levels from localStorage
+export function getDisplayLevels(levels) {
+    if (!levels) return "Não Informado";
+    
+    const levelMap = {
+        basico: "Ensino Básico",
+        secundario: "Ensino Secundário",
+        ambos: ["Ensino Básico", "Ensino Secundário"]
+    };
+    
+    return levelMap[levels] || levels;
+}
+
 
 // REMOVE TUTOR (ADMIN)
 export function deleteTutor(users, tutorToDelete) {
@@ -330,7 +343,7 @@ class User {
             this.subjects = tutorInfo.subjects || [];
             this.phone = tutorInfo.phone || '';
             this.bio = tutorInfo.bio || '';
-            this.educationLevel = tutorInfo.educationLevel || '';
+            this.levels = tutorInfo.levels || '';
             this.price = tutorInfo.price || 0;
             this.modality = tutorInfo.modality || '';
             this.specialNeeds = tutorInfo.specialNeeds || '';

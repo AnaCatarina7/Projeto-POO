@@ -69,7 +69,6 @@ window.initdata = function initdata() {
         modality: ["Presencial"], 
         phone: "912345678",
         bio: "Professora com 10 anos de experiência no ensino secundário.",
-        educationLevel: "Ensino Secundário",
         price: 20,
         image: "/assets/svg/tutor1.svg",
         specialNeeds: "Sim", 
@@ -89,7 +88,6 @@ window.initdata = function initdata() {
         modality: ["Online"],
         phone: "913456789",
         bio: "Apaixonado por história, com experiência em ensino remoto.",
-        educationLevel: "Ensino Secundário",
         price: 18,
         image: "/assets/svg/tutor2.svg",
         specialNeeds: "Não",
@@ -109,7 +107,6 @@ window.initdata = function initdata() {
         modality: ["Online"],
         phone: "914567890",
         bio: "Explicadora dedicada, com foco em preparação para exames nacionais.",
-        educationLevel: "Ensino Secundário",
         price: 22,
         specialNeeds: "Sim",
         favoriteCount: 12,
@@ -129,7 +126,6 @@ window.initdata = function initdata() {
         modality: ["Online"],
         phone: "912345678",
         bio: "Sou licenciada em Línguas e Literaturas Modernas e dou explicações há mais de 5 anos.",
-        educationLevel: ["Ensino Básico","Ensino Secundário"],
         price: 15,
         specialNeeds: "Não",
         image: "/assets/svg/tutor4.svg",
@@ -148,8 +144,6 @@ window.initdata = function initdata() {
         levels: ["basico"], 
         modality: ["Presencial"],
         phone: "915678901",
-        bio: "Experiência com alunos do 3.º ciclo e reforço de gramática.",
-        educationLevel: "Ensino Básico",
         price: 15,
         specialNeeds: "Não",
         favoriteCount: 15,
@@ -438,111 +432,38 @@ window.initdata = function initdata() {
       userType: "tutor",
       isAuthorized: true
     },
-    // {
-    //   name: "Paulo",
-    //   surname: "Teixeira",
-    //   email: "paulo.teixeira@tutor.pt",
-    //   location: "Coimbra",
-    //   password: "paulopass",
-    //   subjects: ["ES-Física e Química A", "ES-Matemática A"],
-    //   levels: ["secundario"],
-    //   modality: ["Online"],
-    //   phone: "917678901",
-    //   bio: "Professor com experiência em explicações online para o ensino secundário.",
-    //   educationLevel: "Ensino Secundário",
-    //   price: 24,
-    //   specialNeeds: "Não",
-    //   favoriteCount: 11,
-    //   image: "/assets/svg/tutor10.svg",
-    //   createdAt: "2024-03-28T15:00:00",
-    //   userType: "tutor",
-    //   isAuthorized: true
-    // },
-    // {
-    //   name: "Diana",
-    //   surname: "Sousa",
-    //   email: "diana.sousa@tutor.pt",
-    //   location: "Braga",
-    //   password: "dianapass",
-    //   subjects: ["EB-Inglês", "EB-Português"],
-    //   levels: ["basico"],
-    //   modality: ["Presencial", "Online"],
-    //   phone: "918789012",
-    //   bio: "Professora dinâmica com paixão por línguas.",
-    //   educationLevel: "Ensino Básico",
-    //   price: 14,
-    //   specialNeeds: "Sim",
-    //   favoriteCount: 8,
-    //   image: "/assets/svg/tutor22.svg",
-    //   createdAt: "2024-04-02T10:20:00",
-    //   userType: "tutor",
-    //   isAuthorized: true
-    // },
-    // {
-    //   name: "Fábio",
-    //   surname: "Melo",
-    //   email: "fabio.melo@tutor.pt",
-    //   location: "Porto",
-    //   password: "fabiopass",
-    //   subjects: ["ES-Geografia A", "ES-História"],
-    //   levels: ["secundario"],
-    //   modality: ["Online"],
-    //   phone: "919890123",
-    //   bio: "Especialista em geografia com método prático de ensino.",
-    //   educationLevel: "Ensino Secundário",
-    //   price: 19,
-    //   specialNeeds: "Não",
-    //   favoriteCount: 7,
-    //   image: "/assets/svg/tutor23.svg",
-    //   createdAt: "2024-04-08T11:30:00",
-    //   userType: "tutor",
-    //   isAuthorized: true
-    // }
-
     ];
 
     localStorage.setItem('users', JSON.stringify(users));
   }
 
   // Education levels 
-  if (!localStorage.educationLevels) {
-    const educationLevels = [
-      {
-        id: 1,
-        name: "Ensino Básico (3.º Ciclo)",
-        subjects: [
-          "EB-Português",
-          "EB-Inglês",
-          "EB-Francês",
-          "EB-Espanhol",
-          "EB-História",
-          "EB-Geografia",
-          "EB-Matemática",
-          "EB-Ciências Naturais",
-          "EB-Físico-Química"
-        ]
-      },
-      {
-        id: 2,
-        name: "Ensino Secundário",
-        subjects: [
-          "ES-Português",
-          "ES-Língua Estrangeira",
-          "ES-Filosofia",
-          "ES-Matemática A",
-          "ES-Geometria Descritiva A",
-          "ES-Física e Química A",
-          "ES-Biologia e Geologia",
-          "ES-Economia A",
-          "ES-Geografia A",
-          "ES-História B",
-          "ES-Literatura Portuguesa"
-        ]
-      }
-    ];
+  // if (!localStorage.subjects) {
+  //   const subjects = [
+  //         "EB-Português",
+  //         "EB-Inglês",
+  //         "EB-Francês",
+  //         "EB-Espanhol",
+  //         "EB-História",
+  //         "EB-Geografia",
+  //         "EB-Matemática",
+  //         "EB-Ciências Naturais",
+  //         "EB-Físico-Química",
+  //         "ES-Português",
+  //         "ES-Língua Estrangeira",
+  //         "ES-Filosofia",
+  //         "ES-Matemática A",
+  //         "ES-Geometria Descritiva A",
+  //         "ES-Física e Química A",
+  //         "ES-Biologia e Geologia",
+  //         "ES-Economia A",
+  //         "ES-Geografia A",
+  //         "ES-História B",
+  //         "ES-Literatura Portuguesa"
+  //   ];
 
-    localStorage.setItem('educationLevels', JSON.stringify(educationLevels));
-  }
+  //   localStorage.setItem('subjects', JSON.stringify(subjects));
+  // }
 
   // Subjects 
   if (!localStorage.getItem('subjects')) {

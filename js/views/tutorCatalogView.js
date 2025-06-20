@@ -7,17 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
 export function tutorCatalogView() {
     User.initUsers();
 
-        // Verifica se é a landing page
-    const isLandingPage = !window.location.pathname.includes('filter.html');
+    const isLandingPage = !window.location.pathname.includes('filter.html'); // Verifies if its the landingPage
 
     // Retrieve any previous search term saved in localStorage
-    const searchTerm = localStorage.getItem('searchTerm');
+    const searchTerm = localStorage.getItem('searchTerm'); //When searching something in the navbar, it was saved in Ls
 
     let tutors = searchTerm
         ? User.getTutors(null, null, null, null, searchTerm)
         : User.getTutors();
 
-        // Aplica a lógica específica da landing page
+    // Order tutors by favoriteCount (only 8) for the landingPage
     if (isLandingPage) {
         tutors = tutors
             .sort((a, b) => (b.favoriteCount || 0) - (a.favoriteCount || 0))
@@ -25,7 +24,6 @@ export function tutorCatalogView() {
     }
 
     renderTutorCatalog(tutors);
-
     localStorage.removeItem('searchTerm');
 
     // Handle filter and search button click
@@ -49,9 +47,6 @@ export function tutorCatalogView() {
     addFavouriteBtn();
 }
 
-
-
-
 // Render Tutor Catalog
 function renderTutorCatalog(tutors = []) {
     let result = '';
@@ -60,6 +55,7 @@ function renderTutorCatalog(tutors = []) {
         result += generateTutorCard(tutor);
     }
 
+    // The tutors are going to be display inside this container
     document.querySelector("#tutor-catalog-container").innerHTML = `
         <div class="row px-4 align-items-center justify-content-center display-flex">
             ${result}
@@ -79,7 +75,6 @@ export function clickTutorCard() {
         });
     });
 }
-
 
 // Tutor Card
 export function generateTutorCard(tutor) {

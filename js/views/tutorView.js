@@ -10,13 +10,14 @@ if (!User.isLogged()) {
         changeTutorData();
         subjectDropdown();
     })
-
 }
 
 export function loadTutorProfile() {
     // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
     const tutorEmail = localStorage.getItem('selectedTutorEmail');
     let tutor;
+
+        console.log("Tutor object:", tutor);
     
 
     // Logic to determine which tutor to load:
@@ -43,7 +44,7 @@ export function loadTutorProfile() {
     const subjectsContainer = document.querySelector('#tutor-subjects-container');
     const modality = document.querySelector("#tutor-modality-container");
     const price = document.querySelector('#tutor-price');
-    const educationLevel = document.querySelector("#tutor-educationLevel");
+    const level = document.querySelector("#tutor-levels");
     const specialNeeds = document.querySelector("#tutor-specialNeeds");
 
     // Display tutor's basic info
@@ -58,15 +59,6 @@ export function loadTutorProfile() {
     modality.innerHTML = typeof tutor.modality === 'string' ? `<span class="badge">${tutor.modality}</span>` :
         (tutor.modality?.map(m => `<span class="badge">${m}</span>`).join(' ') || 'Não Informado');
 
-    // Education Level 
-    if (tutor.educationLevel === 'ambos') {
-        educationLevel.innerHTML = `
-            <span class="badge">Ensino Básico</span>
-            <span class="badge">Ensino Secundário</span>
-        `;
-    } else {
-        educationLevel.innerHTML = `<span class="badge">${tutor.educationLevel || 'Não Informado'}</span>`;
-    }
 
     // Subjects 
     const subjects = tutor.subjects ?? [];
@@ -74,9 +66,20 @@ export function loadTutorProfile() {
         subjects.map(subj => `<span class="badge">${subj.replace(" - ", " ")}</span>`).join(' ') :
         'Não Informado';
 
+    
     // Specific logic for when it's the tutor's own profile
     if (!tutorEmail && User.getLoggedUser()?.email === tutor.email) {
         console.log("Tutor a ver o seu perfil");
+    }
+
+    const displayValue = User.getDisplayLevels(tutor.levels); //Get the function from the user model (function that converts de values)
+
+    if (Array.isArray(displayValue)) {
+        level.innerHTML = displayValue.map(lvl => 
+            `<span class="badge">${lvl}</span>`
+        ).join(' ');
+    } else {
+        level.innerHTML = `<span class="badge">${displayValue}</span>`;
     }
 
     // Contact tutor
@@ -86,7 +89,6 @@ export function loadTutorProfile() {
     showSuccessMessage();
 });
 
-    
 };
 
 function changeTutorData() {
@@ -105,7 +107,7 @@ function changeTutorData() {
         document.getElementById("price").value = loggedUser.price || '';
         document.getElementById("specialNeedsYes").checked = loggedUser.specialNeeds === "Sim";
         document.getElementById("specialNeedsNo").checked = loggedUser.specialNeeds === "Não";
-        document.getElementById("educationLevel").value = loggedUser.educationLevel || '';
+        document.getElementById("levels").value = loggedUser.levels || '';
 
         // Modalities
         const modalities = Array.isArray(loggedUser.modality) ? loggedUser.modality : [loggedUser.modality];
@@ -121,8 +123,8 @@ function changeTutorData() {
     });
 
     // Handle form submission when user clicks on "Save Changes"
-    document.getElementById("saveChangesBtn").addEventListener("click", (event) => {
-        event.preventDefault(); // Prevent form from reloading the page
+    document.getElementById("saveChangesBtn").addEventListener("click", (e) => {
+        e.preventDefault();
 
         const newPassword = document.getElementById("newPassword").value;
         const confirmPassword = document.getElementById("confirmPassword").value;
@@ -141,7 +143,7 @@ function changeTutorData() {
             location: document.getElementById("signup-city").value,
             bio: document.getElementById("bio").value,
             price: document.getElementById("price").value,
-            educationLevel: document.getElementById("educationLevel").value,
+            levels: document.getElementById("levels").value,
             modality: [
                 document.getElementById("online").checked ? 'Online' : null,
                 document.getElementById("inPerson").checked ? 'Presencial' : null
@@ -157,31 +159,18 @@ function changeTutorData() {
         }
 
         // Find the index of the logged-in user in the users array
-        const userIndex = users.findIndex(user => user.email === loggedUser.email);
-        if (userIndex !== -1) {
-            // Merge the updated data into the existing user object
-            const user = users[userIndex];
-            Object.assign(user, updatedData);
+        const userIndex = users.findIndex(u => u.email === loggedUser.email);
+        
+        if (userIndex !== -1) { // If user exists in the array
+            users[userIndex] = { ...users[userIndex], ...updatedData };
+            
+        User.updateStorages(users[userIndex]);   // Synchronize data across all storage
 
-            // Save the updated users array back to localStorage
-            localStorage.setItem("users", JSON.stringify(users));
+        loadTutorProfile();
 
-            // Also update the loggedUser in localStorage
-            localStorage.setItem("loggedUser", JSON.stringify(user));
-
-            alert("Dados atualizados com sucesso!");
-
-            // Reload the tutor profile view
-            loadTutorProfile();
-
-            // Close the modal window
-            const modal = bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
-            if (modal) {
-                modal.hide();
-            }
-        } else {
-            alert("Erro ao atualizar os dados. Por favor, tente novamente.");
-        }
+        const modal = bootstrap.Modal.getInstance(document.getElementById('editProfileModal'));
+        modal.hide();  // Close the modal window
+    }
     });
 };
 
