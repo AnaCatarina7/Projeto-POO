@@ -7,33 +7,44 @@ document.addEventListener('DOMContentLoaded', function () {
 export function tutorCatalogView() {
     User.initUsers();
 
+        // Verifica se é a landing page
+    const isLandingPage = !window.location.pathname.includes('filter.html');
+
     // Retrieve any previous search term saved in localStorage
     const searchTerm = localStorage.getItem('searchTerm');
-    
-    renderTutorCatalog(
-        searchTerm 
-            ? User.getTutors(null, null, null, null, null, searchTerm)
-            : User.getTutors()
-    ); // Render tutor catalog, using the search term if it exists
+
+    let tutors = searchTerm
+        ? User.getTutors(null, null, null, null, searchTerm)
+        : User.getTutors();
+
+        // Aplica a lógica específica da landing page
+    if (isLandingPage) {
+        tutors = tutors
+            .sort((a, b) => (b.favoriteCount || 0) - (a.favoriteCount || 0))
+            .slice(0, 8);
+    }
+
+    renderTutorCatalog(tutors);
 
     localStorage.removeItem('searchTerm');
 
     // Handle filter and search button click
-    document.querySelector("#btnFilter").addEventListener("click", () => {
-        const newSearch = document.querySelector("#navbarSearchInput").value.trim();
-        renderTutorCatalog(
-            User.getTutors(
+    if (!isLandingPage) {
+        document.querySelector("#btnFilter").addEventListener("click", () => {
+            const newSearch = document.querySelector("#navbarSearchInput").value.trim();
+
+            renderTutorCatalog(
+                User.getTutors(
                 document.querySelector("#filter-level").value, // Get education level filter
                 document.querySelector("#filter-modality").value, // Get modality filter
-                document.querySelector("#filter-location").value,  //Get location filter
-                document.querySelector("#order").value, // Get sort order
-                document.querySelector("#filter-subject").value,
-                document.querySelector("#navbarSearchInput").value.trim(), // searchTerm
-                newSearch
-      )
-    );
-  });
-
+                document.querySelector("#filter-location").value,  // Get location filter
+                document.querySelector("#filter-subject").value,   // Get subject filter
+                newSearch,                                                                         // searchTerm 
+                document.querySelector("#order").value             // Get sort order
+                )
+            );
+         });
+    }
 
     addFavouriteBtn();
 }
@@ -45,24 +56,16 @@ export function tutorCatalogView() {
 function renderTutorCatalog(tutors = []) {
     let result = '';
 
-    const topTutors = tutors
-    .sort((a, b) => (b.favoriteCount || 0) - (a.favoriteCount || 0))
-    .slice(0, 8); // Gets only the top 8 most favorited tutors
-
-    for (const tutor of topTutors) {
-
+    for (const tutor of tutors) {
         result += generateTutorCard(tutor);
-
-
     }
 
     document.querySelector("#tutor-catalog-container").innerHTML = `
         <div class="row px-4 align-items-center justify-content-center display-flex">
             ${result}
         </div>
-    `;  // Insert in the container on the main page
-    clickTutorCard()
-
+    `;
+    clickTutorCard();
 }
 
 export function clickTutorCard() {
@@ -80,7 +83,6 @@ export function clickTutorCard() {
 
 // Tutor Card
 export function generateTutorCard(tutor) {
-
         const modalityText = tutor.modality === 'online' ? 'Online' : tutor.modality === 'inPerson' ? 'Presencial' :
             Array.isArray(tutor.modality) ? tutor.modality.join('/') : 'Não informado';
 
@@ -121,8 +123,6 @@ export function generateTutorCard(tutor) {
             </div>
         </div>
     `
-
-
 }
 
 // Favourite Button

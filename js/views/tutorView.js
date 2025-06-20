@@ -211,7 +211,7 @@ document.getElementById('contact-btn').addEventListener('click', () => {
     if (tutorEmail) {
         tutor = users.find(user => user.email === tutorEmail);
     }
-    //console.log(tutorEmail);
+    // console.log(tutorEmail);
     User.bookLesson(tutor.email)
     showSuccessMessage();
 });

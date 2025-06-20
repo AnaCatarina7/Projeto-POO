@@ -188,11 +188,6 @@
     padding: 1rem !important;
 }
 
-
-
-
-
-
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -219,4 +214,91 @@
 
 .d-none {
   display: none 
+}
+
+/* Lesson Packs - Acessible Version */
+.lesson-packs-section {
+    font-family: sans-serif;
+    font-size: 1rem;
+}
+
+.pack-card {
+    border-radius: 0.625rem;
+    transition: all 0.3s ease;
+    background: white;
+    font-size: 1rem;
+}
+
+.pack-card:hover {
+    transform: translateY(-0.188rem);
+}
+
+.pack-recommended {
+    border-top: 0.188rem solid #fcc71b;
+}
+
+.pack-basic, .pack-complete {
+    border-top: 0.188rem solid #395D7F;
+}
+
+.pack-icon {
+    opacity: 0.9;
+}
+
+.pack-title {
+    color: #1b2e4b;
+    font-size: 1.125rem;
+}
+
+.pack-price {
+    font-size: 1.25rem;
+}
+
+.pack-basic .pack-price,
+.pack-complete .pack-price {
+    color: #395D7F;
+}
+
+.pack-recommended .pack-price {
+    color: #fcc71b;
+}
+
+.pack-features {
+    color: #555555;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.btn-outline-primary {
+    border-color: #395D7F;
+    color: #395D7F;
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.btn-outline-primary:hover {
+    background: #395D7F;
+    color: white;
+}
+
+.btn-warning {
+    background: #fcc71b;
+    border-color: #fcc71b;
+    font-size: 0.875rem;
+    padding: 0.375rem 0.75rem;
+}
+
+.btn-warning:hover {
+    background: #e6b800;
+    border-color: #e6b800;
+}
+
+@media (max-width: 48rem) {
+    .pack-card {
+        margin-bottom: 1rem;
+    }
+    
+    .lesson-packs-section {
+        font-size: 0.9375rem;
+    }
 }

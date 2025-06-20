@@ -204,7 +204,7 @@ function giveReword(loggedUser, numLessonWithTutor,sameTutorLessons) {
 }
 
 // FILTER TUTORS
-export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, orderBy = null) {
+export function getTutors(levelFilter = null, modalityFilter = null, locationFilter = null, subjectFilter = null, searchTerm = "", orderBy = null){
   let filteredTutors = getAuthorizedTutors();  // Use let instead of const
   
   // Education Level Filter
