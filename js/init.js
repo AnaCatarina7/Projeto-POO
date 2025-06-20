@@ -50,6 +50,7 @@ window.initdata = function initdata() {
         surname: "Silva",
         email: "beatriz.silva@email.com",
         location: "Porto",
+        password: "bea456",
         userType: "aluno",
         favourites:[],
         rewardUsed:[],

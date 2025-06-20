@@ -17,6 +17,7 @@ export function loadTutorProfile() {
     // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
     const tutorEmail = localStorage.getItem('selectedTutorEmail');
     let tutor;
+    
 
     // Logic to determine which tutor to load:
     if (tutorEmail) {
@@ -77,6 +78,15 @@ export function loadTutorProfile() {
     if (!tutorEmail && User.getLoggedUser()?.email === tutor.email) {
         console.log("Tutor a ver o seu perfil");
     }
+
+    // Contact tutor
+    document.getElementById('contact-btn').addEventListener('click', () => {
+    //console.log(tutor.email);
+    User.bookLesson(tutor.email)
+    showSuccessMessage();
+});
+
+    
 };
 
 function changeTutorData() {
