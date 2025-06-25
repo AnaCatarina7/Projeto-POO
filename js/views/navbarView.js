@@ -15,20 +15,20 @@ function navbarView() {
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav me-auto ms-4">
+      <div class="collapse navbar-collapse navbar-profile dropdown" id="navbarNav">
+        <ul class="navbar-nav me-auto ms-4 navbar-links">
           <li class="nav-item">
             <a class="nav-link active" href="/index.html">Início</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/html/becomeTT.html">Torna-te Tutor</a>
+            <a class="nav-link" href="/html/filter.html">Pesquisar</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/html/about.html">Sobre nós</a>
           </li>
         </ul>
 
-        <form class="search-bar d-flex align-items-center me-3" id="navbarSearchForm">
+        <form class="search-bar d-flex align-items-center me-3 navbar-search" id="navbarSearchForm">
           <input class="form-control bg-transparent text-white border-0" 
                 type="search" 
                 placeholder="Pesquisar..."

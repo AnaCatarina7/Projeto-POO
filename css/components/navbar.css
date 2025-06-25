@@ -1,5 +1,50 @@
 /* NAVBAR */
+
+/* PROFILE PIC */
+.dropdown-line{
+    border: 0;
+    height: 1px;
+    background-color: #395d7f; 
+    margin: 0.4rem 0.8rem;
+}
+/* SEARCH BAR */
+.search-bar {
+    border: 0.15rem solid white;
+    border-radius: 0.5rem;
+    padding: 0.3rem 0.5rem; 
+}
+
+.search-bar .form-control::placeholder {
+    font-weight: lighter;
+    color: white;
+    opacity: 0.7;
+}
+
+.search-bar .form-control:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-search {
+    background-color: #ffc107 !important;
+    border-radius: 0.5rem;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.9rem
+}
+
+.btn-search:hover {
+    color: #2e2406;
+}
+
+.search-icon{
+    color: #395d7f;
+}
+
 .navbar {
+ 
     background-color: #395d7f ;
     padding: 1rem;
 }
@@ -30,5 +75,53 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  box-shadow: none;
+
+}
+
+/* Personaliza o ícone hamburguer */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 32 32' width='32' height='32' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='6' width='32' height='4' rx='2' fill='%23fcc71b'/%3E%3Crect y='14' width='32' height='4' rx='2' fill='%23fcc71b'/%3E%3Crect y='22' width='32' height='4' rx='2' fill='%23fcc71b'/%3E%3C/svg%3E");
+  width: 2rem;
+  height: 2rem;
+  background-size: 2rem 2rem;
+}
+
+@media (max-width: 991.98px) { /* Bootstrap lg breakpoint */
+  .navbar-collapse {
+    display: flex;
+    flex-direction: column !important;
+    gap: 1rem;
+  }
+
+  .navbar-search {
+    order: 1;
+    width: 100%;
+    justify-content: center;
+  }
+  .navbar-links {
+    order: 2;
+
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+   .navbar-profile {
+    order: 3;
+    align-self: center;
+    margin-bottom: 0.5rem;
+  }
+
 }
 

@@ -22,16 +22,15 @@ function renderStudentWelcome() {
     const heroConteiner = document.getElementById('hero-student-section')
     heroConteiner.innerHTML = `
    
-    <div class="d-flex align-items-center">
-    <div class="student-foto-wrapper me-4">
-       <img src="/assets/img/pexels-ann-h-45017-1762851.jpg" alt="foto" class="student-foto">
-    
-    </div>
-    <div class="text-white">
-      <h2 class="fw-bold mb-1">${loggedUser.name} ${loggedUser.surname}</h2>
-      <p class="mb-0"> Aluno | ${loggedUser.location}</p>
-    </div>
+    <div class="d-flex align-items-center flex-wrap">
+  <div class="student-foto-wrapper me-4">
+    <img src="/assets/img/pexels-ann-h-45017-1762851.jpg" alt="foto" class="student-foto">
   </div>
+  <div class="text-white student-hero-info">
+    <h2 class="fw-bold mb-1">${loggedUser.name} ${loggedUser.surname}</h2>
+    <p class="mb-0"> Aluno | ${loggedUser.location}</p>
+  </div>
+</div>
    `
 }
 

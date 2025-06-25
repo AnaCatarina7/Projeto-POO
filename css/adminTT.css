@@ -1,23 +1,18 @@
 .admin-tabs{
-    /* margin-top: 5%; */
     padding: 80px;
     --bs-nav-link-color:var(--color-blue);
     --bs-nav-link-hover-color:var(--color-blue);
     gap: 50px;
     font-size: 20px;  
 }
-
 .subjects-tab, .levels-tab, .tutors-tab {
    margin: auto 10%;
 }
-/* Tamanho base para tabs */
 .admin-tabs .nav-link {
   font-size: 1rem; 
   white-space: nowrap; 
   padding: 0.75rem 1rem;
 }
-
-
 @media only screen and (max-width: 600px) {
   .admin-tabs .nav-link{
     font-size: 1.2rem;

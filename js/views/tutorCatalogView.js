@@ -56,8 +56,9 @@ function renderTutorCatalog(tutors = []) {
     }
 
     // The tutors are going to be display inside this container
-    document.querySelector("#tutor-catalog-container").innerHTML = `
-        <div class="row px-4 align-items-center justify-content-center display-flex">
+    document.querySelector("#tutor-catalog-container").innerHTML =
+       `
+        <div class="row px-4 align-items-center justify-content-center flex-wrap display-flex tutor-catalog-row">
             ${result}
         </div>
     `;

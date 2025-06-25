@@ -1,21 +1,21 @@
 // SUBJECTSVIEW
-import { initSubjects, addSubject, deleteSubject, editSubject, initEducationLevels, deleteLevel } from "../models/subjectsLevelModel.js"
+import { initSubjects, addSubject, deleteSubject, editSubject, initEducationLevels, deleteLevel, updateLevel } from "../models/subjectsLevelModel.js"
 import * as User from "../models/userModel.js";
 
+
+let subjects = initSubjects()
+let educationLevels = initEducationLevels()
+let users = User.initUsers();
+let subjectToEdit = null;
+let levelToEdit
+let choices = createSubjectsSelector(subjects)
+const input = document.getElementById('subject-input')
 document.addEventListener('DOMContentLoaded', function () {
     renderSubjects()
     renderEducationLevels()
     renderTutors()
 
 })
-let subjects = initSubjects()
-let educationLevels = initEducationLevels()
-let users = User.initUsers();
-
-console.log(educationLevels)
-
-let subjectToEdit = null;
-const input = document.getElementById('subject-input')
 
 // Add a new subject
 document.querySelector('#subjects-form').addEventListener('submit', (e) => {
@@ -68,7 +68,7 @@ function renderSubjects() {
             const subjectToDelete = button.dataset.subject;
             if (confirm(`Deseja mesmo remover a disciplina?`)) {
                 deleteSubject(subjects, subjectToDelete);
-                renderSubjects() 
+                renderSubjects()
                 //location.reload();
             }
         });
@@ -80,7 +80,6 @@ function renderSubjects() {
         button.addEventListener("click", () => {
             subjectToEdit = button.dataset.subject;
             input.value = subjectToEdit
-            // let editedSubject=subjectToEdit
             input.focus();
         });
     });
@@ -117,30 +116,38 @@ function renderEducationLevels() {
 
     // Remove an Education Level
     document.querySelectorAll(".removeLevel").forEach(button => {
-        //console.log('ok');
         button.addEventListener("click", () => {
             const levelToDelete = button.dataset.id;
             if (confirm(`Deseja mesmo remover a disciplina?`)) {
                 deleteLevel(educationLevels, levelToDelete);
-                //console.log(levelToDelete);
                 location.reload();
-                //console.log(levelToDelete);
+
             }
         });
     });
 
-    // Edit an Education Level
-    //   document.querySelectorAll(".editSubject").forEach(button => {
-    //         button.addEventListener("click", () => {
-    //             subjectToEdit = button.dataset.subject;
-    //             input.value = subjectToEdit
-    //             // let editedSubject=subjectToEdit
-    //             input.focus();
-    //         });
-    //     });
+    //Edit an Education Level
+    document.querySelectorAll(".editLevel").forEach(button => {
+        button.addEventListener("click", () => {
+            console.log('btn clicked');
+            const levelId = parseInt(button.dataset.id);
+            levelToEdit = educationLevels.find(l => l.id === levelId);
+            if (!levelToEdit) return;
+            document.getElementById("education-level-input").value = levelToEdit.name;
 
+            choices.removeActiveItems()
+
+            levelToEdit.subjects.forEach(subject=>{
+                const foundOption = [...choices._store.choices].find(c => c.value === subject);
+                if(foundOption){
+                    choices.setChoiceByValue(subject)
+                }
+            })
+
+        });
+    });
 }
-function createSubjectsSelctor(subjects) {
+function createSubjectsSelector(subjects) {
     const subjectsSelect = document.getElementById('subjects-select')
     subjectsSelect.innerHTML = ""
 
@@ -149,9 +156,44 @@ function createSubjectsSelctor(subjects) {
         options += `<option value="${subject}">${subject}</option>`;
     })
     subjectsSelect.innerHTML = options
+    const choices = new Choices('#subjects-select', {
+        removeItemButton: true,
+        placeholderValue: 'Selecione disciplinas',
+        searchPlaceholderValue: 'Pesquisar...'
+    })
+    return choices
 }
-createSubjectsSelctor(subjects)
 
+document.getElementById('education-levels-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const levelName = document.getElementById('education-level-input').value.trim()
+    if (!levelName) {
+        return alert('Nome do nivel d ensino é obrigatório')
+    }
+
+    const selectedSubjects = choices.getValue(true)
+    if (selectedSubjects.length === 0) {
+        return alert('nenhuma disciplina selecionada')
+    }
+
+    if (levelToEdit) {
+        try {
+            levelToEdit.name=levelName
+            levelToEdit.subjects=selectedSubjects
+            updateLevel(educationLevels, levelToEdit);
+            levelToEdit = null;
+            renderEducationLevels();
+
+            document.getElementById('education-level-input').value = '';
+            choices.removeActiveItems()
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao atualizar o nível.");
+        }
+
+
+    }
+});
 
 function renderTutors() {
     const tbody = document.getElementById('tutors-table-body')
@@ -206,5 +248,3 @@ function renderTutors() {
 
 
 }
-
-

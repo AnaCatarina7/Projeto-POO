@@ -3,7 +3,6 @@
 export function initEducationLevels() {
   return JSON.parse(localStorage.getItem('educationLevels')) || []
 }
-
 export function addLevel(educationLevels,name,subjects ) {
   if (educationLevels.some((level) => level.name.toLowerCase() === name.toLowerCase())) {
     throw Error(`O nível de ensino "${name}" já existe!!`);
@@ -21,9 +20,9 @@ export function updateLevel(educationLevels, updatedLevel) {
     throw new Error(`Nível com id ${updatedLevel.id} não encontrado.`);
   }
 
-  // Atualizar nome e disciplinas
-  educationLevels[index].nome = updatedLevel.nome;
-  educationLevels[index].disciplinas = Array.isArray(updatedLevel.disciplinas) ? updatedLevel.disciplinas : [];
+  // Atualizar name e subjects
+  educationLevels[index].name = updatedLevel.name;
+  educationLevels[index].subjects = Array.isArray(updatedLevel.subjects) ? updatedLevel.subjects : [];
 
   // Guardar no localStorage
   localStorage.setItem("educationLevels", JSON.stringify(educationLevels));
@@ -45,7 +44,7 @@ function getNextId(educationLevels) {
   return Math.max(...educationLevels.map(level => level.id)) + 1
 }
 
-
+////**SUBJECTS */
 // GET SUBJECTS FROM LOCAL STORAGE
 
 export function initSubjects() {
@@ -81,9 +80,8 @@ export function editSubject(subjects, oldSubject, updatedSubject) {
 }
 
 
-
 class EducationLevel {
-  constructor(id, name, subjects = []) {
+  constructor(id, name, subjects) {
     this.id = id;
     this.name = name;
     this.subjects = subjects;

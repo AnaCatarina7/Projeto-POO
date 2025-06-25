@@ -2,52 +2,10 @@ body {
     margin-top: 4rem !important;
 }
 
-/* SEARCH BAR */
-.search-bar {
-    border: 0.15rem solid white;
-    border-radius: 0.5rem;
-    padding: 0.3rem 0.5rem; 
-}
 
-.search-bar .form-control::placeholder {
-    font-weight: lighter;
-    color: white;
-    opacity: 0.7;
-}
-
-.search-bar .form-control:focus {
-    outline: none;
-    box-shadow: none;
-}
-
-.btn-search {
-    background-color: #ffc107 !important;
-    border-radius: 0.5rem;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.2rem 0.9rem
-}
-
-.btn-search:hover {
-    color: #2e2406;
-}
-
-.search-icon{
-    color: #395d7f;
-}
-  
-/* PROFILE PIC */
-.dropdown-line{
-    border: 0;
-    height: 1px;
-    background-color: #395d7f; 
-    margin: 0.4rem 0.8rem;
-}
 
 /* MAIN PAGE INTRODUCTION HEADER */
-.custom-hero {
+.custom-hero{
     background-color: #395d7f ;
     min-height: 34rem;
     padding-top: 2rem;
@@ -103,9 +61,9 @@ body {
     background-color: #f8f9fa;
 }
   
-  /* Name */
+
 .card-body h6 {
-    font-size: 1rem;
+    /* font-size: 1rem; */
     color: #395d7f;
 } 
 
@@ -114,7 +72,7 @@ body {
     font-size: 1rem;
 }
   
-  /* Localidade e modalidade */
+
 .card-body p {
     font-size: 0.85rem;
     margin-bottom: 0.25rem;
@@ -138,10 +96,11 @@ body {
   .card-body .text-primary iconify-icon {
     vertical-align: text-bottom;
 }
-  
+ 
 
   .tutor-card {
-    max-width: 320px;
+    max-width: 420px;
+    min-width: 220px;
     width: 100%;
 }
 
@@ -213,3 +172,18 @@ body {
     background-color: #ffc727;
   }
   
+@media (max-width: 576px) {
+    .card-body h6 {
+        font-size: 0.9rem;
+    }
+
+    .card-body p, 
+    .card-body .text-dark, 
+    .card-body .text-warning {
+        font-size: 0.8rem;
+    }
+
+    .category-text {
+        font-size: 0.85rem;
+    }
+}
