@@ -15,7 +15,7 @@ if (!User.isLogged()) {
 export function loadTutorProfile() {
     // First check if we're viewing a specific tutor from localStorage (clicked from tutorCatalog)
     const tutorEmail = localStorage.getItem('selectedTutorEmail');
-    let tutor;   
+    let tutor;
 
     // Logic to determine which tutor to load:
     if (tutorEmail) {
@@ -101,7 +101,7 @@ function changeTutorData() {
         document.getElementById("specialNeedsNo").checked = loggedUser.specialNeeds === "Não";
         document.getElementById("levels").value = loggedUser.levels || '';
 
-        // Modalities
+        // Modalities (checks if its an array or not)
         const modalities = Array.isArray(loggedUser.modality) ? loggedUser.modality : [loggedUser.modality];
         document.getElementById("online").checked = modalities.includes('Online');
         document.getElementById("inPerson").checked = modalities.includes('Presencial');

@@ -45,7 +45,6 @@ export function loginUser(email, password) {
 // LOGGED USER
 export function isLogged() {
     return sessionStorage.getItem("loggedUser") ? true : false;
-
 }
 
 export function getLoggedUser() {

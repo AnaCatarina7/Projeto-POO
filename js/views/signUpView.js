@@ -2,6 +2,11 @@ import * as User from "../models/userModel.js";
 
 User.initUsers();
 
+document.addEventListener('DOMContentLoaded', () => {
+  renderSubjects();
+  handleTutorForm();
+});
+
 // Handle form submission for both student and tutor
 document.querySelector('#signup-form').addEventListener('submit', (e) => {
   e.preventDefault();
@@ -27,7 +32,7 @@ document.querySelector('#signup-form').addEventListener('submit', (e) => {
     if (userType === 'aluno') {
       // Create regular student account
       User.addUser(name, surname, email, location, password, 'aluno');
-      alert('Aluno registrado com sucesso!');
+      alert('Aluno registado com sucesso!');
     }
     else if (userType === 'tutor') {
       // Create tutor account with extended information
@@ -89,35 +94,77 @@ function handleTutorForm() {
   if (userTypeSelect) {
     userTypeSelect.addEventListener('change', updateTutorFieldsVisibility);
   }
+}
 
-  // Handle subject selection dropdown
-  const subjectDropdown = document.getElementById('subjectDropdown');
-  const subjectCheckboxes = document.querySelectorAll('#subjectDropdown + .dropdown-menu input[type="checkbox"]');
+/////// Subjects Functions ///////
+function renderSubjects() {
+  const subjects = JSON.parse(localStorage.getItem('subjects')) || [];
+  
+  // Get containers for basic and secondary education subjects
+  const basicEducationDiv = document.getElementById('basicEducationSubjects');
+  const secondaryEducationDiv = document.getElementById('secondaryEducationSubjects');
+  
+  // Clear existing content
+  basicEducationDiv.innerHTML = '';
+  secondaryEducationDiv.innerHTML = '';
+  
+  // Process each subject
+  subjects.forEach(subject => {
+    // Check if subject belongs to basic education
+    const isBasicEducation = [
+      "Português", "Inglês", "Francês", "Espanhol",
+      "História", "Geografia", "Matemática",
+      "Ciências Naturais", "Físico-Química"
+    ].includes(subject);
+    
+    // Set prefix (EB for basic, ES for secondary)
+    const prefix = isBasicEducation ? 'EB' : 'ES';
+    const container = isBasicEducation ? basicEducationDiv : secondaryEducationDiv;    // Choose correct container div
+    
+    // Create list item for each subject
+    const li = document.createElement('li');
+    // Make sure the id doesn't have spaces and is in lower case. And applies to every checkbox(g-global)
+    li.innerHTML = `
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="${prefix}-${subject}" 
+               id="${prefix.toLowerCase()}${subject.replace(/\s+/g, '')}">
+        <label class="form-check-label" for="${prefix.toLowerCase()}${subject.replace(/\s+/g, '')}">
+          ${subject}
+        </label>
+      </div>
+    `;
+    
+    // Add to correct container
+    container.appendChild(li);
+  });
+  
+  // Setup checkbox event listeners
+  setupSubjectCheckboxes();
+}
+
+// Handles subject selection logic
+function setupSubjectCheckboxes() {
+  const subjectCheckboxes = document.querySelectorAll('#subjectsDropdownMenu input[type="checkbox"]');
   const subjectHidden = document.getElementById('selectedSubjects');
+  const subjectDropdown = document.getElementById('subjectDropdown');
 
-  // For the subjects selection dropdown
+  // Add change event to each checkbox
+  subjectCheckboxes.forEach(cb => {
+    cb.addEventListener('change', () => updateSubjectSelection());
+  });
+
+  // Updates selected subjects display
   function updateSubjectSelection() {
-    const selected = [];
-    subjectCheckboxes.forEach(cb => {
-      if (cb.checked) {
-        selected.push(cb.value.replace("-", " - "));
-      }
-    });
-    subjectHidden.value = selected.join(',');
-
-    if (selected.length > 0) {
-      subjectDropdown.innerHTML = selected.map(val => `<span class="badge-subject">${val}</span>`).join(' ');
-    } else {
-      subjectDropdown.textContent = 'Selecionar disciplinas';
-    }
-  }
-
-  // Initialize subject selection events
-  if (subjectCheckboxes) {
-    subjectCheckboxes.forEach(cb => {
-      cb.addEventListener('change', updateSubjectSelection);
-    });
-    updateSubjectSelection();
+    // Get array of selected checkbox values
+    const selected = Array.from(subjectCheckboxes)
+      .filter(cb => cb.checked) // Only checked boxes
+      .map(cb => cb.value); // Get their values
+    
+    subjectHidden.value = selected.join(',');   // Store selected values as comma-separated string
+    
+    subjectDropdown.innerHTML = selected.length > 0 
+      ? selected.map(val => `<span class="badge-subject">${val}</span>`).join(' ')
+      : 'Selecionar disciplinas';
   }
 }
 
@@ -127,9 +174,9 @@ let selectedImage = null;
 
 // Converts uploaded image to Base64 (string) for localStorage and displays preview
 document.getElementById('photo').addEventListener('change', function (e) {
-  const file = e.target.files[0];
+  const file = e.target.files[0]; //Get the photo file
   if (file) {
-    const reader = new FileReader();
+    const reader = new FileReader(); // a js method to read files like this one(image)
     // Convert image to Base64 for storage
     reader.onload = function (e) {
       selectedImage = e.target.result;
@@ -140,6 +187,5 @@ document.getElementById('photo').addEventListener('change', function (e) {
     reader.readAsDataURL(file);
   }
 });
-
 
 handleTutorForm();
